@@ -1,0 +1,73 @@
+{
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "bin": {
+    "nestjs-prisma-graphql": "lib/index.js"
+  },
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=12"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test",
+    "lint": "eslint src/**/*.ts",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 120,
+    "semi": true,
+    "singleQuote": false,
+    "trailingComma": "es5"
+  },
+  "name": "nestjs-prisma-graphql-generator",
+  "author": "René Fermann",
+  "module": "dist/nestjs-prisma-graphql-generator.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/nestjs-prisma-graphql-generator.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/nestjs-prisma-graphql-generator.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "devDependencies": {
+    "@nestjs/graphql": "^7.10.3",
+    "@rfermann/eslint-config": "^0.14.0",
+    "@size-limit/preset-small-lib": "^4.10.1",
+    "@types/listr": "^0.14.2",
+    "@typescript-eslint/eslint-plugin": "^4.20.0",
+    "@typescript-eslint/parser": "^4.20.0",
+    "eslint": "^7.23.0",
+    "husky": "^5.2.0",
+    "prettier": "^2.2.1",
+    "prisma": "^2.20.1",
+    "size-limit": "^4.10.1",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.1.0",
+    "typescript": "^4.2.3"
+  },
+  "dependencies": {
+    "@prisma/client": "^2.20.1",
+    "@prisma/generator-helper": "^2.20.1",
+    "listr": "^0.14.3",
+    "listr2": "^3.4.4",
+    "ps-list": "^7.2.0",
+    "ts-morph": "^10.0.2"
+  }
+}

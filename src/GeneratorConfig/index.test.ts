@@ -60,7 +60,7 @@ describe("GeneratorConfig", () => {
     expect(config).toMatchObject({
       basePath: "/fixtures/output",
       paths: {
-        enum: "enums",
+        enums: "enums",
       },
       prismaClientImportPath: `${process.cwd()}/node_modules/@prisma/client`,
     });

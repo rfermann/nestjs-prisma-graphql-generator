@@ -6,6 +6,7 @@ import Listr from "listr";
 
 import { GeneratorConfig } from "../GeneratorConfig";
 import { EnumHandler } from "../Handlers/EnumHandler";
+import { importDmmf } from "../helpers";
 
 export class Generator {
   static messages = {
@@ -73,9 +74,7 @@ export class Generator {
 
   private async _init(): Promise<void> {
     // dmmf needs to be imported from prisma client. content differs from the dmmf passed in the generator options
-    // eslint-disable-next-line max-len
-    // eslint-disable-next-line global-require, import/no-dynamic-require, @typescript-eslint/no-var-requires, @typescript-eslint/no-require-imports
-    this._dmmf = require(this._config.prismaClientImportPath).dmmf as DMMF.Document;
+    this._dmmf = importDmmf(this._config.prismaClientImportPath);
 
     this._enumHandler = new EnumHandler({ config: this._config, dmmf: this._dmmf });
 

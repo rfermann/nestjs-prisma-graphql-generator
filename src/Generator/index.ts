@@ -71,11 +71,6 @@ export class Generator {
     await tasks.run();
   }
 
-  async initOutputFolder(): Promise<void> {
-    rmdirSync(this._config.basePath, { recursive: true });
-    mkdirSync(this._config.basePath, { recursive: true });
-  }
-
   private async _init(): Promise<void> {
     // dmmf needs to be imported from prisma client. content differs from the dmmf passed in the generator options
     // eslint-disable-next-line max-len
@@ -84,6 +79,11 @@ export class Generator {
 
     this._enumHandler = new EnumHandler({ config: this._config, dmmf: this._dmmf });
 
-    await this.initOutputFolder();
+    await this._initOutputFolder();
+  }
+
+  private async _initOutputFolder(): Promise<void> {
+    rmdirSync(this._config.basePath, { recursive: true });
+    mkdirSync(this._config.basePath, { recursive: true });
   }
 }

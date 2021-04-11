@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-nodejs-modules
-import { existsSync, mkdirSync, readdirSync, writeFileSync } from "fs";
+import { readdirSync } from "fs";
 
 import type { GeneratorConfig } from "@prisma/generator-helper";
 
@@ -40,47 +40,6 @@ const prismaGenerator: GeneratorConfig = {
 
 // eslint-disable-next-line max-lines-per-function
 describe("Generator", () => {
-  // eslint-disable-next-line jest/no-hooks
-  beforeAll(() => {
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    if (!existsSync(generatorConfig.output!.value)) {
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      mkdirSync(generatorConfig.output!.value, { recursive: true });
-    }
-  });
-
-  it("should clear the output folder", async () => {
-    expect.assertions(3);
-
-    const generator = new Generator({
-      datamodel: "",
-      datasources: [],
-      // eslint-disable-next-line @typescript-eslint/prefer-ts-expect-error
-      // @ts-ignore will be defined later
-      dmmf: null,
-      generator: generatorConfig,
-      otherGenerators: [{ ...prismaGenerator }],
-      schemaPath: "",
-    });
-
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    writeFileSync(`${generatorConfig.output!.value}/dummy.json`, "null", "utf8");
-
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    let fileExists = existsSync(`${generatorConfig.output!.value}/dummy.json`);
-
-    expect(fileExists).toBe(true);
-    await generator.initOutputFolder();
-
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    const folderExists = existsSync(generatorConfig.output!.value);
-
-    fileExists = existsSync(`${process.cwd()}/fixtures/Generator/output/dummy.json`);
-
-    expect(fileExists).toBe(false);
-    expect(folderExists).toBe(true);
-  });
-
   it("should create the correct files", async () => {
     expect.assertions(1);
 

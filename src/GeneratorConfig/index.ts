@@ -1,7 +1,7 @@
 import type { GeneratorConfig as PrismaGeneratorConfig } from "@prisma/generator-helper";
 
 interface Paths {
-  enum: string;
+  enums: string;
 }
 
 interface GeneratorOptions {
@@ -29,7 +29,7 @@ export class GeneratorConfig {
 
     this.basePath = output.value;
     this.paths = {
-      enum: "enums",
+      enums: "enums",
     };
     this.prismaClientImportPath = prismaClientPath.output.value;
   }

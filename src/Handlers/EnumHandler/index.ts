@@ -8,7 +8,7 @@ export class EnumHandler extends BaseHandler {
 
   async createBarrelFile(): Promise<void> {
     if (this._enums.length) {
-      const sourceFile = this.baseFileGenerator.createSourceFile(`${this.config.paths.enum}/index`);
+      const sourceFile = this.baseFileGenerator.createSourceFile(`${this.config.paths.enums}/index`);
 
       sourceFile.addExportDeclarations(
         this._enums.map(({ name }) => {
@@ -25,7 +25,7 @@ export class EnumHandler extends BaseHandler {
   async createFiles(): Promise<void> {
     // eslint-disable-next-line no-restricted-syntax
     for (const { documentation, name: enumName, values } of this._enums) {
-      const sourceFile = this.baseFileGenerator.createSourceFile(`${this.config.paths.enum}/${enumName}`);
+      const sourceFile = this.baseFileGenerator.createSourceFile(`${this.config.paths.enums}/${enumName}`);
 
       this.baseFileGenerator.addNestJSImports({ nestJSImports: [NestJSTypes.RegisterEnumType], sourceFile });
 

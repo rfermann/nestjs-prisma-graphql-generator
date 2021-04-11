@@ -26,7 +26,7 @@ describe("EnumHandler", () => {
     const config: GeneratorConfig = {
       basePath: `${process.cwd()}/fixtures/enumHandler/fixtures/output1`,
       paths: {
-        enum: "./enum",
+        enums: "./enum",
       },
       prismaClientImportPath: `${process.cwd()}/node_modules/@prisma/client`,
     };
@@ -39,7 +39,7 @@ describe("EnumHandler", () => {
     enumHandler.parse();
     await enumHandler.createBarrelFile();
 
-    const file = readFileSync(`${config.basePath}/${config.paths.enum}/index.ts`, "utf-8");
+    const file = readFileSync(`${config.basePath}/${config.paths.enums}/index.ts`, "utf-8");
 
     expect(file).toMatchInlineSnapshot(`
       "export { QueryModeEnum } from \\"./QueryModeEnum\\";
@@ -57,7 +57,7 @@ describe("EnumHandler", () => {
     const config: GeneratorConfig = {
       basePath: `${process.cwd()}/fixtures/enumHandler/fixtures/output2`,
       paths: {
-        enum: "./enum",
+        enums: "./enum",
       },
       prismaClientImportPath: "",
     };
@@ -77,7 +77,7 @@ describe("EnumHandler", () => {
 
     enumHandler.parse();
     await enumHandler.createBarrelFile();
-    expect(existsSync(`${config.basePath}/${config.paths.enum}/index.ts`)).toBe(false);
+    expect(existsSync(`${config.basePath}/${config.paths.enums}/index.ts`)).toBe(false);
   });
   it("should parse enums and create correct files from datamodel", async () => {
     expect.assertions(2);
@@ -85,7 +85,7 @@ describe("EnumHandler", () => {
     const config: GeneratorConfig = {
       basePath: `${process.cwd()}/fixtures/enumHandler/fixtures/output3`,
       paths: {
-        enum: "./enum",
+        enums: "./enum",
       },
       prismaClientImportPath: `${process.cwd()}/node_modules/@prisma/client`,
     };
@@ -98,7 +98,7 @@ describe("EnumHandler", () => {
     enumHandler.parse();
     await enumHandler.createFiles();
 
-    const enumFile = readFileSync(`${config.basePath}/${config.paths.enum}/UserTypeEnum.ts`, "utf-8");
+    const enumFile = readFileSync(`${config.basePath}/${config.paths.enums}/UserTypeEnum.ts`, "utf-8");
 
     expect(enumFile).toMatchInlineSnapshot(`
       "import { registerEnumType } from \\"@nestjs/graphql\\";
@@ -116,7 +116,7 @@ describe("EnumHandler", () => {
     `);
 
     const enumFileWithDocumentation = readFileSync(
-      `${config.basePath}/${config.paths.enum}/UserTypeWithDocEnum.ts`,
+      `${config.basePath}/${config.paths.enums}/UserTypeWithDocEnum.ts`,
       "utf-8"
     );
 
@@ -142,7 +142,7 @@ describe("EnumHandler", () => {
     const config: GeneratorConfig = {
       basePath: `${process.cwd()}/fixtures/enumHandler/fixtures/output4`,
       paths: {
-        enum: "./enum",
+        enums: "./enum",
       },
       prismaClientImportPath: `${process.cwd()}/node_modules/@prisma/client`,
     };
@@ -155,7 +155,7 @@ describe("EnumHandler", () => {
     enumHandler.parse();
     await enumHandler.createFiles();
 
-    const enumFile1 = readFileSync(`${config.basePath}/${config.paths.enum}/QueryModeEnum.ts`, "utf-8");
+    const enumFile1 = readFileSync(`${config.basePath}/${config.paths.enums}/QueryModeEnum.ts`, "utf-8");
 
     expect(enumFile1).toMatchInlineSnapshot(`
       "import { registerEnumType } from \\"@nestjs/graphql\\";

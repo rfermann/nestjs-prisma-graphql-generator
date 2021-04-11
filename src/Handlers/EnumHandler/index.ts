@@ -1,6 +1,7 @@
 import type { Enum } from "../../types";
 import { NestJSTypes } from "../../types";
 import { BaseHandler } from "../BaseHandler";
+import { compareObjectValues } from "../BaseHandler/compareFunctions";
 
 export class EnumHandler extends BaseHandler {
   private readonly _enums: Enum[] = [];
@@ -73,5 +74,7 @@ export class EnumHandler extends BaseHandler {
         }),
       });
     });
+
+    this._enums.sort((a, b) => compareObjectValues({ a, b, field: "name" }));
   }
 }

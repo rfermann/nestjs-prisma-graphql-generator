@@ -42,11 +42,11 @@ describe("EnumHandler", () => {
     const file = readFileSync(`${config.basePath}/${config.paths.enum}/index.ts`, "utf-8");
 
     expect(file).toMatchInlineSnapshot(`
-      "export { UserTypeEnum } from \\"./UserTypeEnum\\";
-      export { UserTypeWithDocEnum } from \\"./UserTypeWithDocEnum\\";
-      export { UserScalarFieldEnum } from \\"./UserScalarFieldEnum\\";
+      "export { QueryModeEnum } from \\"./QueryModeEnum\\";
       export { SortOrderEnum } from \\"./SortOrderEnum\\";
-      export { QueryModeEnum } from \\"./QueryModeEnum\\";
+      export { UserScalarFieldEnum } from \\"./UserScalarFieldEnum\\";
+      export { UserTypeEnum } from \\"./UserTypeEnum\\";
+      export { UserTypeWithDocEnum } from \\"./UserTypeWithDocEnum\\";
       "
     `);
   });

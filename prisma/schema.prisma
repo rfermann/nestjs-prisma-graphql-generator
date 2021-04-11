@@ -12,6 +12,12 @@ enum UserType {
   ADMIN
 }
 
+/// user type comment
+enum UserTypeWithDoc {
+  USER
+  ADMIN
+}
+
 model User {
   id    Int      @id @default(autoincrement())
   email String   @unique

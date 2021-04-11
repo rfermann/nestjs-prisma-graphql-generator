@@ -2,6 +2,7 @@
 import { existsSync, readFileSync, rmSync } from "fs";
 
 import type { GeneratorConfig } from "../../GeneratorConfig";
+import { importDmmf } from "../../helpers";
 
 import { EnumHandler } from ".";
 
@@ -27,20 +28,12 @@ describe("EnumHandler", () => {
       paths: {
         enum: "./enum",
       },
-      prismaClientImportPath: "",
+      prismaClientImportPath: `${process.cwd()}/node_modules/@prisma/client`,
     };
 
     const enumHandler = new EnumHandler({
       config,
-      dmmf: {
-        datamodel: { enums: [{ name: "enum1", values: [] }], models: [] },
-        mappings: { modelOperations: [], otherOperations: { read: [], write: [] } },
-        schema: {
-          enumTypes: { prisma: [{ name: "enum2", values: [] }] },
-          inputObjectTypes: { prisma: [] },
-          outputObjectTypes: { model: [], prisma: [] },
-        },
-      },
+      dmmf: importDmmf(config.prismaClientImportPath),
     });
 
     enumHandler.parse();
@@ -49,8 +42,11 @@ describe("EnumHandler", () => {
     const file = readFileSync(`${config.basePath}/${config.paths.enum}/index.ts`, "utf-8");
 
     expect(file).toMatchInlineSnapshot(`
-      "export { enum1Enum } from \\"./enum1Enum\\";
-      export { enum2Enum } from \\"./enum2Enum\\";
+      "export { UserTypeEnum } from \\"./UserTypeEnum\\";
+      export { UserTypeWithDocEnum } from \\"./UserTypeWithDocEnum\\";
+      export { UserScalarFieldEnum } from \\"./UserScalarFieldEnum\\";
+      export { SortOrderEnum } from \\"./SortOrderEnum\\";
+      export { QueryModeEnum } from \\"./QueryModeEnum\\";
       "
     `);
   });
@@ -83,7 +79,6 @@ describe("EnumHandler", () => {
     await enumHandler.createBarrelFile();
     expect(existsSync(`${config.basePath}/${config.paths.enum}/index.ts`)).toBe(false);
   });
-  // eslint-disable-next-line max-lines-per-function
   it("should parse enums and create correct files from datamodel", async () => {
     expect.assertions(2);
 
@@ -92,77 +87,50 @@ describe("EnumHandler", () => {
       paths: {
         enum: "./enum",
       },
-      prismaClientImportPath: "",
+      prismaClientImportPath: `${process.cwd()}/node_modules/@prisma/client`,
     };
 
     const enumHandler = new EnumHandler({
       config,
-      dmmf: {
-        datamodel: {
-          enums: [
-            {
-              name: "User",
-              values: [
-                { dbName: "value1", name: "value1" },
-                { dbName: "value2", name: "value2" },
-              ],
-            },
-            {
-              documentation: "Documentation",
-              name: "UserDocumentation",
-              values: [
-                { dbName: "value1", name: "value1" },
-                { dbName: "value2", name: "value2" },
-              ],
-            },
-          ],
-          models: [],
-        },
-        mappings: { modelOperations: [], otherOperations: { read: [], write: [] } },
-        schema: {
-          enumTypes: { prisma: [] },
-          inputObjectTypes: { prisma: [] },
-          outputObjectTypes: { model: [], prisma: [] },
-        },
-      },
+      dmmf: importDmmf(config.prismaClientImportPath),
     });
 
     enumHandler.parse();
     await enumHandler.createFiles();
 
-    const enumFile = readFileSync(`${config.basePath}/${config.paths.enum}/UserEnum.ts`, "utf-8");
+    const enumFile = readFileSync(`${config.basePath}/${config.paths.enum}/UserTypeEnum.ts`, "utf-8");
 
     expect(enumFile).toMatchInlineSnapshot(`
       "import { registerEnumType } from \\"@nestjs/graphql\\";
 
-      export enum UserEnum {
-        value1 = \\"value1\\",
-        value2 = \\"value2\\"
+      export enum UserTypeEnum {
+        USER = \\"USER\\",
+        ADMIN = \\"ADMIN\\"
       }
 
-      registerEnumType(UserEnum, {
-        name: \\"UserEnum\\",
+      registerEnumType(UserTypeEnum, {
+        name: \\"UserTypeEnum\\",
       });
 
       "
     `);
 
     const enumFileWithDocumentation = readFileSync(
-      `${config.basePath}/${config.paths.enum}/UserDocumentationEnum.ts`,
+      `${config.basePath}/${config.paths.enum}/UserTypeWithDocEnum.ts`,
       "utf-8"
     );
 
     expect(enumFileWithDocumentation).toMatchInlineSnapshot(`
       "import { registerEnumType } from \\"@nestjs/graphql\\";
 
-      export enum UserDocumentationEnum {
-        value1 = \\"value1\\",
-        value2 = \\"value2\\"
+      export enum UserTypeWithDocEnum {
+        USER = \\"USER\\",
+        ADMIN = \\"ADMIN\\"
       }
 
-      registerEnumType(UserDocumentationEnum, {
-        name: \\"UserDocumentationEnum\\",
-        description: \\"Documentation\\"
+      registerEnumType(UserTypeWithDocEnum, {
+        name: \\"UserTypeWithDocEnum\\",
+        description: \\"user type comment\\"
       });
 
       "
@@ -176,47 +144,29 @@ describe("EnumHandler", () => {
       paths: {
         enum: "./enum",
       },
-      prismaClientImportPath: "",
+      prismaClientImportPath: `${process.cwd()}/node_modules/@prisma/client`,
     };
 
     const enumHandler = new EnumHandler({
       config,
-      dmmf: {
-        datamodel: {
-          enums: [],
-          models: [],
-        },
-        mappings: { modelOperations: [], otherOperations: { read: [], write: [] } },
-        schema: {
-          enumTypes: {
-            prisma: [
-              {
-                name: "User",
-                values: ["value1", "value2"],
-              },
-            ],
-          },
-          inputObjectTypes: { prisma: [] },
-          outputObjectTypes: { model: [], prisma: [] },
-        },
-      },
+      dmmf: importDmmf(config.prismaClientImportPath),
     });
 
     enumHandler.parse();
     await enumHandler.createFiles();
 
-    const enumFile1 = readFileSync(`${config.basePath}/${config.paths.enum}/UserEnum.ts`, "utf-8");
+    const enumFile1 = readFileSync(`${config.basePath}/${config.paths.enum}/QueryModeEnum.ts`, "utf-8");
 
     expect(enumFile1).toMatchInlineSnapshot(`
       "import { registerEnumType } from \\"@nestjs/graphql\\";
 
-      export enum UserEnum {
-        value1 = \\"value1\\",
-        value2 = \\"value2\\"
+      export enum QueryModeEnum {
+        \\"default\\" = \\"default\\",
+        insensitive = \\"insensitive\\"
       }
 
-      registerEnumType(UserEnum, {
-        name: \\"UserEnum\\",
+      registerEnumType(QueryModeEnum, {
+        name: \\"QueryModeEnum\\",
       });
 
       "

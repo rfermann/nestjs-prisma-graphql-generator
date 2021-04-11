@@ -3,6 +3,8 @@ import { readdirSync } from "fs";
 
 import type { GeneratorConfig } from "@prisma/generator-helper";
 
+import { importDmmf } from "../helpers";
+
 import { Generator } from ".";
 
 const getStartedMessage = (message: string) => `${message} [started]`;
@@ -46,9 +48,7 @@ describe("Generator", () => {
     const generator = new Generator({
       datamodel: "",
       datasources: [],
-      // eslint-disable-next-line @typescript-eslint/prefer-ts-expect-error
-      // @ts-ignore will be defined later
-      dmmf: null,
+      dmmf: importDmmf(prismaGenerator.output?.value as string),
       generator: {
         ...generatorConfig,
         output: {
@@ -58,6 +58,7 @@ describe("Generator", () => {
       },
       otherGenerators: [{ ...prismaGenerator }],
       schemaPath: "",
+      version: "",
     });
 
     // only to suppress console.log

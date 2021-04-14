@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-nodejs-modules
-import { existsSync, readFileSync, rmSync } from "fs";
+import { existsSync, readFileSync, rmdirSync } from "fs";
 
 import type { GeneratorConfig } from "../../GeneratorConfig";
 import { importDmmf } from "../../helpers";
@@ -10,8 +10,8 @@ import { ModelHandler } from ".";
 describe("ModelHandler", () => {
   // eslint-disable-next-line jest/no-hooks
   beforeAll(async () => {
-    if (existsSync(`${process.cwd()}/fixtures/enumHandler/fixtures/`)) {
-      rmSync(`${process.cwd()}/fixtures/enumHandler/fixtures/`, { recursive: true });
+    if (existsSync(`${process.cwd()}/fixtures/modelHandler/fixtures/`)) {
+      rmdirSync(`${process.cwd()}/fixtures/modelHandler/fixtures/`, { recursive: true });
     }
   });
   it("should parse DMMF properly", async () => {

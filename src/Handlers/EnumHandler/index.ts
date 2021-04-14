@@ -55,6 +55,10 @@ export class EnumHandler extends BaseHandler {
     await this.baseFileGenerator.save();
   }
 
+  getEnums(): Enum[] {
+    return this._enums;
+  }
+
   parse(): void {
     this.baseParser.dmmf.datamodel.enums.forEach(({ documentation, name, values }): void => {
       this._enums.push({

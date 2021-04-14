@@ -18,9 +18,24 @@ enum UserTypeWithDoc {
   ADMIN
 }
 
+/// user model comment
 model User {
-  id    Int      @id @default(autoincrement())
-  email String   @unique
-  name  String?
-  type  UserType
+  id      Int       @id @default(autoincrement())
+  email   String    @unique
+  name    String?
+  type    UserType
+  active  Boolean
+  balance Float
+  rawData Json /// user field comment
+  Session Session[]
+}
+
+model Session {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+  size      Decimal
+  bigSize   BigInt
+  byte      Bytes
 }

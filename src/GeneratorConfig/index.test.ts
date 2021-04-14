@@ -61,6 +61,7 @@ describe("GeneratorConfig", () => {
       basePath: "/fixtures/output",
       paths: {
         enums: "enums",
+        model: "model",
       },
       prismaClientImportPath: `${process.cwd()}/node_modules/@prisma/client`,
     });

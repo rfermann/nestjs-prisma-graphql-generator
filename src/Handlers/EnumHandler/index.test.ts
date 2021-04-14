@@ -27,6 +27,7 @@ describe("EnumHandler", () => {
       basePath: `${process.cwd()}/fixtures/enumHandler/fixtures/output1`,
       paths: {
         enums: "./enum",
+        model: "model",
       },
       prismaClientImportPath: `${process.cwd()}/node_modules/@prisma/client`,
     };
@@ -43,6 +44,7 @@ describe("EnumHandler", () => {
 
     expect(file).toMatchInlineSnapshot(`
       "export { QueryModeEnum } from \\"./QueryModeEnum\\";
+      export { SessionScalarFieldEnum } from \\"./SessionScalarFieldEnum\\";
       export { SortOrderEnum } from \\"./SortOrderEnum\\";
       export { UserScalarFieldEnum } from \\"./UserScalarFieldEnum\\";
       export { UserTypeEnum } from \\"./UserTypeEnum\\";
@@ -58,6 +60,7 @@ describe("EnumHandler", () => {
       basePath: `${process.cwd()}/fixtures/enumHandler/fixtures/output2`,
       paths: {
         enums: "./enum",
+        model: "model",
       },
       prismaClientImportPath: "",
     };
@@ -86,6 +89,7 @@ describe("EnumHandler", () => {
       basePath: `${process.cwd()}/fixtures/enumHandler/fixtures/output3`,
       paths: {
         enums: "./enum",
+        model: "model",
       },
       prismaClientImportPath: `${process.cwd()}/node_modules/@prisma/client`,
     };
@@ -143,6 +147,7 @@ describe("EnumHandler", () => {
       basePath: `${process.cwd()}/fixtures/enumHandler/fixtures/output4`,
       paths: {
         enums: "./enum",
+        model: "model",
       },
       prismaClientImportPath: `${process.cwd()}/node_modules/@prisma/client`,
     };

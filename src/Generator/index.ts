@@ -6,6 +6,7 @@ import Listr from "listr";
 
 import { GeneratorConfig } from "../GeneratorConfig";
 import { EnumHandler } from "../Handlers/EnumHandler";
+import { ModelHandler } from "../Handlers/ModelHandler";
 import { importDmmf } from "../helpers";
 
 export class Generator {
@@ -16,6 +17,12 @@ export class Generator {
       title: "Parsing and generating Enums",
     },
     init: "Initialize generator",
+    models: {
+      generate: "Generating Models",
+      parse: "Parsing Arguments, Models and Object Types",
+      title: "Parsing and generating Models",
+    },
+    objects: "Processing Models, Object Types and Resolvers",
     title: "Generating NestJS integration",
   };
 
@@ -25,10 +32,13 @@ export class Generator {
 
   private _enumHandler!: EnumHandler;
 
+  private _modelHandler!: ModelHandler;
+
   constructor({ generator, otherGenerators }: GeneratorOptions) {
     this._config = new GeneratorConfig({ generator, otherGenerators });
   }
 
+  // eslint-disable-next-line max-lines-per-function
   async generate(): Promise<void> {
     const tasks = new Listr(
       [
@@ -57,8 +67,33 @@ export class Generator {
                     ]),
                   title: Generator.messages.enums.title,
                 },
+                {
+                  task: async () =>
+                    new Listr(
+                      [
+                        {
+                          task: async () =>
+                            new Listr([
+                              {
+                                task: () => this._modelHandler.parse(this._enumHandler.getEnums()),
+                                title: Generator.messages.models.parse,
+                              },
+                              {
+                                task: async () => {
+                                  await this._modelHandler.createFiles();
+                                },
+                                title: Generator.messages.models.generate,
+                              },
+                            ]),
+                          title: Generator.messages.models.title,
+                        },
+                      ],
+                      { concurrent: true }
+                    ),
+                  title: Generator.messages.objects,
+                },
               ],
-              { concurrent: true }
+              { concurrent: false }
             ),
           title: Generator.messages.title,
         },
@@ -77,6 +112,7 @@ export class Generator {
     this._dmmf = importDmmf(this._config.prismaClientImportPath);
 
     this._enumHandler = new EnumHandler({ config: this._config, dmmf: this._dmmf });
+    this._modelHandler = new ModelHandler({ config: this._config, dmmf: this._dmmf });
 
     await this._initOutputFolder();
   }

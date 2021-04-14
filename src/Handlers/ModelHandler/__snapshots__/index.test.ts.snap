@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ModelHandler should parse models and create correct files from datamodel 1`] = `
+"import { Field, Float, Int, ObjectType } from \\"@nestjs/graphql\\";
+import { GraphQLJSON } from \\"graphql-type-json\\";
+import { JsonValue } from \\"@prisma/client\\";
+import { UserTypeEnum } from \\"../enums\\";
+import { Session } from \\"../Session/model\\";
+
+/** user model comment */
+@ObjectType({
+  isAbstract: true,
+  description: \\"user model comment\\"
+})
+export class User {
+  @Field(() => Int, {
+    nullable: false
+  })
+  id!: number;
+
+  @Field(() => String, {
+    nullable: false
+  })
+  email!: string;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  name?: string | null;
+
+  @Field(() => UserTypeEnum, {
+    nullable: false
+  })
+  type!: \\"USER\\" | \\"ADMIN\\";
+
+  @Field(() => Boolean, {
+    nullable: false
+  })
+  active!: boolean;
+
+  @Field(() => Float, {
+    nullable: false
+  })
+  balance!: number;
+
+  /** user field comment */
+  @Field(() => GraphQLJSON, {
+    nullable: false
+    description: \\"user field comment\\"
+  })
+  rawData!: JsonValue;
+
+  @Field(() => [Session], {
+    nullable: true
+  })
+  Session?: Session[];
+}
+"
+`;

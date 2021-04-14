@@ -40,7 +40,6 @@ const prismaGenerator: GeneratorConfig = {
   provider: { fromEnvVar: null, value: "prisma-client-js" },
 };
 
-// eslint-disable-next-line max-lines-per-function
 describe("Generator", () => {
   it("should create the correct files", async () => {
     expect.assertions(1);
@@ -67,12 +66,22 @@ describe("Generator", () => {
     await generator.generate();
     consoleLog.mockRestore();
 
-    const folderList = readdirSync(`${process.cwd()}/fixtures/Generator/output1`);
+    const folderList = readdirSync(`${process.cwd()}/fixtures/Generator/output1`).sort((a, b) => {
+      if (a.toLowerCase() > b.toLowerCase()) {
+        return 1;
+      }
 
-    expect([...folderList]).toStrictEqual(["enums"]);
+      if (a.toLowerCase() < b.toLowerCase()) {
+        return -1;
+      }
+
+      return 0;
+    });
+
+    expect([...folderList]).toStrictEqual(["enums", "Session", "User"]);
   });
   it("should log the correct actions", async () => {
-    expect.assertions(9);
+    expect.assertions(17);
 
     const generator = new Generator({
       datamodel: "",
@@ -105,12 +114,21 @@ describe("Generator", () => {
     expect(values[values.length - 1]).toMatch(getCompletedMessage(Generator.messages.title));
 
     // expect messages to appear (correct order can't be predicted due to async nature of some tasks)
+    expect(findStartedMessage(values, Generator.messages.objects)).toHaveLength(1);
+    expect(findCompletedMessage(values, Generator.messages.objects)).toHaveLength(1);
+
     expect(findStartedMessage(values, Generator.messages.enums.title)).toHaveLength(1);
     expect(findCompletedMessage(values, Generator.messages.enums.title)).toHaveLength(1);
-
     expect(findStartedMessage(values, Generator.messages.enums.parse)).toHaveLength(1);
     expect(findCompletedMessage(values, Generator.messages.enums.parse)).toHaveLength(1);
     expect(findStartedMessage(values, Generator.messages.enums.generate)).toHaveLength(1);
     expect(findCompletedMessage(values, Generator.messages.enums.generate)).toHaveLength(1);
+
+    expect(findStartedMessage(values, Generator.messages.models.title)).toHaveLength(1);
+    expect(findCompletedMessage(values, Generator.messages.models.title)).toHaveLength(1);
+    expect(findStartedMessage(values, Generator.messages.models.parse)).toHaveLength(1);
+    expect(findCompletedMessage(values, Generator.messages.models.parse)).toHaveLength(1);
+    expect(findStartedMessage(values, Generator.messages.models.generate)).toHaveLength(1);
+    expect(findCompletedMessage(values, Generator.messages.models.generate)).toHaveLength(1);
   });
 });

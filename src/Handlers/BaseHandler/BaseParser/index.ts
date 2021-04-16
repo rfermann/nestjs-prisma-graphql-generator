@@ -12,7 +12,7 @@ interface ParseField {
   location: DMMF.FieldLocation;
   name: string;
   relationName?: string;
-  type: string;
+  type: DMMF.OutputType | DMMF.SchemaEnum | string;
 }
 interface TSField {
   isList: boolean;
@@ -44,8 +44,17 @@ export class BaseParser {
     this.dmmf = dmmf;
   }
 
-  getEnumImports({ enumImports, field: { kind, type } }: { enumImports: Set<string>; field: DMMF.Field }): Set<string> {
-    if (kind === "enum") {
+  getEnumImports({
+    enumImports,
+    field: { location, type },
+  }: {
+    enumImports: Set<string>;
+    field: {
+      location: DMMF.FieldLocation;
+      type: DMMF.ArgType;
+    };
+  }): Set<string> {
+    if (location === "enumTypes") {
       enumImports.add(this.getEnumName(type));
     }
 
@@ -53,8 +62,12 @@ export class BaseParser {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  getEnumName(name: string): string {
-    return `${name.replace("Enum", "")}Enum`;
+  getEnumName(type: DMMF.ArgType): string {
+    if (typeof type === "string") {
+      return `${type.replace("Enum", "")}Enum`;
+    }
+
+    return `${type.name.replace("Enum", "")}Enum`;
   }
 
   getGraphqlScalarImports({
@@ -72,15 +85,18 @@ export class BaseParser {
   }
 
   getJsonImports({
-    field: { kind, type },
+    field: { location, type },
     jsonImports,
     tsType,
   }: {
-    field: DMMF.Field;
+    field: {
+      location: DMMF.FieldLocation;
+      type: string;
+    };
     jsonImports: Set<string>;
     tsType: string;
   }): Set<string> {
-    if (kind === "scalar" && this.jsonImports.has(type)) {
+    if (location === "scalar" && this.jsonImports.has(type)) {
       jsonImports.add(type);
     }
 
@@ -122,7 +138,7 @@ export class BaseParser {
 
     return {
       documentation,
-      graphQLType: this.parseGraphQLType([{ isList, location, type }]),
+      graphQLType: this.parseGraphQLType([{ isList, location, type: type as DMMF.ArgType }]),
       isNullable,
       isRequired,
       name,

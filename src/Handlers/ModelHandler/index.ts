@@ -1,29 +1,13 @@
 import type { DMMF } from "@prisma/generator-helper";
 
 import type { Enum, Field, Model } from "../../types";
-import { NestJSTypes, TypeEnum } from "../../types";
+import { NestJSTypes, ObjectTypes, TypeEnum } from "../../types";
 import { BaseHandler } from "../BaseHandler";
-
-const mapKindToLocation = (kind: DMMF.FieldKind): DMMF.FieldLocation => {
-  switch (kind) {
-    case "enum":
-      return "enumTypes";
-
-    case "object":
-      return "inputObjectTypes";
-
-    case "scalar":
-      return "scalar";
-
-    default:
-      /* istanbul ignore next */
-      throw new Error(`Can't map kind ${kind as string} to a location`);
-  }
-};
 
 export class ModelHandler extends BaseHandler {
   private readonly _models: Model[] = [];
 
+  // eslint-disable-next-line max-lines-per-function
   async createFiles(): Promise<void> {
     this._models.forEach(
       ({
@@ -39,7 +23,7 @@ export class ModelHandler extends BaseHandler {
         const sourceFile = this.baseFileGenerator.createSourceFile(`${name}/${this.config.paths.model}`);
 
         this.baseFileGenerator.addNestJSImports({
-          nestJSImports: [NestJSTypes.Field, NestJSTypes.ObjectType],
+          nestJSImports: [NestJSTypes.Field, ObjectTypes.ObjectType],
           sourceFile,
         });
 
@@ -68,7 +52,10 @@ export class ModelHandler extends BaseHandler {
         }
 
         sourceFile.addClass({
-          decorators: this.baseFileGenerator.getClassDecorator(documentation),
+          decorators: this.baseFileGenerator.getClassDecorator({
+            decoratorType: ObjectTypes.ObjectType,
+            documentation,
+          }),
           docs: typeof documentation === "string" ? [documentation] : [],
           isExported: true,
           name,
@@ -82,29 +69,58 @@ export class ModelHandler extends BaseHandler {
     await this.baseFileGenerator.save();
   }
 
+  // eslint-disable-next-line max-lines-per-function
   parse(enums: Enum[]): void {
-    this.baseParser.dmmf.datamodel.models.forEach(({ documentation, name, fields: modelFields }) => {
+    // eslint-disable-next-line max-lines-per-function
+    this.baseParser.dmmf.schema.outputObjectTypes.model.forEach(({ name, fields: modelFields }) => {
       const fields: Field[] = [];
       let enumImports: Set<string> = new Set();
       let graphqlScalarImports: Set<string> = new Set();
       let jsonImports: Set<string> = new Set();
-      let modelImports: Set<string> = new Set();
+      const modelImports: Set<string> = new Set();
       const nestJSImports: Set<string> = new Set();
+      const datamodel = this.baseParser.dmmf.datamodel.models.find((model) => model.name === name);
 
-      modelFields.forEach((field) => {
-        const location = mapKindToLocation(field.kind);
-        const parsedField = this.baseParser.parseField({ enums, field: { ...field, isInputType: false, location } });
+      modelFields.forEach(({ isNullable: isNullableBase, name: fieldName, outputType }) => {
+        const { location, type } = outputType as { location: DMMF.FieldLocation; type: string };
+        /* istanbul ignore next */
+        const fieldModel = datamodel?.fields.find((f) => f.name === fieldName);
+        const isNullable = outputType.location === "outputObjectTypes" ? true : isNullableBase;
 
-        enumImports = this.baseParser.getEnumImports({ enumImports, field });
+        const parsedField = this.baseParser.parseField({
+          enums,
+          field: {
+            /* istanbul ignore next */
+            documentation: fieldModel?.documentation,
+            isInputType: false,
+            isList: outputType.isList,
+            isRequired: !isNullable,
+            location,
+            name: fieldName,
+            type,
+          },
+        });
+
+        enumImports = this.baseParser.getEnumImports({
+          enumImports,
+          field: { location, type },
+        });
         graphqlScalarImports = this.baseParser.getGraphqlScalarImports({
           graphqlScalarImports,
           type: parsedField.graphQLType,
         });
-        jsonImports = this.baseParser.getJsonImports({ field, jsonImports, tsType: parsedField.tsType });
-        modelImports = this.baseParser.getModelImports({ field, modelImports });
 
-        if (this.baseParser.nestJSImports.has(field.type)) {
-          nestJSImports.add(field.type);
+        jsonImports = this.baseParser.getJsonImports({
+          field: { location, type },
+          jsonImports,
+          tsType: parsedField.tsType,
+        });
+        if (location === "outputObjectTypes") {
+          modelImports.add(type);
+        }
+
+        if (this.baseParser.nestJSImports.has(type)) {
+          nestJSImports.add(type);
         }
 
         if (this.baseParser.nestJSImports.has(parsedField.graphQLType)) {
@@ -115,7 +131,8 @@ export class ModelHandler extends BaseHandler {
       });
 
       this._models.push({
-        documentation,
+        /* istanbul ignore next */
+        documentation: datamodel?.documentation,
         enumImports: Array.from(enumImports),
         fields,
         graphqlScalarImports: Array.from(graphqlScalarImports),

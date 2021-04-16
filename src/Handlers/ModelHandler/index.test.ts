@@ -27,7 +27,9 @@ describe("ModelHandler", () => {
       basePath: `${process.cwd()}/fixtures/modelHandler/fixtures/output3`,
       paths: {
         enums: "enums",
+        // inputTypes: "",
         model: "model",
+        // shared: "",
       },
       prismaClientImportPath: `${process.cwd()}/node_modules/@prisma/client`,
     };
@@ -75,7 +77,7 @@ describe("ModelHandler", () => {
         @Field(() => User, {
           nullable: true
         })
-        user?: User;
+        user?: User | null;
 
         @Field(() => Int, {
           nullable: false

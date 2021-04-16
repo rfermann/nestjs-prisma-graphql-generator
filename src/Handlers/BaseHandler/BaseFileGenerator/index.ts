@@ -2,7 +2,7 @@ import type { DecoratorStructure, OptionalKind, PropertyDeclarationStructure, So
 import { IndentationText, NewLineKind, Project, StructureKind } from "ts-morph";
 
 import type { GeneratorConfig } from "../../../GeneratorConfig";
-import type { Field } from "../../../types";
+import type { Field, ObjectTypes } from "../../../types";
 import { NestJSTypes, TypeEnum } from "../../../types";
 import { comparePrimitiveValues } from "../compareFunctions";
 
@@ -33,7 +33,7 @@ export class BaseFileGenerator {
   addEnumImports({ enums, sourceFile, type }: { enums: string[]; sourceFile: SourceFile; type: TypeEnum }): void {
     let moduleSpecifier = "";
 
-    if (type === TypeEnum.InputType || type === TypeEnum.ModelType) {
+    if (type === TypeEnum.ModelType) {
       moduleSpecifier = `../${this._config.paths.enums}`;
     }
 
@@ -107,7 +107,13 @@ export class BaseFileGenerator {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  getClassDecorator(documentation: string | undefined): OptionalKind<DecoratorStructure>[] {
+  getClassDecorator({
+    decoratorType,
+    documentation,
+  }: {
+    decoratorType: ObjectTypes;
+    documentation?: string;
+  }): OptionalKind<DecoratorStructure>[] {
     return [
       {
         arguments: [
@@ -119,7 +125,7 @@ export class BaseFileGenerator {
               .write("}"),
         ],
         kind: StructureKind.Decorator,
-        name: NestJSTypes.ObjectType,
+        name: decoratorType,
       },
     ];
   }

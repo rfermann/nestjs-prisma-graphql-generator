@@ -53,7 +53,7 @@ export class User {
   @Field(() => [Session], {
     nullable: true
   })
-  Session?: Session[];
+  Session?: Session[] | null;
 }
 "
 `;

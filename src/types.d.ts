@@ -49,8 +49,12 @@ const enum NestJSTypes {
   "ID" = "ID",
   "ImportPath" = "@nestjs/graphql",
   "Int" = "Int",
-  "ObjectType" = "ObjectType",
   "RegisterEnumType" = "registerEnumType",
+}
+
+const enum ObjectTypes {
+  "InputType" = "InputType",
+  "ObjectType" = "ObjectType",
 }
 
 const enum TypeEnum {
@@ -68,6 +72,7 @@ export {
   // InputType,
   Model,
   NestJSTypes,
+  ObjectTypes,
   TypeEnum,
   // OperationTypeEnum as OperationType,
   // OutputType,

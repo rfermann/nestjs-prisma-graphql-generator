@@ -28,7 +28,7 @@ interface TSFieldOptions {
 export class BaseParser {
   readonly dmmf: DMMF.Document;
 
-  readonly graphqlScalarImports = new Set(["Byte"]);
+  readonly graphqlScalarImports = new Set(["ByteResolver"]);
 
   readonly inputTypeList: Set<string> = new Set();
 
@@ -227,7 +227,7 @@ export class BaseParser {
   private _mapScalarToGraphQLType(scalar: string): string {
     switch (scalar) {
       case "Bytes":
-        return "Byte";
+        return "ByteResolver";
 
       case "DateTime":
         return "GraphQLISODateTime";

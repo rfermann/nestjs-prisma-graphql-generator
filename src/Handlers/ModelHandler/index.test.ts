@@ -57,7 +57,7 @@ describe("ModelHandler", () => {
 
     expect(sessionModelFile).toMatchInlineSnapshot(`
       "import { Field, GraphQLISODateTime, Int, ObjectType } from \\"@nestjs/graphql\\";
-      import { Byte } from \\"graphql-scalars\\";
+      import { ByteResolver } from \\"graphql-scalars\\";
       import { User } from \\"../User/model\\";
 
       @ObjectType({
@@ -94,7 +94,7 @@ describe("ModelHandler", () => {
         })
         bigSize!: bigint;
 
-        @Field(() => Byte, {
+        @Field(() => ByteResolver, {
           nullable: false
         })
         byte!: Buffer;

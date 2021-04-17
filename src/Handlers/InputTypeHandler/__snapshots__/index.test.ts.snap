@@ -241,13 +241,13 @@ export class BoolWithAggregatesFilter {
 
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 7`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
-import { Byte } from \\"graphql-scalars\\";
+import { ByteResolver } from \\"graphql-scalars\\";
 
 @InputType({
   isAbstract: true,
 })
 export class BytesFieldUpdateOperationsInput {
-  @Field(() => Byte, {
+  @Field(() => ByteResolver, {
     nullable: true
   })
   set?: Buffer | undefined;
@@ -257,14 +257,14 @@ export class BytesFieldUpdateOperationsInput {
 
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 8`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
-import { Byte } from \\"graphql-scalars\\";
+import { ByteResolver } from \\"graphql-scalars\\";
 import { NestedBytesFilter } from \\"./NestedBytesFilter\\";
 
 @InputType({
   isAbstract: true,
 })
 export class BytesFilter {
-  @Field(() => Byte, {
+  @Field(() => ByteResolver, {
     nullable: true
   })
   equals?: Buffer | undefined;
@@ -279,7 +279,7 @@ export class BytesFilter {
 
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 9`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
-import { Byte } from \\"graphql-scalars\\";
+import { ByteResolver } from \\"graphql-scalars\\";
 import { NestedBytesWithAggregatesFilter } from \\"./NestedBytesWithAggregatesFilter\\";
 import { NestedIntFilter } from \\"./NestedIntFilter\\";
 import { NestedBytesFilter } from \\"./NestedBytesFilter\\";
@@ -288,7 +288,7 @@ import { NestedBytesFilter } from \\"./NestedBytesFilter\\";
   isAbstract: true,
 })
 export class BytesWithAggregatesFilter {
-  @Field(() => Byte, {
+  @Field(() => ByteResolver, {
     nullable: true
   })
   equals?: Buffer | undefined;
@@ -1267,13 +1267,13 @@ export class NestedBoolWithAggregatesFilter {
 
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 31`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
-import { Byte } from \\"graphql-scalars\\";
+import { ByteResolver } from \\"graphql-scalars\\";
 
 @InputType({
   isAbstract: true,
 })
 export class NestedBytesFilter {
-  @Field(() => Byte, {
+  @Field(() => ByteResolver, {
     nullable: true
   })
   equals?: Buffer | undefined;
@@ -1283,7 +1283,7 @@ export class NestedBytesFilter {
 
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 32`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
-import { Byte } from \\"graphql-scalars\\";
+import { ByteResolver } from \\"graphql-scalars\\";
 import { NestedIntFilter } from \\"./NestedIntFilter\\";
 import { NestedBytesFilter } from \\"./NestedBytesFilter\\";
 
@@ -1291,7 +1291,7 @@ import { NestedBytesFilter } from \\"./NestedBytesFilter\\";
   isAbstract: true,
 })
 export class NestedBytesWithAggregatesFilter {
-  @Field(() => Byte, {
+  @Field(() => ByteResolver, {
     nullable: true
   })
   equals?: Buffer | undefined;

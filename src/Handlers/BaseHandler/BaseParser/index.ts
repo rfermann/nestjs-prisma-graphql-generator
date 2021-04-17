@@ -30,7 +30,11 @@ export class BaseParser {
 
   readonly graphqlScalarImports = new Set(["Byte"]);
 
+  readonly inputTypeList: Set<string> = new Set();
+
   readonly jsonImports = new Set(["InputJsonValue", "JsonValue"]);
+
+  readonly modelsList: string[];
 
   readonly nestJSImports = new Set([
     NestJSTypes.Float as string,
@@ -42,6 +46,11 @@ export class BaseParser {
 
   constructor(dmmf: DMMF.Document) {
     this.dmmf = dmmf;
+
+    this.dmmf.schema.inputObjectTypes.prisma.forEach(({ name }) => {
+      this.inputTypeList.add(name);
+    });
+    this.modelsList = this.dmmf.datamodel.models.map(({ name }) => name);
   }
 
   getEnumImports({
@@ -84,6 +93,39 @@ export class BaseParser {
     return graphqlScalarImports;
   }
 
+  // eslint-disable-next-line class-methods-use-this
+  getInputType(inputTypes: DMMF.SchemaArgInputType[]): TSField {
+    if (inputTypes.length === 0) {
+      /* istanbul ignore next */
+      throw new Error("No input types available. Extracting GraphQL Type not possible");
+    }
+
+    const isList = inputTypes.find((inputType) => inputType.isList)?.isList ?? false;
+
+    let inputTypeObject = inputTypes.find(
+      (it) => it.location === "inputObjectTypes" || it.location === "outputObjectTypes"
+    );
+
+    if (typeof inputTypeObject === "undefined") {
+      inputTypeObject = inputTypes.find((it) => it.location === "enumTypes");
+    }
+
+    if (typeof inputTypeObject === "undefined") {
+      inputTypeObject = inputTypes.find((it) => it.location === "scalar");
+    }
+
+    if (typeof inputTypeObject === "undefined") {
+      /* istanbul ignore next */
+      throw new Error("Couldn't parse input type");
+    }
+
+    return {
+      isList,
+      location: inputTypeObject.location,
+      type: inputTypeObject.type as string,
+    };
+  }
+
   getJsonImports({
     field: { location, type },
     jsonImports,
@@ -91,13 +133,21 @@ export class BaseParser {
   }: {
     field: {
       location: DMMF.FieldLocation;
-      type: string;
+      type: DMMF.ArgType;
     };
     jsonImports: Set<string>;
     tsType: string;
   }): Set<string> {
-    if (location === "scalar" && this.jsonImports.has(type)) {
-      jsonImports.add(type);
+    let stringType = "";
+
+    if (typeof type === "string") {
+      stringType = type;
+    } else {
+      stringType = type.name;
+    }
+
+    if (location === "scalar" && this.jsonImports.has(stringType)) {
+      jsonImports.add(stringType);
     }
 
     if (this.jsonImports.has(tsType.split(" | ")[0])) {
@@ -107,19 +157,17 @@ export class BaseParser {
     return jsonImports;
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  getModelImports({
-    field: { kind, type },
-    modelImports,
-  }: {
-    field: DMMF.Field;
-    modelImports: Set<string>;
-  }): Set<string> {
-    if (kind === "object") {
-      modelImports.add(type);
-    }
+  getModelName(input: string): string | undefined {
+    // eslint-disable-next-line @typescript-eslint/init-declarations
+    let modelName: ReturnType<BaseParser["getModelName"]>;
 
-    return modelImports;
+    this.modelsList.forEach((model) => {
+      if (input.startsWith(model)) {
+        modelName = model;
+      }
+    });
+
+    return modelName;
   }
 
   parseField({
@@ -155,7 +203,7 @@ export class BaseParser {
 
   parseGraphQLType(inputTypes: DMMF.SchemaArgInputType[]): string {
     let inputType = "";
-    const inputTypeObject = this._selectInputType(inputTypes);
+    const inputTypeObject = this.getInputType(inputTypes);
     const { isList, location, type } = inputTypeObject;
 
     if (location === "enumTypes") {
@@ -274,36 +322,5 @@ export class BaseParser {
     }
 
     return fieldType;
-  }
-
-  // eslint-disable-next-line class-methods-use-this
-  private _selectInputType(inputTypes: DMMF.SchemaArgInputType[]): TSField {
-    if (inputTypes.length === 0) {
-      throw new Error("No input types available. Extracting GraphQL Type not possible");
-    }
-
-    const isList = inputTypes.find((inputType) => inputType.isList)?.isList ?? false;
-
-    let inputTypeObject = inputTypes.find(
-      (it) => it.location === "inputObjectTypes" || it.location === "outputObjectTypes"
-    );
-
-    if (typeof inputTypeObject === "undefined") {
-      inputTypeObject = inputTypes.find((it) => it.location === "enumTypes");
-    }
-
-    if (typeof inputTypeObject === "undefined") {
-      inputTypeObject = inputTypes.find((it) => it.location === "scalar");
-    }
-
-    if (typeof inputTypeObject === "undefined") {
-      throw new Error("Couldn't parse input type");
-    }
-
-    return {
-      isList,
-      location: inputTypeObject.location,
-      type: inputTypeObject.type as string,
-    };
   }
 }

@@ -45,18 +45,13 @@ generator nestjs {
 
 ## Currently supported objects
 
-- [Enums](#Enums)
-- [Models](#Models)
+- Enums
+- Models
+- Input Types
 
 ## Usage
 
-### Enums
-
-Enums can be used like regular [NestJS GraphQL Enums](https://docs.nestjs.com/graphql/unions-and-enums#enums)
-
-### Models
-
-Models are generated as usual NestJS GraphQL Object Types and can be used as any other Object Types.
+All supported objects can be used as the regular NestJS GraphQL object equivalents.
 
 ## Contributing to NestJS-Prisma-GraphQL-Generator
 

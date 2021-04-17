@@ -31,6 +31,7 @@ interface InputType {
   enumImports?: string[];
   fields: Field[];
   graphqlScalarImports?: string[];
+  inputTypeImports?: string[];
   jsonImports?: string[];
   modelImports?: string[];
   name: string;
@@ -69,7 +70,7 @@ export {
   EnumValue,
   Field,
   // GeneratorConfig,
-  // InputType,
+  InputType,
   Model,
   NestJSTypes,
   ObjectTypes,

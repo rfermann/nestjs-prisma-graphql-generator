@@ -1,0 +1,3210 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 1`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class BigIntFieldUpdateOperationsInput {
+  @Field(() => BigInt, {
+    nullable: true
+  })
+  set?: bigint | undefined;
+
+  @Field(() => BigInt, {
+    nullable: true
+  })
+  increment?: bigint | undefined;
+
+  @Field(() => BigInt, {
+    nullable: true
+  })
+  decrement?: bigint | undefined;
+
+  @Field(() => BigInt, {
+    nullable: true
+  })
+  multiply?: bigint | undefined;
+
+  @Field(() => BigInt, {
+    nullable: true
+  })
+  divide?: bigint | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 2`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { NestedBigIntFilter } from \\"./NestedBigIntFilter\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class BigIntFilter {
+  @Field(() => BigInt, {
+    nullable: true
+  })
+  equals?: bigint | undefined;
+
+  @Field(() => [BigInt], {
+    nullable: true
+  })
+  in?: bigint[] | undefined;
+
+  @Field(() => [BigInt], {
+    nullable: true
+  })
+  notIn?: bigint[] | undefined;
+
+  @Field(() => BigInt, {
+    nullable: true
+  })
+  lt?: bigint | undefined;
+
+  @Field(() => BigInt, {
+    nullable: true
+  })
+  lte?: bigint | undefined;
+
+  @Field(() => BigInt, {
+    nullable: true
+  })
+  gt?: bigint | undefined;
+
+  @Field(() => BigInt, {
+    nullable: true
+  })
+  gte?: bigint | undefined;
+
+  @Field(() => NestedBigIntFilter, {
+    nullable: true
+  })
+  not?: NestedBigIntFilter | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 3`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { NestedBigIntWithAggregatesFilter } from \\"./NestedBigIntWithAggregatesFilter\\";
+import { NestedIntFilter } from \\"./NestedIntFilter\\";
+import { NestedFloatFilter } from \\"./NestedFloatFilter\\";
+import { NestedBigIntFilter } from \\"./NestedBigIntFilter\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class BigIntWithAggregatesFilter {
+  @Field(() => BigInt, {
+    nullable: true
+  })
+  equals?: bigint | undefined;
+
+  @Field(() => [BigInt], {
+    nullable: true
+  })
+  in?: bigint[] | undefined;
+
+  @Field(() => [BigInt], {
+    nullable: true
+  })
+  notIn?: bigint[] | undefined;
+
+  @Field(() => BigInt, {
+    nullable: true
+  })
+  lt?: bigint | undefined;
+
+  @Field(() => BigInt, {
+    nullable: true
+  })
+  lte?: bigint | undefined;
+
+  @Field(() => BigInt, {
+    nullable: true
+  })
+  gt?: bigint | undefined;
+
+  @Field(() => BigInt, {
+    nullable: true
+  })
+  gte?: bigint | undefined;
+
+  @Field(() => NestedBigIntWithAggregatesFilter, {
+    nullable: true
+  })
+  not?: NestedBigIntWithAggregatesFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
+  count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedFloatFilter, {
+    nullable: true
+  })
+  avg?: NestedFloatFilter | undefined;
+
+  @Field(() => NestedBigIntFilter, {
+    nullable: true
+  })
+  sum?: NestedBigIntFilter | undefined;
+
+  @Field(() => NestedBigIntFilter, {
+    nullable: true
+  })
+  min?: NestedBigIntFilter | undefined;
+
+  @Field(() => NestedBigIntFilter, {
+    nullable: true
+  })
+  max?: NestedBigIntFilter | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 4`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class BoolFieldUpdateOperationsInput {
+  @Field(() => Boolean, {
+    nullable: true
+  })
+  set?: boolean | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 5`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { NestedBoolFilter } from \\"./NestedBoolFilter\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class BoolFilter {
+  @Field(() => Boolean, {
+    nullable: true
+  })
+  equals?: boolean | undefined;
+
+  @Field(() => NestedBoolFilter, {
+    nullable: true
+  })
+  not?: NestedBoolFilter | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 6`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { NestedBoolWithAggregatesFilter } from \\"./NestedBoolWithAggregatesFilter\\";
+import { NestedIntFilter } from \\"./NestedIntFilter\\";
+import { NestedBoolFilter } from \\"./NestedBoolFilter\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class BoolWithAggregatesFilter {
+  @Field(() => Boolean, {
+    nullable: true
+  })
+  equals?: boolean | undefined;
+
+  @Field(() => NestedBoolWithAggregatesFilter, {
+    nullable: true
+  })
+  not?: NestedBoolWithAggregatesFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
+  count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedBoolFilter, {
+    nullable: true
+  })
+  min?: NestedBoolFilter | undefined;
+
+  @Field(() => NestedBoolFilter, {
+    nullable: true
+  })
+  max?: NestedBoolFilter | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 7`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { Byte } from \\"graphql-scalars\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class BytesFieldUpdateOperationsInput {
+  @Field(() => Byte, {
+    nullable: true
+  })
+  set?: Buffer | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 8`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { Byte } from \\"graphql-scalars\\";
+import { NestedBytesFilter } from \\"./NestedBytesFilter\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class BytesFilter {
+  @Field(() => Byte, {
+    nullable: true
+  })
+  equals?: Buffer | undefined;
+
+  @Field(() => NestedBytesFilter, {
+    nullable: true
+  })
+  not?: NestedBytesFilter | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 9`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { Byte } from \\"graphql-scalars\\";
+import { NestedBytesWithAggregatesFilter } from \\"./NestedBytesWithAggregatesFilter\\";
+import { NestedIntFilter } from \\"./NestedIntFilter\\";
+import { NestedBytesFilter } from \\"./NestedBytesFilter\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class BytesWithAggregatesFilter {
+  @Field(() => Byte, {
+    nullable: true
+  })
+  equals?: Buffer | undefined;
+
+  @Field(() => NestedBytesWithAggregatesFilter, {
+    nullable: true
+  })
+  not?: NestedBytesWithAggregatesFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
+  count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedBytesFilter, {
+    nullable: true
+  })
+  min?: NestedBytesFilter | undefined;
+
+  @Field(() => NestedBytesFilter, {
+    nullable: true
+  })
+  max?: NestedBytesFilter | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 10`] = `
+"import { Field, GraphQLISODateTime, InputType } from \\"@nestjs/graphql\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class DateTimeFieldUpdateOperationsInput {
+  @Field(() => GraphQLISODateTime, {
+    nullable: true
+  })
+  set?: Date | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 11`] = `
+"import { Field, GraphQLISODateTime, InputType } from \\"@nestjs/graphql\\";
+import { NestedDateTimeFilter } from \\"./NestedDateTimeFilter\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class DateTimeFilter {
+  @Field(() => GraphQLISODateTime, {
+    nullable: true
+  })
+  equals?: Date | undefined;
+
+  @Field(() => [GraphQLISODateTime], {
+    nullable: true
+  })
+  in?: Date[] | undefined;
+
+  @Field(() => [GraphQLISODateTime], {
+    nullable: true
+  })
+  notIn?: Date[] | undefined;
+
+  @Field(() => GraphQLISODateTime, {
+    nullable: true
+  })
+  lt?: Date | undefined;
+
+  @Field(() => GraphQLISODateTime, {
+    nullable: true
+  })
+  lte?: Date | undefined;
+
+  @Field(() => GraphQLISODateTime, {
+    nullable: true
+  })
+  gt?: Date | undefined;
+
+  @Field(() => GraphQLISODateTime, {
+    nullable: true
+  })
+  gte?: Date | undefined;
+
+  @Field(() => NestedDateTimeFilter, {
+    nullable: true
+  })
+  not?: NestedDateTimeFilter | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 12`] = `
+"import { Field, GraphQLISODateTime, InputType } from \\"@nestjs/graphql\\";
+import { NestedDateTimeWithAggregatesFilter } from \\"./NestedDateTimeWithAggregatesFilter\\";
+import { NestedIntFilter } from \\"./NestedIntFilter\\";
+import { NestedDateTimeFilter } from \\"./NestedDateTimeFilter\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class DateTimeWithAggregatesFilter {
+  @Field(() => GraphQLISODateTime, {
+    nullable: true
+  })
+  equals?: Date | undefined;
+
+  @Field(() => [GraphQLISODateTime], {
+    nullable: true
+  })
+  in?: Date[] | undefined;
+
+  @Field(() => [GraphQLISODateTime], {
+    nullable: true
+  })
+  notIn?: Date[] | undefined;
+
+  @Field(() => GraphQLISODateTime, {
+    nullable: true
+  })
+  lt?: Date | undefined;
+
+  @Field(() => GraphQLISODateTime, {
+    nullable: true
+  })
+  lte?: Date | undefined;
+
+  @Field(() => GraphQLISODateTime, {
+    nullable: true
+  })
+  gt?: Date | undefined;
+
+  @Field(() => GraphQLISODateTime, {
+    nullable: true
+  })
+  gte?: Date | undefined;
+
+  @Field(() => NestedDateTimeWithAggregatesFilter, {
+    nullable: true
+  })
+  not?: NestedDateTimeWithAggregatesFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
+  count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedDateTimeFilter, {
+    nullable: true
+  })
+  min?: NestedDateTimeFilter | undefined;
+
+  @Field(() => NestedDateTimeFilter, {
+    nullable: true
+  })
+  max?: NestedDateTimeFilter | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 13`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class DecimalFieldUpdateOperationsInput {
+  @Field(() => Decimal, {
+    nullable: true
+  })
+  set?: number | undefined;
+
+  @Field(() => Decimal, {
+    nullable: true
+  })
+  increment?: number | undefined;
+
+  @Field(() => Decimal, {
+    nullable: true
+  })
+  decrement?: number | undefined;
+
+  @Field(() => Decimal, {
+    nullable: true
+  })
+  multiply?: number | undefined;
+
+  @Field(() => Decimal, {
+    nullable: true
+  })
+  divide?: number | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 14`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { NestedDecimalFilter } from \\"./NestedDecimalFilter\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class DecimalFilter {
+  @Field(() => Decimal, {
+    nullable: true
+  })
+  equals?: number | undefined;
+
+  @Field(() => [Decimal], {
+    nullable: true
+  })
+  in?: number[] | undefined;
+
+  @Field(() => [Decimal], {
+    nullable: true
+  })
+  notIn?: number[] | undefined;
+
+  @Field(() => Decimal, {
+    nullable: true
+  })
+  lt?: number | undefined;
+
+  @Field(() => Decimal, {
+    nullable: true
+  })
+  lte?: number | undefined;
+
+  @Field(() => Decimal, {
+    nullable: true
+  })
+  gt?: number | undefined;
+
+  @Field(() => Decimal, {
+    nullable: true
+  })
+  gte?: number | undefined;
+
+  @Field(() => NestedDecimalFilter, {
+    nullable: true
+  })
+  not?: NestedDecimalFilter | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 15`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { NestedDecimalWithAggregatesFilter } from \\"./NestedDecimalWithAggregatesFilter\\";
+import { NestedIntFilter } from \\"./NestedIntFilter\\";
+import { NestedDecimalFilter } from \\"./NestedDecimalFilter\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class DecimalWithAggregatesFilter {
+  @Field(() => Decimal, {
+    nullable: true
+  })
+  equals?: number | undefined;
+
+  @Field(() => [Decimal], {
+    nullable: true
+  })
+  in?: number[] | undefined;
+
+  @Field(() => [Decimal], {
+    nullable: true
+  })
+  notIn?: number[] | undefined;
+
+  @Field(() => Decimal, {
+    nullable: true
+  })
+  lt?: number | undefined;
+
+  @Field(() => Decimal, {
+    nullable: true
+  })
+  lte?: number | undefined;
+
+  @Field(() => Decimal, {
+    nullable: true
+  })
+  gt?: number | undefined;
+
+  @Field(() => Decimal, {
+    nullable: true
+  })
+  gte?: number | undefined;
+
+  @Field(() => NestedDecimalWithAggregatesFilter, {
+    nullable: true
+  })
+  not?: NestedDecimalWithAggregatesFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
+  count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedDecimalFilter, {
+    nullable: true
+  })
+  avg?: NestedDecimalFilter | undefined;
+
+  @Field(() => NestedDecimalFilter, {
+    nullable: true
+  })
+  sum?: NestedDecimalFilter | undefined;
+
+  @Field(() => NestedDecimalFilter, {
+    nullable: true
+  })
+  min?: NestedDecimalFilter | undefined;
+
+  @Field(() => NestedDecimalFilter, {
+    nullable: true
+  })
+  max?: NestedDecimalFilter | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 16`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { UserTypeEnum } from \\"../../enums\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class EnumUserTypeFieldUpdateOperationsInput {
+  @Field(() => UserTypeEnum, {
+    nullable: true
+  })
+  set?: \\"USER\\" | \\"ADMIN\\" | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 17`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { UserTypeEnum } from \\"../../enums\\";
+import { NestedEnumUserTypeFilter } from \\"./NestedEnumUserTypeFilter\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class EnumUserTypeFilter {
+  @Field(() => UserTypeEnum, {
+    nullable: true
+  })
+  equals?: \\"USER\\" | \\"ADMIN\\" | undefined;
+
+  @Field(() => [UserTypeEnum], {
+    nullable: true
+  })
+  in?: Array<\\"USER\\" | \\"ADMIN\\"> | undefined;
+
+  @Field(() => [UserTypeEnum], {
+    nullable: true
+  })
+  notIn?: Array<\\"USER\\" | \\"ADMIN\\"> | undefined;
+
+  @Field(() => NestedEnumUserTypeFilter, {
+    nullable: true
+  })
+  not?: NestedEnumUserTypeFilter | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 18`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { UserTypeEnum } from \\"../../enums\\";
+import { NestedEnumUserTypeWithAggregatesFilter } from \\"./NestedEnumUserTypeWithAggregatesFilter\\";
+import { NestedIntFilter } from \\"./NestedIntFilter\\";
+import { NestedEnumUserTypeFilter } from \\"./NestedEnumUserTypeFilter\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class EnumUserTypeWithAggregatesFilter {
+  @Field(() => UserTypeEnum, {
+    nullable: true
+  })
+  equals?: \\"USER\\" | \\"ADMIN\\" | undefined;
+
+  @Field(() => [UserTypeEnum], {
+    nullable: true
+  })
+  in?: Array<\\"USER\\" | \\"ADMIN\\"> | undefined;
+
+  @Field(() => [UserTypeEnum], {
+    nullable: true
+  })
+  notIn?: Array<\\"USER\\" | \\"ADMIN\\"> | undefined;
+
+  @Field(() => NestedEnumUserTypeWithAggregatesFilter, {
+    nullable: true
+  })
+  not?: NestedEnumUserTypeWithAggregatesFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
+  count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedEnumUserTypeFilter, {
+    nullable: true
+  })
+  min?: NestedEnumUserTypeFilter | undefined;
+
+  @Field(() => NestedEnumUserTypeFilter, {
+    nullable: true
+  })
+  max?: NestedEnumUserTypeFilter | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 19`] = `
+"import { Field, Float, InputType } from \\"@nestjs/graphql\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class FloatFieldUpdateOperationsInput {
+  @Field(() => Float, {
+    nullable: true
+  })
+  set?: number | undefined;
+
+  @Field(() => Float, {
+    nullable: true
+  })
+  increment?: number | undefined;
+
+  @Field(() => Float, {
+    nullable: true
+  })
+  decrement?: number | undefined;
+
+  @Field(() => Float, {
+    nullable: true
+  })
+  multiply?: number | undefined;
+
+  @Field(() => Float, {
+    nullable: true
+  })
+  divide?: number | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 20`] = `
+"import { Field, Float, InputType } from \\"@nestjs/graphql\\";
+import { NestedFloatFilter } from \\"./NestedFloatFilter\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class FloatFilter {
+  @Field(() => Float, {
+    nullable: true
+  })
+  equals?: number | undefined;
+
+  @Field(() => [Float], {
+    nullable: true
+  })
+  in?: number[] | undefined;
+
+  @Field(() => [Float], {
+    nullable: true
+  })
+  notIn?: number[] | undefined;
+
+  @Field(() => Float, {
+    nullable: true
+  })
+  lt?: number | undefined;
+
+  @Field(() => Float, {
+    nullable: true
+  })
+  lte?: number | undefined;
+
+  @Field(() => Float, {
+    nullable: true
+  })
+  gt?: number | undefined;
+
+  @Field(() => Float, {
+    nullable: true
+  })
+  gte?: number | undefined;
+
+  @Field(() => NestedFloatFilter, {
+    nullable: true
+  })
+  not?: NestedFloatFilter | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 21`] = `
+"import { Field, Float, InputType } from \\"@nestjs/graphql\\";
+import { NestedFloatWithAggregatesFilter } from \\"./NestedFloatWithAggregatesFilter\\";
+import { NestedIntFilter } from \\"./NestedIntFilter\\";
+import { NestedFloatFilter } from \\"./NestedFloatFilter\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class FloatWithAggregatesFilter {
+  @Field(() => Float, {
+    nullable: true
+  })
+  equals?: number | undefined;
+
+  @Field(() => [Float], {
+    nullable: true
+  })
+  in?: number[] | undefined;
+
+  @Field(() => [Float], {
+    nullable: true
+  })
+  notIn?: number[] | undefined;
+
+  @Field(() => Float, {
+    nullable: true
+  })
+  lt?: number | undefined;
+
+  @Field(() => Float, {
+    nullable: true
+  })
+  lte?: number | undefined;
+
+  @Field(() => Float, {
+    nullable: true
+  })
+  gt?: number | undefined;
+
+  @Field(() => Float, {
+    nullable: true
+  })
+  gte?: number | undefined;
+
+  @Field(() => NestedFloatWithAggregatesFilter, {
+    nullable: true
+  })
+  not?: NestedFloatWithAggregatesFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
+  count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedFloatFilter, {
+    nullable: true
+  })
+  avg?: NestedFloatFilter | undefined;
+
+  @Field(() => NestedFloatFilter, {
+    nullable: true
+  })
+  sum?: NestedFloatFilter | undefined;
+
+  @Field(() => NestedFloatFilter, {
+    nullable: true
+  })
+  min?: NestedFloatFilter | undefined;
+
+  @Field(() => NestedFloatFilter, {
+    nullable: true
+  })
+  max?: NestedFloatFilter | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 22`] = `
+"import { Field, InputType, Int } from \\"@nestjs/graphql\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class IntFieldUpdateOperationsInput {
+  @Field(() => Int, {
+    nullable: true
+  })
+  set?: number | undefined;
+
+  @Field(() => Int, {
+    nullable: true
+  })
+  increment?: number | undefined;
+
+  @Field(() => Int, {
+    nullable: true
+  })
+  decrement?: number | undefined;
+
+  @Field(() => Int, {
+    nullable: true
+  })
+  multiply?: number | undefined;
+
+  @Field(() => Int, {
+    nullable: true
+  })
+  divide?: number | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 23`] = `
+"import { Field, InputType, Int } from \\"@nestjs/graphql\\";
+import { NestedIntFilter } from \\"./NestedIntFilter\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class IntFilter {
+  @Field(() => Int, {
+    nullable: true
+  })
+  equals?: number | undefined;
+
+  @Field(() => [Int], {
+    nullable: true
+  })
+  in?: number[] | undefined;
+
+  @Field(() => [Int], {
+    nullable: true
+  })
+  notIn?: number[] | undefined;
+
+  @Field(() => Int, {
+    nullable: true
+  })
+  lt?: number | undefined;
+
+  @Field(() => Int, {
+    nullable: true
+  })
+  lte?: number | undefined;
+
+  @Field(() => Int, {
+    nullable: true
+  })
+  gt?: number | undefined;
+
+  @Field(() => Int, {
+    nullable: true
+  })
+  gte?: number | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
+  not?: NestedIntFilter | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 24`] = `
+"import { Field, InputType, Int } from \\"@nestjs/graphql\\";
+import { NestedIntWithAggregatesFilter } from \\"./NestedIntWithAggregatesFilter\\";
+import { NestedIntFilter } from \\"./NestedIntFilter\\";
+import { NestedFloatFilter } from \\"./NestedFloatFilter\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class IntWithAggregatesFilter {
+  @Field(() => Int, {
+    nullable: true
+  })
+  equals?: number | undefined;
+
+  @Field(() => [Int], {
+    nullable: true
+  })
+  in?: number[] | undefined;
+
+  @Field(() => [Int], {
+    nullable: true
+  })
+  notIn?: number[] | undefined;
+
+  @Field(() => Int, {
+    nullable: true
+  })
+  lt?: number | undefined;
+
+  @Field(() => Int, {
+    nullable: true
+  })
+  lte?: number | undefined;
+
+  @Field(() => Int, {
+    nullable: true
+  })
+  gt?: number | undefined;
+
+  @Field(() => Int, {
+    nullable: true
+  })
+  gte?: number | undefined;
+
+  @Field(() => NestedIntWithAggregatesFilter, {
+    nullable: true
+  })
+  not?: NestedIntWithAggregatesFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
+  count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedFloatFilter, {
+    nullable: true
+  })
+  avg?: NestedFloatFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
+  sum?: NestedIntFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
+  min?: NestedIntFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
+  max?: NestedIntFilter | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 25`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { GraphQLJSON } from \\"graphql-type-json\\";
+import { JsonValue } from \\"@prisma/client\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class JsonFilter {
+  @Field(() => GraphQLJSON, {
+    nullable: true
+  })
+  equals?: JsonValue | undefined;
+
+  @Field(() => GraphQLJSON, {
+    nullable: true
+  })
+  not?: JsonValue | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 26`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { GraphQLJSON } from \\"graphql-type-json\\";
+import { JsonValue } from \\"@prisma/client\\";
+import { NestedIntFilter } from \\"./NestedIntFilter\\";
+import { NestedJsonFilter } from \\"./NestedJsonFilter\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class JsonWithAggregatesFilter {
+  @Field(() => GraphQLJSON, {
+    nullable: true
+  })
+  equals?: JsonValue | undefined;
+
+  @Field(() => GraphQLJSON, {
+    nullable: true
+  })
+  not?: JsonValue | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
+  count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedJsonFilter, {
+    nullable: true
+  })
+  min?: NestedJsonFilter | undefined;
+
+  @Field(() => NestedJsonFilter, {
+    nullable: true
+  })
+  max?: NestedJsonFilter | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 27`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class NestedBigIntFilter {
+  @Field(() => BigInt, {
+    nullable: true
+  })
+  equals?: bigint | undefined;
+
+  @Field(() => [BigInt], {
+    nullable: true
+  })
+  in?: bigint[] | undefined;
+
+  @Field(() => [BigInt], {
+    nullable: true
+  })
+  notIn?: bigint[] | undefined;
+
+  @Field(() => BigInt, {
+    nullable: true
+  })
+  lt?: bigint | undefined;
+
+  @Field(() => BigInt, {
+    nullable: true
+  })
+  lte?: bigint | undefined;
+
+  @Field(() => BigInt, {
+    nullable: true
+  })
+  gt?: bigint | undefined;
+
+  @Field(() => BigInt, {
+    nullable: true
+  })
+  gte?: bigint | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 28`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { NestedIntFilter } from \\"./NestedIntFilter\\";
+import { NestedFloatFilter } from \\"./NestedFloatFilter\\";
+import { NestedBigIntFilter } from \\"./NestedBigIntFilter\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class NestedBigIntWithAggregatesFilter {
+  @Field(() => BigInt, {
+    nullable: true
+  })
+  equals?: bigint | undefined;
+
+  @Field(() => [BigInt], {
+    nullable: true
+  })
+  in?: bigint[] | undefined;
+
+  @Field(() => [BigInt], {
+    nullable: true
+  })
+  notIn?: bigint[] | undefined;
+
+  @Field(() => BigInt, {
+    nullable: true
+  })
+  lt?: bigint | undefined;
+
+  @Field(() => BigInt, {
+    nullable: true
+  })
+  lte?: bigint | undefined;
+
+  @Field(() => BigInt, {
+    nullable: true
+  })
+  gt?: bigint | undefined;
+
+  @Field(() => BigInt, {
+    nullable: true
+  })
+  gte?: bigint | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
+  count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedFloatFilter, {
+    nullable: true
+  })
+  avg?: NestedFloatFilter | undefined;
+
+  @Field(() => NestedBigIntFilter, {
+    nullable: true
+  })
+  sum?: NestedBigIntFilter | undefined;
+
+  @Field(() => NestedBigIntFilter, {
+    nullable: true
+  })
+  min?: NestedBigIntFilter | undefined;
+
+  @Field(() => NestedBigIntFilter, {
+    nullable: true
+  })
+  max?: NestedBigIntFilter | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 29`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class NestedBoolFilter {
+  @Field(() => Boolean, {
+    nullable: true
+  })
+  equals?: boolean | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 30`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { NestedIntFilter } from \\"./NestedIntFilter\\";
+import { NestedBoolFilter } from \\"./NestedBoolFilter\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class NestedBoolWithAggregatesFilter {
+  @Field(() => Boolean, {
+    nullable: true
+  })
+  equals?: boolean | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
+  count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedBoolFilter, {
+    nullable: true
+  })
+  min?: NestedBoolFilter | undefined;
+
+  @Field(() => NestedBoolFilter, {
+    nullable: true
+  })
+  max?: NestedBoolFilter | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 31`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { Byte } from \\"graphql-scalars\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class NestedBytesFilter {
+  @Field(() => Byte, {
+    nullable: true
+  })
+  equals?: Buffer | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 32`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { Byte } from \\"graphql-scalars\\";
+import { NestedIntFilter } from \\"./NestedIntFilter\\";
+import { NestedBytesFilter } from \\"./NestedBytesFilter\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class NestedBytesWithAggregatesFilter {
+  @Field(() => Byte, {
+    nullable: true
+  })
+  equals?: Buffer | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
+  count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedBytesFilter, {
+    nullable: true
+  })
+  min?: NestedBytesFilter | undefined;
+
+  @Field(() => NestedBytesFilter, {
+    nullable: true
+  })
+  max?: NestedBytesFilter | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 33`] = `
+"import { Field, GraphQLISODateTime, InputType } from \\"@nestjs/graphql\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class NestedDateTimeFilter {
+  @Field(() => GraphQLISODateTime, {
+    nullable: true
+  })
+  equals?: Date | undefined;
+
+  @Field(() => [GraphQLISODateTime], {
+    nullable: true
+  })
+  in?: Date[] | undefined;
+
+  @Field(() => [GraphQLISODateTime], {
+    nullable: true
+  })
+  notIn?: Date[] | undefined;
+
+  @Field(() => GraphQLISODateTime, {
+    nullable: true
+  })
+  lt?: Date | undefined;
+
+  @Field(() => GraphQLISODateTime, {
+    nullable: true
+  })
+  lte?: Date | undefined;
+
+  @Field(() => GraphQLISODateTime, {
+    nullable: true
+  })
+  gt?: Date | undefined;
+
+  @Field(() => GraphQLISODateTime, {
+    nullable: true
+  })
+  gte?: Date | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 34`] = `
+"import { Field, GraphQLISODateTime, InputType } from \\"@nestjs/graphql\\";
+import { NestedIntFilter } from \\"./NestedIntFilter\\";
+import { NestedDateTimeFilter } from \\"./NestedDateTimeFilter\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class NestedDateTimeWithAggregatesFilter {
+  @Field(() => GraphQLISODateTime, {
+    nullable: true
+  })
+  equals?: Date | undefined;
+
+  @Field(() => [GraphQLISODateTime], {
+    nullable: true
+  })
+  in?: Date[] | undefined;
+
+  @Field(() => [GraphQLISODateTime], {
+    nullable: true
+  })
+  notIn?: Date[] | undefined;
+
+  @Field(() => GraphQLISODateTime, {
+    nullable: true
+  })
+  lt?: Date | undefined;
+
+  @Field(() => GraphQLISODateTime, {
+    nullable: true
+  })
+  lte?: Date | undefined;
+
+  @Field(() => GraphQLISODateTime, {
+    nullable: true
+  })
+  gt?: Date | undefined;
+
+  @Field(() => GraphQLISODateTime, {
+    nullable: true
+  })
+  gte?: Date | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
+  count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedDateTimeFilter, {
+    nullable: true
+  })
+  min?: NestedDateTimeFilter | undefined;
+
+  @Field(() => NestedDateTimeFilter, {
+    nullable: true
+  })
+  max?: NestedDateTimeFilter | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 35`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class NestedDecimalFilter {
+  @Field(() => Decimal, {
+    nullable: true
+  })
+  equals?: number | undefined;
+
+  @Field(() => [Decimal], {
+    nullable: true
+  })
+  in?: number[] | undefined;
+
+  @Field(() => [Decimal], {
+    nullable: true
+  })
+  notIn?: number[] | undefined;
+
+  @Field(() => Decimal, {
+    nullable: true
+  })
+  lt?: number | undefined;
+
+  @Field(() => Decimal, {
+    nullable: true
+  })
+  lte?: number | undefined;
+
+  @Field(() => Decimal, {
+    nullable: true
+  })
+  gt?: number | undefined;
+
+  @Field(() => Decimal, {
+    nullable: true
+  })
+  gte?: number | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 36`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { NestedIntFilter } from \\"./NestedIntFilter\\";
+import { NestedDecimalFilter } from \\"./NestedDecimalFilter\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class NestedDecimalWithAggregatesFilter {
+  @Field(() => Decimal, {
+    nullable: true
+  })
+  equals?: number | undefined;
+
+  @Field(() => [Decimal], {
+    nullable: true
+  })
+  in?: number[] | undefined;
+
+  @Field(() => [Decimal], {
+    nullable: true
+  })
+  notIn?: number[] | undefined;
+
+  @Field(() => Decimal, {
+    nullable: true
+  })
+  lt?: number | undefined;
+
+  @Field(() => Decimal, {
+    nullable: true
+  })
+  lte?: number | undefined;
+
+  @Field(() => Decimal, {
+    nullable: true
+  })
+  gt?: number | undefined;
+
+  @Field(() => Decimal, {
+    nullable: true
+  })
+  gte?: number | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
+  count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedDecimalFilter, {
+    nullable: true
+  })
+  avg?: NestedDecimalFilter | undefined;
+
+  @Field(() => NestedDecimalFilter, {
+    nullable: true
+  })
+  sum?: NestedDecimalFilter | undefined;
+
+  @Field(() => NestedDecimalFilter, {
+    nullable: true
+  })
+  min?: NestedDecimalFilter | undefined;
+
+  @Field(() => NestedDecimalFilter, {
+    nullable: true
+  })
+  max?: NestedDecimalFilter | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 37`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { UserTypeEnum } from \\"../../enums\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class NestedEnumUserTypeFilter {
+  @Field(() => UserTypeEnum, {
+    nullable: true
+  })
+  equals?: \\"USER\\" | \\"ADMIN\\" | undefined;
+
+  @Field(() => [UserTypeEnum], {
+    nullable: true
+  })
+  in?: Array<\\"USER\\" | \\"ADMIN\\"> | undefined;
+
+  @Field(() => [UserTypeEnum], {
+    nullable: true
+  })
+  notIn?: Array<\\"USER\\" | \\"ADMIN\\"> | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 38`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { UserTypeEnum } from \\"../../enums\\";
+import { NestedIntFilter } from \\"./NestedIntFilter\\";
+import { NestedEnumUserTypeFilter } from \\"./NestedEnumUserTypeFilter\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class NestedEnumUserTypeWithAggregatesFilter {
+  @Field(() => UserTypeEnum, {
+    nullable: true
+  })
+  equals?: \\"USER\\" | \\"ADMIN\\" | undefined;
+
+  @Field(() => [UserTypeEnum], {
+    nullable: true
+  })
+  in?: Array<\\"USER\\" | \\"ADMIN\\"> | undefined;
+
+  @Field(() => [UserTypeEnum], {
+    nullable: true
+  })
+  notIn?: Array<\\"USER\\" | \\"ADMIN\\"> | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
+  count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedEnumUserTypeFilter, {
+    nullable: true
+  })
+  min?: NestedEnumUserTypeFilter | undefined;
+
+  @Field(() => NestedEnumUserTypeFilter, {
+    nullable: true
+  })
+  max?: NestedEnumUserTypeFilter | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 39`] = `
+"import { Field, Float, InputType } from \\"@nestjs/graphql\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class NestedFloatFilter {
+  @Field(() => Float, {
+    nullable: true
+  })
+  equals?: number | undefined;
+
+  @Field(() => [Float], {
+    nullable: true
+  })
+  in?: number[] | undefined;
+
+  @Field(() => [Float], {
+    nullable: true
+  })
+  notIn?: number[] | undefined;
+
+  @Field(() => Float, {
+    nullable: true
+  })
+  lt?: number | undefined;
+
+  @Field(() => Float, {
+    nullable: true
+  })
+  lte?: number | undefined;
+
+  @Field(() => Float, {
+    nullable: true
+  })
+  gt?: number | undefined;
+
+  @Field(() => Float, {
+    nullable: true
+  })
+  gte?: number | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 40`] = `
+"import { Field, Float, InputType } from \\"@nestjs/graphql\\";
+import { NestedIntFilter } from \\"./NestedIntFilter\\";
+import { NestedFloatFilter } from \\"./NestedFloatFilter\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class NestedFloatWithAggregatesFilter {
+  @Field(() => Float, {
+    nullable: true
+  })
+  equals?: number | undefined;
+
+  @Field(() => [Float], {
+    nullable: true
+  })
+  in?: number[] | undefined;
+
+  @Field(() => [Float], {
+    nullable: true
+  })
+  notIn?: number[] | undefined;
+
+  @Field(() => Float, {
+    nullable: true
+  })
+  lt?: number | undefined;
+
+  @Field(() => Float, {
+    nullable: true
+  })
+  lte?: number | undefined;
+
+  @Field(() => Float, {
+    nullable: true
+  })
+  gt?: number | undefined;
+
+  @Field(() => Float, {
+    nullable: true
+  })
+  gte?: number | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
+  count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedFloatFilter, {
+    nullable: true
+  })
+  avg?: NestedFloatFilter | undefined;
+
+  @Field(() => NestedFloatFilter, {
+    nullable: true
+  })
+  sum?: NestedFloatFilter | undefined;
+
+  @Field(() => NestedFloatFilter, {
+    nullable: true
+  })
+  min?: NestedFloatFilter | undefined;
+
+  @Field(() => NestedFloatFilter, {
+    nullable: true
+  })
+  max?: NestedFloatFilter | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 41`] = `
+"import { Field, InputType, Int } from \\"@nestjs/graphql\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class NestedIntFilter {
+  @Field(() => Int, {
+    nullable: true
+  })
+  equals?: number | undefined;
+
+  @Field(() => [Int], {
+    nullable: true
+  })
+  in?: number[] | undefined;
+
+  @Field(() => [Int], {
+    nullable: true
+  })
+  notIn?: number[] | undefined;
+
+  @Field(() => Int, {
+    nullable: true
+  })
+  lt?: number | undefined;
+
+  @Field(() => Int, {
+    nullable: true
+  })
+  lte?: number | undefined;
+
+  @Field(() => Int, {
+    nullable: true
+  })
+  gt?: number | undefined;
+
+  @Field(() => Int, {
+    nullable: true
+  })
+  gte?: number | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 42`] = `
+"import { Field, InputType, Int } from \\"@nestjs/graphql\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class NestedIntNullableFilter {
+  @Field(() => Int, {
+    nullable: true
+  })
+  equals?: number | undefined;
+
+  @Field(() => [Int], {
+    nullable: true
+  })
+  in?: number[] | undefined;
+
+  @Field(() => [Int], {
+    nullable: true
+  })
+  notIn?: number[] | undefined;
+
+  @Field(() => Int, {
+    nullable: true
+  })
+  lt?: number | undefined;
+
+  @Field(() => Int, {
+    nullable: true
+  })
+  lte?: number | undefined;
+
+  @Field(() => Int, {
+    nullable: true
+  })
+  gt?: number | undefined;
+
+  @Field(() => Int, {
+    nullable: true
+  })
+  gte?: number | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 43`] = `
+"import { Field, InputType, Int } from \\"@nestjs/graphql\\";
+import { NestedIntFilter } from \\"./NestedIntFilter\\";
+import { NestedFloatFilter } from \\"./NestedFloatFilter\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class NestedIntWithAggregatesFilter {
+  @Field(() => Int, {
+    nullable: true
+  })
+  equals?: number | undefined;
+
+  @Field(() => [Int], {
+    nullable: true
+  })
+  in?: number[] | undefined;
+
+  @Field(() => [Int], {
+    nullable: true
+  })
+  notIn?: number[] | undefined;
+
+  @Field(() => Int, {
+    nullable: true
+  })
+  lt?: number | undefined;
+
+  @Field(() => Int, {
+    nullable: true
+  })
+  lte?: number | undefined;
+
+  @Field(() => Int, {
+    nullable: true
+  })
+  gt?: number | undefined;
+
+  @Field(() => Int, {
+    nullable: true
+  })
+  gte?: number | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
+  count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedFloatFilter, {
+    nullable: true
+  })
+  avg?: NestedFloatFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
+  sum?: NestedIntFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
+  min?: NestedIntFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
+  max?: NestedIntFilter | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 44`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { GraphQLJSON } from \\"graphql-type-json\\";
+import { JsonValue } from \\"@prisma/client\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class NestedJsonFilter {
+  @Field(() => GraphQLJSON, {
+    nullable: true
+  })
+  equals?: JsonValue | undefined;
+
+  @Field(() => GraphQLJSON, {
+    nullable: true
+  })
+  not?: JsonValue | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 45`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class NestedStringFilter {
+  @Field(() => String, {
+    nullable: true
+  })
+  equals?: string | undefined;
+
+  @Field(() => [String], {
+    nullable: true
+  })
+  in?: string[] | undefined;
+
+  @Field(() => [String], {
+    nullable: true
+  })
+  notIn?: string[] | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  lt?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  lte?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  gt?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  gte?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  contains?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  startsWith?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  endsWith?: string | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 46`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class NestedStringNullableFilter {
+  @Field(() => String, {
+    nullable: true
+  })
+  equals?: string | undefined;
+
+  @Field(() => [String], {
+    nullable: true
+  })
+  in?: string[] | undefined;
+
+  @Field(() => [String], {
+    nullable: true
+  })
+  notIn?: string[] | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  lt?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  lte?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  gt?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  gte?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  contains?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  startsWith?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  endsWith?: string | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 47`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { NestedIntNullableFilter } from \\"./NestedIntNullableFilter\\";
+import { NestedStringNullableFilter } from \\"./NestedStringNullableFilter\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class NestedStringNullableWithAggregatesFilter {
+  @Field(() => String, {
+    nullable: true
+  })
+  equals?: string | undefined;
+
+  @Field(() => [String], {
+    nullable: true
+  })
+  in?: string[] | undefined;
+
+  @Field(() => [String], {
+    nullable: true
+  })
+  notIn?: string[] | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  lt?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  lte?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  gt?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  gte?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  contains?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  startsWith?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  endsWith?: string | undefined;
+
+  @Field(() => NestedIntNullableFilter, {
+    nullable: true
+  })
+  count?: NestedIntNullableFilter | undefined;
+
+  @Field(() => NestedStringNullableFilter, {
+    nullable: true
+  })
+  min?: NestedStringNullableFilter | undefined;
+
+  @Field(() => NestedStringNullableFilter, {
+    nullable: true
+  })
+  max?: NestedStringNullableFilter | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 48`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { NestedIntFilter } from \\"./NestedIntFilter\\";
+import { NestedStringFilter } from \\"./NestedStringFilter\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class NestedStringWithAggregatesFilter {
+  @Field(() => String, {
+    nullable: true
+  })
+  equals?: string | undefined;
+
+  @Field(() => [String], {
+    nullable: true
+  })
+  in?: string[] | undefined;
+
+  @Field(() => [String], {
+    nullable: true
+  })
+  notIn?: string[] | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  lt?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  lte?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  gt?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  gte?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  contains?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  startsWith?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  endsWith?: string | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
+  count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedStringFilter, {
+    nullable: true
+  })
+  min?: NestedStringFilter | undefined;
+
+  @Field(() => NestedStringFilter, {
+    nullable: true
+  })
+  max?: NestedStringFilter | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 49`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class NullableStringFieldUpdateOperationsInput {
+  @Field(() => String, {
+    nullable: true
+  })
+  set?: string | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 50`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class StringFieldUpdateOperationsInput {
+  @Field(() => String, {
+    nullable: true
+  })
+  set?: string | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 51`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { QueryModeEnum } from \\"../../enums\\";
+import { NestedStringFilter } from \\"./NestedStringFilter\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class StringFilter {
+  @Field(() => String, {
+    nullable: true
+  })
+  equals?: string | undefined;
+
+  @Field(() => [String], {
+    nullable: true
+  })
+  in?: string[] | undefined;
+
+  @Field(() => [String], {
+    nullable: true
+  })
+  notIn?: string[] | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  lt?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  lte?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  gt?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  gte?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  contains?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  startsWith?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  endsWith?: string | undefined;
+
+  @Field(() => QueryModeEnum, {
+    nullable: true
+  })
+  mode?: \\"default\\" | \\"insensitive\\" | undefined;
+
+  @Field(() => NestedStringFilter, {
+    nullable: true
+  })
+  not?: NestedStringFilter | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 52`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { QueryModeEnum } from \\"../../enums\\";
+import { NestedStringNullableFilter } from \\"./NestedStringNullableFilter\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class StringNullableFilter {
+  @Field(() => String, {
+    nullable: true
+  })
+  equals?: string | undefined;
+
+  @Field(() => [String], {
+    nullable: true
+  })
+  in?: string[] | undefined;
+
+  @Field(() => [String], {
+    nullable: true
+  })
+  notIn?: string[] | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  lt?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  lte?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  gt?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  gte?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  contains?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  startsWith?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  endsWith?: string | undefined;
+
+  @Field(() => QueryModeEnum, {
+    nullable: true
+  })
+  mode?: \\"default\\" | \\"insensitive\\" | undefined;
+
+  @Field(() => NestedStringNullableFilter, {
+    nullable: true
+  })
+  not?: NestedStringNullableFilter | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 53`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { QueryModeEnum } from \\"../../enums\\";
+import { NestedStringNullableWithAggregatesFilter } from \\"./NestedStringNullableWithAggregatesFilter\\";
+import { NestedIntNullableFilter } from \\"./NestedIntNullableFilter\\";
+import { NestedStringNullableFilter } from \\"./NestedStringNullableFilter\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class StringNullableWithAggregatesFilter {
+  @Field(() => String, {
+    nullable: true
+  })
+  equals?: string | undefined;
+
+  @Field(() => [String], {
+    nullable: true
+  })
+  in?: string[] | undefined;
+
+  @Field(() => [String], {
+    nullable: true
+  })
+  notIn?: string[] | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  lt?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  lte?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  gt?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  gte?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  contains?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  startsWith?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  endsWith?: string | undefined;
+
+  @Field(() => QueryModeEnum, {
+    nullable: true
+  })
+  mode?: \\"default\\" | \\"insensitive\\" | undefined;
+
+  @Field(() => NestedStringNullableWithAggregatesFilter, {
+    nullable: true
+  })
+  not?: NestedStringNullableWithAggregatesFilter | undefined;
+
+  @Field(() => NestedIntNullableFilter, {
+    nullable: true
+  })
+  count?: NestedIntNullableFilter | undefined;
+
+  @Field(() => NestedStringNullableFilter, {
+    nullable: true
+  })
+  min?: NestedStringNullableFilter | undefined;
+
+  @Field(() => NestedStringNullableFilter, {
+    nullable: true
+  })
+  max?: NestedStringNullableFilter | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 54`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { QueryModeEnum } from \\"../../enums\\";
+import { NestedStringWithAggregatesFilter } from \\"./NestedStringWithAggregatesFilter\\";
+import { NestedIntFilter } from \\"./NestedIntFilter\\";
+import { NestedStringFilter } from \\"./NestedStringFilter\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class StringWithAggregatesFilter {
+  @Field(() => String, {
+    nullable: true
+  })
+  equals?: string | undefined;
+
+  @Field(() => [String], {
+    nullable: true
+  })
+  in?: string[] | undefined;
+
+  @Field(() => [String], {
+    nullable: true
+  })
+  notIn?: string[] | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  lt?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  lte?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  gt?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  gte?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  contains?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  startsWith?: string | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  endsWith?: string | undefined;
+
+  @Field(() => QueryModeEnum, {
+    nullable: true
+  })
+  mode?: \\"default\\" | \\"insensitive\\" | undefined;
+
+  @Field(() => NestedStringWithAggregatesFilter, {
+    nullable: true
+  })
+  not?: NestedStringWithAggregatesFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
+  count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedStringFilter, {
+    nullable: true
+  })
+  min?: NestedStringFilter | undefined;
+
+  @Field(() => NestedStringFilter, {
+    nullable: true
+  })
+  max?: NestedStringFilter | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 55`] = `
+Array [
+  "BigIntFieldUpdateOperationsInput.ts",
+  "BigIntFilter.ts",
+  "BigIntWithAggregatesFilter.ts",
+  "BoolFieldUpdateOperationsInput.ts",
+  "BoolFilter.ts",
+  "BoolWithAggregatesFilter.ts",
+  "BytesFieldUpdateOperationsInput.ts",
+  "BytesFilter.ts",
+  "BytesWithAggregatesFilter.ts",
+  "DateTimeFieldUpdateOperationsInput.ts",
+  "DateTimeFilter.ts",
+  "DateTimeWithAggregatesFilter.ts",
+  "DecimalFieldUpdateOperationsInput.ts",
+  "DecimalFilter.ts",
+  "DecimalWithAggregatesFilter.ts",
+  "EnumUserTypeFieldUpdateOperationsInput.ts",
+  "EnumUserTypeFilter.ts",
+  "EnumUserTypeWithAggregatesFilter.ts",
+  "FloatFieldUpdateOperationsInput.ts",
+  "FloatFilter.ts",
+  "FloatWithAggregatesFilter.ts",
+  "IntFieldUpdateOperationsInput.ts",
+  "IntFilter.ts",
+  "IntWithAggregatesFilter.ts",
+  "JsonFilter.ts",
+  "JsonWithAggregatesFilter.ts",
+  "NestedBigIntFilter.ts",
+  "NestedBigIntWithAggregatesFilter.ts",
+  "NestedBoolFilter.ts",
+  "NestedBoolWithAggregatesFilter.ts",
+  "NestedBytesFilter.ts",
+  "NestedBytesWithAggregatesFilter.ts",
+  "NestedDateTimeFilter.ts",
+  "NestedDateTimeWithAggregatesFilter.ts",
+  "NestedDecimalFilter.ts",
+  "NestedDecimalWithAggregatesFilter.ts",
+  "NestedEnumUserTypeFilter.ts",
+  "NestedEnumUserTypeWithAggregatesFilter.ts",
+  "NestedFloatFilter.ts",
+  "NestedFloatWithAggregatesFilter.ts",
+  "NestedIntFilter.ts",
+  "NestedIntNullableFilter.ts",
+  "NestedIntWithAggregatesFilter.ts",
+  "NestedJsonFilter.ts",
+  "NestedStringFilter.ts",
+  "NestedStringNullableFilter.ts",
+  "NestedStringNullableWithAggregatesFilter.ts",
+  "NestedStringWithAggregatesFilter.ts",
+  "NullableStringFieldUpdateOperationsInput.ts",
+  "StringFieldUpdateOperationsInput.ts",
+  "StringFilter.ts",
+  "StringNullableFilter.ts",
+  "StringNullableWithAggregatesFilter.ts",
+  "StringWithAggregatesFilter.ts",
+]
+`;
+
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 1`] = `
+"import { Field, Float, InputType } from \\"@nestjs/graphql\\";
+import { GraphQLJSON } from \\"graphql-type-json\\";
+import { JsonValue } from \\"@prisma/client\\";
+import { UserTypeEnum } from \\"../../enums\\";
+import { SessionCreateNestedManyWithoutUserInput } from \\"../../Session/inputTypes/SessionCreateNestedManyWithoutUserInput\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class UserCreateInput {
+  @Field(() => String, {
+    nullable: false
+  })
+  email!: string;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  name?: string | undefined;
+
+  @Field(() => UserTypeEnum, {
+    nullable: false
+  })
+  type!: \\"USER\\" | \\"ADMIN\\";
+
+  @Field(() => Boolean, {
+    nullable: false
+  })
+  active!: boolean;
+
+  @Field(() => Float, {
+    nullable: false
+  })
+  balance!: number;
+
+  @Field(() => GraphQLJSON, {
+    nullable: false
+  })
+  rawData!: JsonValue;
+
+  @Field(() => SessionCreateNestedManyWithoutUserInput, {
+    nullable: true
+  })
+  Session?: SessionCreateNestedManyWithoutUserInput | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 2`] = `
+"import { Field, Float, InputType, Int } from \\"@nestjs/graphql\\";
+import { GraphQLJSON } from \\"graphql-type-json\\";
+import { JsonValue } from \\"@prisma/client\\";
+import { UserTypeEnum } from \\"../../enums\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class UserCreateManyInput {
+  @Field(() => Int, {
+    nullable: true
+  })
+  id?: number | undefined;
+
+  @Field(() => String, {
+    nullable: false
+  })
+  email!: string;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  name?: string | undefined;
+
+  @Field(() => UserTypeEnum, {
+    nullable: false
+  })
+  type!: \\"USER\\" | \\"ADMIN\\";
+
+  @Field(() => Boolean, {
+    nullable: false
+  })
+  active!: boolean;
+
+  @Field(() => Float, {
+    nullable: false
+  })
+  balance!: number;
+
+  @Field(() => GraphQLJSON, {
+    nullable: false
+  })
+  rawData!: JsonValue;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 3`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { UserCreateWithoutSessionInput } from \\"./UserCreateWithoutSessionInput\\";
+import { UserCreateOrConnectWithoutSessionInput } from \\"./UserCreateOrConnectWithoutSessionInput\\";
+import { UserWhereUniqueInput } from \\"./UserWhereUniqueInput\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class UserCreateNestedOneWithoutSessionInput {
+  @Field(() => UserCreateWithoutSessionInput, {
+    nullable: true
+  })
+  create?: UserCreateWithoutSessionInput | undefined;
+
+  @Field(() => UserCreateOrConnectWithoutSessionInput, {
+    nullable: true
+  })
+  connectOrCreate?: UserCreateOrConnectWithoutSessionInput | undefined;
+
+  @Field(() => UserWhereUniqueInput, {
+    nullable: true
+  })
+  connect?: UserWhereUniqueInput | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 4`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { UserWhereUniqueInput } from \\"./UserWhereUniqueInput\\";
+import { UserCreateWithoutSessionInput } from \\"./UserCreateWithoutSessionInput\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class UserCreateOrConnectWithoutSessionInput {
+  @Field(() => UserWhereUniqueInput, {
+    nullable: false
+  })
+  where!: UserWhereUniqueInput;
+
+  @Field(() => UserCreateWithoutSessionInput, {
+    nullable: false
+  })
+  create!: UserCreateWithoutSessionInput;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 5`] = `
+"import { Field, Float, InputType } from \\"@nestjs/graphql\\";
+import { GraphQLJSON } from \\"graphql-type-json\\";
+import { JsonValue } from \\"@prisma/client\\";
+import { UserTypeEnum } from \\"../../enums\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class UserCreateWithoutSessionInput {
+  @Field(() => String, {
+    nullable: false
+  })
+  email!: string;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  name?: string | undefined;
+
+  @Field(() => UserTypeEnum, {
+    nullable: false
+  })
+  type!: \\"USER\\" | \\"ADMIN\\";
+
+  @Field(() => Boolean, {
+    nullable: false
+  })
+  active!: boolean;
+
+  @Field(() => Float, {
+    nullable: false
+  })
+  balance!: number;
+
+  @Field(() => GraphQLJSON, {
+    nullable: false
+  })
+  rawData!: JsonValue;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 6`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { SortOrderEnum } from \\"../../enums\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class UserOrderByInput {
+  @Field(() => SortOrderEnum, {
+    nullable: true
+  })
+  id?: \\"asc\\" | \\"desc\\" | undefined;
+
+  @Field(() => SortOrderEnum, {
+    nullable: true
+  })
+  email?: \\"asc\\" | \\"desc\\" | undefined;
+
+  @Field(() => SortOrderEnum, {
+    nullable: true
+  })
+  name?: \\"asc\\" | \\"desc\\" | undefined;
+
+  @Field(() => SortOrderEnum, {
+    nullable: true
+  })
+  type?: \\"asc\\" | \\"desc\\" | undefined;
+
+  @Field(() => SortOrderEnum, {
+    nullable: true
+  })
+  active?: \\"asc\\" | \\"desc\\" | undefined;
+
+  @Field(() => SortOrderEnum, {
+    nullable: true
+  })
+  balance?: \\"asc\\" | \\"desc\\" | undefined;
+
+  @Field(() => SortOrderEnum, {
+    nullable: true
+  })
+  rawData?: \\"asc\\" | \\"desc\\" | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 7`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { UserWhereInput } from \\"./UserWhereInput\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class UserRelationFilter {
+  @Field(() => UserWhereInput, {
+    nullable: true
+  })
+  is?: UserWhereInput | undefined;
+
+  @Field(() => UserWhereInput, {
+    nullable: true
+  })
+  isNot?: UserWhereInput | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 8`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { IntWithAggregatesFilter } from \\"../../shared/inputTypes/IntWithAggregatesFilter\\";
+import { StringWithAggregatesFilter } from \\"../../shared/inputTypes/StringWithAggregatesFilter\\";
+import { StringNullableWithAggregatesFilter } from \\"../../shared/inputTypes/StringNullableWithAggregatesFilter\\";
+import { EnumUserTypeWithAggregatesFilter } from \\"../../shared/inputTypes/EnumUserTypeWithAggregatesFilter\\";
+import { BoolWithAggregatesFilter } from \\"../../shared/inputTypes/BoolWithAggregatesFilter\\";
+import { FloatWithAggregatesFilter } from \\"../../shared/inputTypes/FloatWithAggregatesFilter\\";
+import { JsonWithAggregatesFilter } from \\"../../shared/inputTypes/JsonWithAggregatesFilter\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class UserScalarWhereWithAggregatesInput {
+  @Field(() => IntWithAggregatesFilter, {
+    nullable: true
+  })
+  id?: IntWithAggregatesFilter | undefined;
+
+  @Field(() => StringWithAggregatesFilter, {
+    nullable: true
+  })
+  email?: StringWithAggregatesFilter | undefined;
+
+  @Field(() => StringNullableWithAggregatesFilter, {
+    nullable: true
+  })
+  name?: StringNullableWithAggregatesFilter | undefined;
+
+  @Field(() => EnumUserTypeWithAggregatesFilter, {
+    nullable: true
+  })
+  type?: EnumUserTypeWithAggregatesFilter | undefined;
+
+  @Field(() => BoolWithAggregatesFilter, {
+    nullable: true
+  })
+  active?: BoolWithAggregatesFilter | undefined;
+
+  @Field(() => FloatWithAggregatesFilter, {
+    nullable: true
+  })
+  balance?: FloatWithAggregatesFilter | undefined;
+
+  @Field(() => JsonWithAggregatesFilter, {
+    nullable: true
+  })
+  rawData?: JsonWithAggregatesFilter | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 9`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { GraphQLJSON } from \\"graphql-type-json\\";
+import { JsonValue } from \\"@prisma/client\\";
+import { StringFieldUpdateOperationsInput } from \\"../../shared/inputTypes/StringFieldUpdateOperationsInput\\";
+import { NullableStringFieldUpdateOperationsInput } from \\"../../shared/inputTypes/NullableStringFieldUpdateOperationsInput\\";
+import { EnumUserTypeFieldUpdateOperationsInput } from \\"../../shared/inputTypes/EnumUserTypeFieldUpdateOperationsInput\\";
+import { BoolFieldUpdateOperationsInput } from \\"../../shared/inputTypes/BoolFieldUpdateOperationsInput\\";
+import { FloatFieldUpdateOperationsInput } from \\"../../shared/inputTypes/FloatFieldUpdateOperationsInput\\";
+import { SessionUpdateManyWithoutUserInput } from \\"../../Session/inputTypes/SessionUpdateManyWithoutUserInput\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class UserUpdateInput {
+  @Field(() => StringFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  email?: StringFieldUpdateOperationsInput | undefined;
+
+  @Field(() => NullableStringFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  name?: NullableStringFieldUpdateOperationsInput | undefined;
+
+  @Field(() => EnumUserTypeFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  type?: EnumUserTypeFieldUpdateOperationsInput | undefined;
+
+  @Field(() => BoolFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  active?: BoolFieldUpdateOperationsInput | undefined;
+
+  @Field(() => FloatFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  balance?: FloatFieldUpdateOperationsInput | undefined;
+
+  @Field(() => GraphQLJSON, {
+    nullable: true
+  })
+  rawData?: JsonValue | undefined;
+
+  @Field(() => SessionUpdateManyWithoutUserInput, {
+    nullable: true
+  })
+  Session?: SessionUpdateManyWithoutUserInput | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 10`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { GraphQLJSON } from \\"graphql-type-json\\";
+import { JsonValue } from \\"@prisma/client\\";
+import { StringFieldUpdateOperationsInput } from \\"../../shared/inputTypes/StringFieldUpdateOperationsInput\\";
+import { NullableStringFieldUpdateOperationsInput } from \\"../../shared/inputTypes/NullableStringFieldUpdateOperationsInput\\";
+import { EnumUserTypeFieldUpdateOperationsInput } from \\"../../shared/inputTypes/EnumUserTypeFieldUpdateOperationsInput\\";
+import { BoolFieldUpdateOperationsInput } from \\"../../shared/inputTypes/BoolFieldUpdateOperationsInput\\";
+import { FloatFieldUpdateOperationsInput } from \\"../../shared/inputTypes/FloatFieldUpdateOperationsInput\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class UserUpdateManyMutationInput {
+  @Field(() => StringFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  email?: StringFieldUpdateOperationsInput | undefined;
+
+  @Field(() => NullableStringFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  name?: NullableStringFieldUpdateOperationsInput | undefined;
+
+  @Field(() => EnumUserTypeFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  type?: EnumUserTypeFieldUpdateOperationsInput | undefined;
+
+  @Field(() => BoolFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  active?: BoolFieldUpdateOperationsInput | undefined;
+
+  @Field(() => FloatFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  balance?: FloatFieldUpdateOperationsInput | undefined;
+
+  @Field(() => GraphQLJSON, {
+    nullable: true
+  })
+  rawData?: JsonValue | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 11`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { UserCreateWithoutSessionInput } from \\"./UserCreateWithoutSessionInput\\";
+import { UserCreateOrConnectWithoutSessionInput } from \\"./UserCreateOrConnectWithoutSessionInput\\";
+import { UserUpsertWithoutSessionInput } from \\"./UserUpsertWithoutSessionInput\\";
+import { UserWhereUniqueInput } from \\"./UserWhereUniqueInput\\";
+import { UserUpdateWithoutSessionInput } from \\"./UserUpdateWithoutSessionInput\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class UserUpdateOneRequiredWithoutSessionInput {
+  @Field(() => UserCreateWithoutSessionInput, {
+    nullable: true
+  })
+  create?: UserCreateWithoutSessionInput | undefined;
+
+  @Field(() => UserCreateOrConnectWithoutSessionInput, {
+    nullable: true
+  })
+  connectOrCreate?: UserCreateOrConnectWithoutSessionInput | undefined;
+
+  @Field(() => UserUpsertWithoutSessionInput, {
+    nullable: true
+  })
+  upsert?: UserUpsertWithoutSessionInput | undefined;
+
+  @Field(() => UserWhereUniqueInput, {
+    nullable: true
+  })
+  connect?: UserWhereUniqueInput | undefined;
+
+  @Field(() => UserUpdateWithoutSessionInput, {
+    nullable: true
+  })
+  update?: UserUpdateWithoutSessionInput | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 12`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { GraphQLJSON } from \\"graphql-type-json\\";
+import { JsonValue } from \\"@prisma/client\\";
+import { StringFieldUpdateOperationsInput } from \\"../../shared/inputTypes/StringFieldUpdateOperationsInput\\";
+import { NullableStringFieldUpdateOperationsInput } from \\"../../shared/inputTypes/NullableStringFieldUpdateOperationsInput\\";
+import { EnumUserTypeFieldUpdateOperationsInput } from \\"../../shared/inputTypes/EnumUserTypeFieldUpdateOperationsInput\\";
+import { BoolFieldUpdateOperationsInput } from \\"../../shared/inputTypes/BoolFieldUpdateOperationsInput\\";
+import { FloatFieldUpdateOperationsInput } from \\"../../shared/inputTypes/FloatFieldUpdateOperationsInput\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class UserUpdateWithoutSessionInput {
+  @Field(() => StringFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  email?: StringFieldUpdateOperationsInput | undefined;
+
+  @Field(() => NullableStringFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  name?: NullableStringFieldUpdateOperationsInput | undefined;
+
+  @Field(() => EnumUserTypeFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  type?: EnumUserTypeFieldUpdateOperationsInput | undefined;
+
+  @Field(() => BoolFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  active?: BoolFieldUpdateOperationsInput | undefined;
+
+  @Field(() => FloatFieldUpdateOperationsInput, {
+    nullable: true
+  })
+  balance?: FloatFieldUpdateOperationsInput | undefined;
+
+  @Field(() => GraphQLJSON, {
+    nullable: true
+  })
+  rawData?: JsonValue | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 13`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { UserUpdateWithoutSessionInput } from \\"./UserUpdateWithoutSessionInput\\";
+import { UserCreateWithoutSessionInput } from \\"./UserCreateWithoutSessionInput\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class UserUpsertWithoutSessionInput {
+  @Field(() => UserUpdateWithoutSessionInput, {
+    nullable: false
+  })
+  update!: UserUpdateWithoutSessionInput;
+
+  @Field(() => UserCreateWithoutSessionInput, {
+    nullable: false
+  })
+  create!: UserCreateWithoutSessionInput;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 14`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { IntFilter } from \\"../../shared/inputTypes/IntFilter\\";
+import { StringFilter } from \\"../../shared/inputTypes/StringFilter\\";
+import { StringNullableFilter } from \\"../../shared/inputTypes/StringNullableFilter\\";
+import { EnumUserTypeFilter } from \\"../../shared/inputTypes/EnumUserTypeFilter\\";
+import { BoolFilter } from \\"../../shared/inputTypes/BoolFilter\\";
+import { FloatFilter } from \\"../../shared/inputTypes/FloatFilter\\";
+import { JsonFilter } from \\"../../shared/inputTypes/JsonFilter\\";
+import { SessionListRelationFilter } from \\"../../Session/inputTypes/SessionListRelationFilter\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class UserWhereInput {
+  @Field(() => IntFilter, {
+    nullable: true
+  })
+  id?: IntFilter | undefined;
+
+  @Field(() => StringFilter, {
+    nullable: true
+  })
+  email?: StringFilter | undefined;
+
+  @Field(() => StringNullableFilter, {
+    nullable: true
+  })
+  name?: StringNullableFilter | undefined;
+
+  @Field(() => EnumUserTypeFilter, {
+    nullable: true
+  })
+  type?: EnumUserTypeFilter | undefined;
+
+  @Field(() => BoolFilter, {
+    nullable: true
+  })
+  active?: BoolFilter | undefined;
+
+  @Field(() => FloatFilter, {
+    nullable: true
+  })
+  balance?: FloatFilter | undefined;
+
+  @Field(() => JsonFilter, {
+    nullable: true
+  })
+  rawData?: JsonFilter | undefined;
+
+  @Field(() => SessionListRelationFilter, {
+    nullable: true
+  })
+  Session?: SessionListRelationFilter | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 15`] = `
+"import { Field, InputType, Int } from \\"@nestjs/graphql\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class UserWhereUniqueInput {
+  @Field(() => Int, {
+    nullable: true
+  })
+  id?: number | undefined;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  email?: string | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 16`] = `
+Array [
+  "UserCreateInput.ts",
+  "UserCreateManyInput.ts",
+  "UserCreateNestedOneWithoutSessionInput.ts",
+  "UserCreateOrConnectWithoutSessionInput.ts",
+  "UserCreateWithoutSessionInput.ts",
+  "UserOrderByInput.ts",
+  "UserRelationFilter.ts",
+  "UserScalarWhereWithAggregatesInput.ts",
+  "UserUpdateInput.ts",
+  "UserUpdateManyMutationInput.ts",
+  "UserUpdateOneRequiredWithoutSessionInput.ts",
+  "UserUpdateWithoutSessionInput.ts",
+  "UserUpsertWithoutSessionInput.ts",
+  "UserWhereInput.ts",
+  "UserWhereUniqueInput.ts",
+]
+`;

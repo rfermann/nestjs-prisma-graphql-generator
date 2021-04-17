@@ -27,9 +27,9 @@ describe("ModelHandler", () => {
       basePath: `${process.cwd()}/fixtures/modelHandler/fixtures/output3`,
       paths: {
         enums: "enums",
-        // inputTypes: "",
+        inputTypes: "",
         model: "model",
-        // shared: "",
+        shared: "",
       },
       prismaClientImportPath: `${process.cwd()}/node_modules/@prisma/client`,
     };

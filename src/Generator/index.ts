@@ -6,6 +6,7 @@ import Listr from "listr";
 
 import { GeneratorConfig } from "../GeneratorConfig";
 import { EnumHandler } from "../Handlers/EnumHandler";
+import { InputTypeHandler } from "../Handlers/InputTypeHandler";
 import { ModelHandler } from "../Handlers/ModelHandler";
 import { importDmmf } from "../helpers";
 
@@ -17,9 +18,14 @@ export class Generator {
       title: "Parsing and generating Enums",
     },
     init: "Initialize generator",
+    inputTypes: {
+      generate: "Generating Input Types",
+      parse: "Parsing Input Types",
+      title: "Parsing and generating Input Types",
+    },
     models: {
       generate: "Generating Models",
-      parse: "Parsing Arguments, Models and Object Types",
+      parse: "Parsing Models",
       title: "Parsing and generating Models",
     },
     objects: "Processing Models, Object Types and Resolvers",
@@ -31,6 +37,8 @@ export class Generator {
   private _dmmf!: DMMF.Document;
 
   private _enumHandler!: EnumHandler;
+
+  private _inputTypeHandler!: InputTypeHandler;
 
   private _modelHandler!: ModelHandler;
 
@@ -47,6 +55,7 @@ export class Generator {
           title: Generator.messages.init,
         },
         {
+          // eslint-disable-next-line max-lines-per-function
           task: () =>
             new Listr(
               [
@@ -87,6 +96,22 @@ export class Generator {
                             ]),
                           title: Generator.messages.models.title,
                         },
+                        {
+                          task: async () =>
+                            new Listr([
+                              {
+                                task: () => this._inputTypeHandler.parse(this._enumHandler.getEnums()),
+                                title: Generator.messages.inputTypes.parse,
+                              },
+                              {
+                                task: async () => {
+                                  await this._inputTypeHandler.createFiles();
+                                },
+                                title: Generator.messages.inputTypes.generate,
+                              },
+                            ]),
+                          title: Generator.messages.inputTypes.title,
+                        },
                       ],
                       { concurrent: true }
                     ),
@@ -113,6 +138,7 @@ export class Generator {
 
     this._enumHandler = new EnumHandler({ config: this._config, dmmf: this._dmmf });
     this._modelHandler = new ModelHandler({ config: this._config, dmmf: this._dmmf });
+    this._inputTypeHandler = new InputTypeHandler({ config: this._config, dmmf: this._dmmf });
 
     await this._initOutputFolder();
   }

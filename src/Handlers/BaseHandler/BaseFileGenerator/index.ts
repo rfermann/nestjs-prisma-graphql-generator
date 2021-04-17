@@ -4,6 +4,7 @@ import { IndentationText, NewLineKind, Project, StructureKind } from "ts-morph";
 import type { GeneratorConfig } from "../../../GeneratorConfig";
 import type { Field, ObjectTypes } from "../../../types";
 import { NestJSTypes, TypeEnum } from "../../../types";
+import type { BaseParser } from "../BaseParser";
 import { comparePrimitiveValues } from "../compareFunctions";
 
 interface NestJSImportOptions {
@@ -12,11 +13,14 @@ interface NestJSImportOptions {
 }
 
 export class BaseFileGenerator {
+  private readonly _baseParser: BaseParser;
+
   private readonly _config: GeneratorConfig;
 
   private readonly _project: Project;
 
-  constructor(config: GeneratorConfig) {
+  constructor(baseParser: BaseParser, config: GeneratorConfig) {
+    this._baseParser = baseParser;
     this._config = config;
     this._project = new Project({
       compilerOptions: {
@@ -33,6 +37,10 @@ export class BaseFileGenerator {
   addEnumImports({ enums, sourceFile, type }: { enums: string[]; sourceFile: SourceFile; type: TypeEnum }): void {
     let moduleSpecifier = "";
 
+    if (type === TypeEnum.InputType) {
+      moduleSpecifier = `../../${this._config.paths.enums}`;
+    }
+
     if (type === TypeEnum.ModelType) {
       moduleSpecifier = `../${this._config.paths.enums}`;
     }
@@ -48,6 +56,42 @@ export class BaseFileGenerator {
     sourceFile.addImportDeclaration({
       moduleSpecifier: "graphql-scalars",
       namedImports: imports.sort(comparePrimitiveValues),
+    });
+  }
+
+  addInputTypeImports({
+    inputTypes,
+    model,
+    sourceFile,
+  }: {
+    inputTypes: string[];
+    model?: string;
+    sourceFile: SourceFile;
+  }): void {
+    inputTypes.forEach((inputType) => {
+      let moduleSpecifier = "";
+      const currentModel = this._baseParser.getModelName(inputType);
+
+      if (model && model === currentModel) {
+        moduleSpecifier = `.`;
+      }
+
+      if (model && currentModel && model !== currentModel) {
+        moduleSpecifier = `../../${currentModel}/${this._config.paths.inputTypes}`;
+      }
+
+      if (!model && !currentModel) {
+        moduleSpecifier = `.`;
+      }
+
+      if (model && !currentModel) {
+        moduleSpecifier = `../../${this._config.paths.shared}/${this._config.paths.inputTypes}`;
+      }
+
+      sourceFile.addImportDeclaration({
+        moduleSpecifier: `${moduleSpecifier}/${inputType}`,
+        namedImports: [inputType],
+      });
     });
   }
 

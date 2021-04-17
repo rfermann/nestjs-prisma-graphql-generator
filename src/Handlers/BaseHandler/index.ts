@@ -20,6 +20,6 @@ export abstract class BaseHandler {
   constructor({ config, dmmf }: HandlerOptions) {
     this.config = config;
     this.baseParser = new BaseParser(dmmf);
-    this.baseFileGenerator = new BaseFileGenerator(config);
+    this.baseFileGenerator = new BaseFileGenerator(this.baseParser, config);
   }
 }

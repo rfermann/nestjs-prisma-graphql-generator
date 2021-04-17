@@ -96,15 +96,14 @@ export class BaseFileGenerator {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  addJsonImports({ imports, sourceFile }: { imports: string[]; sourceFile: SourceFile }): void {
+  addJsonImports({ sourceFile }: { sourceFile: SourceFile }): void {
+    sourceFile.addImportDeclaration({
+      moduleSpecifier: "@prisma/client",
+      namedImports: [this._baseParser.prismaImport],
+    });
     sourceFile.addImportDeclaration({
       moduleSpecifier: "graphql-type-json",
       namedImports: ["GraphQLJSON"],
-    });
-
-    sourceFile.addImportDeclaration({
-      moduleSpecifier: "@prisma/client",
-      namedImports: imports.sort(comparePrimitiveValues),
     });
   }
 

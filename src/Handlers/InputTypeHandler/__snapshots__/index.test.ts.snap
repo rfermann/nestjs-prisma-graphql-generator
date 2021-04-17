@@ -1041,8 +1041,8 @@ export class IntWithAggregatesFilter {
 
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 25`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
+import { Prisma } from \\"@prisma/client\\";
 import { GraphQLJSON } from \\"graphql-type-json\\";
-import { JsonValue } from \\"@prisma/client\\";
 
 @InputType({
   isAbstract: true,
@@ -1051,20 +1051,20 @@ export class JsonFilter {
   @Field(() => GraphQLJSON, {
     nullable: true
   })
-  equals?: JsonValue | undefined;
+  equals?: Prisma.JsonValue | undefined;
 
   @Field(() => GraphQLJSON, {
     nullable: true
   })
-  not?: JsonValue | undefined;
+  not?: Prisma.JsonValue | undefined;
 }
 "
 `;
 
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 26`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
+import { Prisma } from \\"@prisma/client\\";
 import { GraphQLJSON } from \\"graphql-type-json\\";
-import { JsonValue } from \\"@prisma/client\\";
 import { NestedIntFilter } from \\"./NestedIntFilter\\";
 import { NestedJsonFilter } from \\"./NestedJsonFilter\\";
 
@@ -1075,12 +1075,12 @@ export class JsonWithAggregatesFilter {
   @Field(() => GraphQLJSON, {
     nullable: true
   })
-  equals?: JsonValue | undefined;
+  equals?: Prisma.JsonValue | undefined;
 
   @Field(() => GraphQLJSON, {
     nullable: true
   })
-  not?: JsonValue | undefined;
+  not?: Prisma.JsonValue | undefined;
 
   @Field(() => NestedIntFilter, {
     nullable: true
@@ -1888,8 +1888,8 @@ export class NestedIntWithAggregatesFilter {
 
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 44`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
+import { Prisma } from \\"@prisma/client\\";
 import { GraphQLJSON } from \\"graphql-type-json\\";
-import { JsonValue } from \\"@prisma/client\\";
 
 @InputType({
   isAbstract: true,
@@ -1898,12 +1898,12 @@ export class NestedJsonFilter {
   @Field(() => GraphQLJSON, {
     nullable: true
   })
-  equals?: JsonValue | undefined;
+  equals?: Prisma.JsonValue | undefined;
 
   @Field(() => GraphQLJSON, {
     nullable: true
   })
-  not?: JsonValue | undefined;
+  not?: Prisma.JsonValue | undefined;
 }
 "
 `;
@@ -2595,8 +2595,8 @@ Array [
 
 exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 1`] = `
 "import { Field, Float, InputType } from \\"@nestjs/graphql\\";
+import { Prisma } from \\"@prisma/client\\";
 import { GraphQLJSON } from \\"graphql-type-json\\";
-import { JsonValue } from \\"@prisma/client\\";
 import { UserTypeEnum } from \\"../../enums\\";
 import { SessionCreateNestedManyWithoutUserInput } from \\"../../Session/inputTypes/SessionCreateNestedManyWithoutUserInput\\";
 
@@ -2632,7 +2632,7 @@ export class UserCreateInput {
   @Field(() => GraphQLJSON, {
     nullable: false
   })
-  rawData!: JsonValue;
+  rawData!: Prisma.JsonValue;
 
   @Field(() => SessionCreateNestedManyWithoutUserInput, {
     nullable: true
@@ -2644,8 +2644,8 @@ export class UserCreateInput {
 
 exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 2`] = `
 "import { Field, Float, InputType, Int } from \\"@nestjs/graphql\\";
+import { Prisma } from \\"@prisma/client\\";
 import { GraphQLJSON } from \\"graphql-type-json\\";
-import { JsonValue } from \\"@prisma/client\\";
 import { UserTypeEnum } from \\"../../enums\\";
 
 @InputType({
@@ -2685,7 +2685,7 @@ export class UserCreateManyInput {
   @Field(() => GraphQLJSON, {
     nullable: false
   })
-  rawData!: JsonValue;
+  rawData!: Prisma.JsonValue;
 }
 "
 `;
@@ -2742,8 +2742,8 @@ export class UserCreateOrConnectWithoutSessionInput {
 
 exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 5`] = `
 "import { Field, Float, InputType } from \\"@nestjs/graphql\\";
+import { Prisma } from \\"@prisma/client\\";
 import { GraphQLJSON } from \\"graphql-type-json\\";
-import { JsonValue } from \\"@prisma/client\\";
 import { UserTypeEnum } from \\"../../enums\\";
 
 @InputType({
@@ -2778,7 +2778,7 @@ export class UserCreateWithoutSessionInput {
   @Field(() => GraphQLJSON, {
     nullable: false
   })
-  rawData!: JsonValue;
+  rawData!: Prisma.JsonValue;
 }
 "
 `;
@@ -2904,8 +2904,8 @@ export class UserScalarWhereWithAggregatesInput {
 
 exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 9`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
+import { Prisma } from \\"@prisma/client\\";
 import { GraphQLJSON } from \\"graphql-type-json\\";
-import { JsonValue } from \\"@prisma/client\\";
 import { StringFieldUpdateOperationsInput } from \\"../../shared/inputTypes/StringFieldUpdateOperationsInput\\";
 import { NullableStringFieldUpdateOperationsInput } from \\"../../shared/inputTypes/NullableStringFieldUpdateOperationsInput\\";
 import { EnumUserTypeFieldUpdateOperationsInput } from \\"../../shared/inputTypes/EnumUserTypeFieldUpdateOperationsInput\\";
@@ -2945,7 +2945,7 @@ export class UserUpdateInput {
   @Field(() => GraphQLJSON, {
     nullable: true
   })
-  rawData?: JsonValue | undefined;
+  rawData?: Prisma.JsonValue | undefined;
 
   @Field(() => SessionUpdateManyWithoutUserInput, {
     nullable: true
@@ -2957,8 +2957,8 @@ export class UserUpdateInput {
 
 exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 10`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
+import { Prisma } from \\"@prisma/client\\";
 import { GraphQLJSON } from \\"graphql-type-json\\";
-import { JsonValue } from \\"@prisma/client\\";
 import { StringFieldUpdateOperationsInput } from \\"../../shared/inputTypes/StringFieldUpdateOperationsInput\\";
 import { NullableStringFieldUpdateOperationsInput } from \\"../../shared/inputTypes/NullableStringFieldUpdateOperationsInput\\";
 import { EnumUserTypeFieldUpdateOperationsInput } from \\"../../shared/inputTypes/EnumUserTypeFieldUpdateOperationsInput\\";
@@ -2997,7 +2997,7 @@ export class UserUpdateManyMutationInput {
   @Field(() => GraphQLJSON, {
     nullable: true
   })
-  rawData?: JsonValue | undefined;
+  rawData?: Prisma.JsonValue | undefined;
 }
 "
 `;
@@ -3044,8 +3044,8 @@ export class UserUpdateOneRequiredWithoutSessionInput {
 
 exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 12`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
+import { Prisma } from \\"@prisma/client\\";
 import { GraphQLJSON } from \\"graphql-type-json\\";
-import { JsonValue } from \\"@prisma/client\\";
 import { StringFieldUpdateOperationsInput } from \\"../../shared/inputTypes/StringFieldUpdateOperationsInput\\";
 import { NullableStringFieldUpdateOperationsInput } from \\"../../shared/inputTypes/NullableStringFieldUpdateOperationsInput\\";
 import { EnumUserTypeFieldUpdateOperationsInput } from \\"../../shared/inputTypes/EnumUserTypeFieldUpdateOperationsInput\\";
@@ -3084,7 +3084,7 @@ export class UserUpdateWithoutSessionInput {
   @Field(() => GraphQLJSON, {
     nullable: true
   })
-  rawData?: JsonValue | undefined;
+  rawData?: Prisma.JsonValue | undefined;
 }
 "
 `;

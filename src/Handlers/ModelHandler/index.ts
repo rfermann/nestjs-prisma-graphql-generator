@@ -36,7 +36,7 @@ export class ModelHandler extends BaseHandler {
         }
 
         if (jsonImports && jsonImports.length > 0) {
-          this.baseFileGenerator.addJsonImports({ imports: jsonImports, sourceFile });
+          this.baseFileGenerator.addJsonImports({ sourceFile });
         }
 
         if (enumImports && enumImports.length > 0) {

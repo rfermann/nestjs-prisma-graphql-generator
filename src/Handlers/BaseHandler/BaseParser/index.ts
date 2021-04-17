@@ -44,6 +44,8 @@ export class BaseParser {
     NestJSTypes.Int as string,
   ]);
 
+  readonly prismaImport = "Prisma";
+
   constructor(dmmf: DMMF.Document) {
     this.dmmf = dmmf;
 
@@ -146,11 +148,11 @@ export class BaseParser {
       stringType = type.name;
     }
 
-    if (location === "scalar" && this.jsonImports.has(stringType)) {
+    if (location === "scalar" && this.jsonImports.has(stringType.replace(`${this.prismaImport}.`, ""))) {
       jsonImports.add(stringType);
     }
 
-    if (this.jsonImports.has(tsType.split(" | ")[0])) {
+    if (this.jsonImports.has(tsType.replace(`${this.prismaImport}.`, "").split(" | ")[0])) {
       jsonImports.add(tsType.split(" | ")[0]);
     }
 
@@ -303,6 +305,10 @@ export class BaseParser {
       fieldType = this._mapScalarToTSType({ scalar: type });
     } else {
       throw new Error(`Unsupported field location: ${location}`);
+    }
+
+    if (this.jsonImports.has(fieldType)) {
+      fieldType = `${this.prismaImport}.${fieldType}`;
     }
 
     if (isList) {

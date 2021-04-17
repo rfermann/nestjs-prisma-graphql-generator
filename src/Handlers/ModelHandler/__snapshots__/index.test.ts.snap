@@ -2,8 +2,8 @@
 
 exports[`ModelHandler should parse models and create correct files from datamodel 1`] = `
 "import { Field, Float, Int, ObjectType } from \\"@nestjs/graphql\\";
+import { Prisma } from \\"@prisma/client\\";
 import { GraphQLJSON } from \\"graphql-type-json\\";
-import { JsonValue } from \\"@prisma/client\\";
 import { UserTypeEnum } from \\"../enums\\";
 import { Session } from \\"../Session/model\\";
 
@@ -48,7 +48,7 @@ export class User {
     nullable: false
     description: \\"user field comment\\"
   })
-  rawData!: JsonValue;
+  rawData!: Prisma.JsonValue;
 
   @Field(() => [Session], {
     nullable: true

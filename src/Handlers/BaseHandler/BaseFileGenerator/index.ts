@@ -47,7 +47,7 @@ export class BaseFileGenerator {
 
     sourceFile.addImportDeclaration({
       moduleSpecifier,
-      namedImports: Array.from(new Set(enums)).sort(comparePrimitiveValues),
+      namedImports: Array.from(enums).sort(comparePrimitiveValues),
     });
   }
 
@@ -68,7 +68,7 @@ export class BaseFileGenerator {
     model?: string;
     sourceFile: SourceFile;
   }): void {
-    inputTypes.forEach((inputType) => {
+    inputTypes.sort(comparePrimitiveValues).forEach((inputType) => {
       let moduleSpecifier = "";
       const currentModel = this._baseParser.getModelName(inputType);
 

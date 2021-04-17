@@ -27,7 +27,9 @@ describe("EnumHandler", () => {
       basePath: `${process.cwd()}/fixtures/enumHandler/fixtures/output1`,
       paths: {
         enums: "./enum",
+        inputTypes: "",
         model: "model",
+        shared: "",
       },
       prismaClientImportPath: `${process.cwd()}/node_modules/@prisma/client`,
     };
@@ -60,7 +62,9 @@ describe("EnumHandler", () => {
       basePath: `${process.cwd()}/fixtures/enumHandler/fixtures/output2`,
       paths: {
         enums: "./enum",
+        inputTypes: "",
         model: "model",
+        shared: "",
       },
       prismaClientImportPath: "",
     };
@@ -89,7 +93,9 @@ describe("EnumHandler", () => {
       basePath: `${process.cwd()}/fixtures/enumHandler/fixtures/output3`,
       paths: {
         enums: "./enum",
+        inputTypes: "",
         model: "model",
+        shared: "",
       },
       prismaClientImportPath: `${process.cwd()}/node_modules/@prisma/client`,
     };
@@ -147,7 +153,9 @@ describe("EnumHandler", () => {
       basePath: `${process.cwd()}/fixtures/enumHandler/fixtures/output4`,
       paths: {
         enums: "./enum",
+        inputTypes: "",
         model: "model",
+        shared: "",
       },
       prismaClientImportPath: `${process.cwd()}/node_modules/@prisma/client`,
     };

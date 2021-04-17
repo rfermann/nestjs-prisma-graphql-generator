@@ -53,6 +53,12 @@ generator nestjs {
 
 All supported objects can be used as the regular NestJS GraphQL object equivalents.
 
+## Upcoming features
+
+- Output Types
+- Resolvers
+- [Prisma Select](https://paljs.com/plugins/select/) integration
+
 ## Contributing to NestJS-Prisma-GraphQL-Generator
 
 To contribute to NestJS-Prisma-GraphQL-Generator, follow these steps:

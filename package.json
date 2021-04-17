@@ -70,8 +70,6 @@
     "@prisma/client": "^2.20.1",
     "@prisma/generator-helper": "^2.20.1",
     "listr": "^0.14.3",
-    "listr2": "^3.4.4",
-    "ps-list": "^7.2.0",
     "ts-morph": "^10.0.2"
   }
 }

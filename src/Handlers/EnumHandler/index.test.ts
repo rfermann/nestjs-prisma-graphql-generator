@@ -6,7 +6,6 @@ import { importDmmf } from "../../helpers";
 
 import { EnumHandler } from ".";
 
-// eslint-disable-next-line max-lines-per-function
 describe("EnumHandler", () => {
   // eslint-disable-next-line jest/no-hooks
   beforeAll(async () => {
@@ -29,6 +28,7 @@ describe("EnumHandler", () => {
         enums: "./enum",
         inputTypes: "",
         model: "model",
+        outputTypes: "",
         shared: "",
       },
       prismaClientImportPath: `${process.cwd()}/node_modules/@prisma/client`,
@@ -64,6 +64,7 @@ describe("EnumHandler", () => {
         enums: "./enum",
         inputTypes: "",
         model: "model",
+        outputTypes: "",
         shared: "",
       },
       prismaClientImportPath: "",
@@ -95,6 +96,7 @@ describe("EnumHandler", () => {
         enums: "./enum",
         inputTypes: "",
         model: "model",
+        outputTypes: "",
         shared: "",
       },
       prismaClientImportPath: `${process.cwd()}/node_modules/@prisma/client`,
@@ -155,6 +157,7 @@ describe("EnumHandler", () => {
         enums: "./enum",
         inputTypes: "",
         model: "model",
+        outputTypes: "",
         shared: "",
       },
       prismaClientImportPath: `${process.cwd()}/node_modules/@prisma/client`,

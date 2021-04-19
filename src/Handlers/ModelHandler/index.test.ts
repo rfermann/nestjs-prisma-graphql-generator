@@ -29,7 +29,7 @@ describe("ModelHandler", () => {
         enums: "enums",
         inputTypes: "",
         model: "model",
-        outputTypes: "outputTypes",
+        outputTypes: "",
         shared: "",
       },
       prismaClientImportPath: `${process.cwd()}/node_modules/@prisma/client`,

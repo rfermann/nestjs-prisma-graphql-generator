@@ -46,9 +46,9 @@ export class Generator {
 
   private _inputTypeHandler!: InputTypeHandler;
 
-  private _outputTypeHandler!: OutputTypeHandler;
-
   private _modelHandler!: ModelHandler;
+
+  private _outputTypeHandler!: OutputTypeHandler;
 
   constructor({ generator, otherGenerators }: GeneratorOptions) {
     this._config = new GeneratorConfig({ generator, otherGenerators });

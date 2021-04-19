@@ -44,6 +44,8 @@ export class BaseParser {
     NestJSTypes.Int as string,
   ]);
 
+  readonly outputTypeList: Set<string> = new Set();
+
   readonly prismaImport = "Prisma";
 
   constructor(dmmf: DMMF.Document) {
@@ -53,6 +55,9 @@ export class BaseParser {
       this.inputTypeList.add(name);
     });
     this.modelsList = this.dmmf.datamodel.models.map(({ name }) => name);
+    this.dmmf.schema.outputObjectTypes.prisma.forEach(({ name }) => {
+      this.outputTypeList.add(name);
+    });
   }
 
   getEnumImports({
@@ -62,7 +67,7 @@ export class BaseParser {
     enumImports: Set<string>;
     field: {
       location: DMMF.FieldLocation;
-      type: DMMF.ArgType;
+      type: DMMF.ArgType | DMMF.SchemaField["outputType"]["type"];
     };
   }): Set<string> {
     if (location === "enumTypes") {
@@ -73,7 +78,7 @@ export class BaseParser {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  getEnumName(type: DMMF.ArgType): string {
+  getEnumName(type: DMMF.ArgType | DMMF.SchemaField["outputType"]["type"]): string {
     if (typeof type === "string") {
       return `${type.replace("Enum", "")}Enum`;
     }
@@ -135,7 +140,7 @@ export class BaseParser {
   }: {
     field: {
       location: DMMF.FieldLocation;
-      type: DMMF.ArgType;
+      type: DMMF.ArgType | DMMF.SchemaField["outputType"]["type"];
     };
     jsonImports: Set<string>;
     tsType: string;
@@ -164,7 +169,7 @@ export class BaseParser {
     let modelName: ReturnType<BaseParser["getModelName"]>;
 
     this.modelsList.forEach((model) => {
-      if (input.startsWith(model)) {
+      if (input.startsWith(model) || input.endsWith(model)) {
         modelName = model;
       }
     });

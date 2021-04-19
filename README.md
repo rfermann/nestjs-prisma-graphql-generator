@@ -48,6 +48,7 @@ generator nestjs {
 - Enums
 - Models
 - Input Types
+- Output Types
 
 ## Usage
 
@@ -55,7 +56,6 @@ All supported objects can be used as the regular NestJS GraphQL object equivalen
 
 ## Upcoming features
 
-- Output Types
 - Resolvers
 - [Prisma Select](https://paljs.com/plugins/select/) integration
 

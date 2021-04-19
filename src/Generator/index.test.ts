@@ -81,7 +81,7 @@ describe("Generator", () => {
     expect([...folderList]).toStrictEqual(["enums", "Session", "shared", "User"]);
   });
   it("should log the correct actions", async () => {
-    expect.assertions(23);
+    expect.assertions(29);
 
     const generator = new Generator({
       datamodel: "",
@@ -137,5 +137,12 @@ describe("Generator", () => {
     expect(findCompletedMessage(values, Generator.messages.inputTypes.parse)).toHaveLength(1);
     expect(findStartedMessage(values, Generator.messages.inputTypes.generate)).toHaveLength(1);
     expect(findCompletedMessage(values, Generator.messages.inputTypes.generate)).toHaveLength(1);
+
+    expect(findStartedMessage(values, Generator.messages.outputTypes.title)).toHaveLength(1);
+    expect(findCompletedMessage(values, Generator.messages.outputTypes.title)).toHaveLength(1);
+    expect(findStartedMessage(values, Generator.messages.outputTypes.parse)).toHaveLength(1);
+    expect(findCompletedMessage(values, Generator.messages.outputTypes.parse)).toHaveLength(1);
+    expect(findStartedMessage(values, Generator.messages.outputTypes.generate)).toHaveLength(1);
+    expect(findCompletedMessage(values, Generator.messages.outputTypes.generate)).toHaveLength(1);
   });
 });

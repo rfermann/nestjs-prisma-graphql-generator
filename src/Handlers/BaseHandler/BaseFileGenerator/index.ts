@@ -37,7 +37,7 @@ export class BaseFileGenerator {
   addEnumImports({ enums, sourceFile, type }: { enums: string[]; sourceFile: SourceFile; type: TypeEnum }): void {
     let moduleSpecifier = "";
 
-    if (type === TypeEnum.InputType) {
+    if (type === TypeEnum.InputType || type === TypeEnum.OutputType) {
       moduleSpecifier = `../../${this._config.paths.enums}`;
     }
 
@@ -56,42 +56,6 @@ export class BaseFileGenerator {
     sourceFile.addImportDeclaration({
       moduleSpecifier: "graphql-scalars",
       namedImports: imports.sort(comparePrimitiveValues),
-    });
-  }
-
-  addInputTypeImports({
-    inputTypes,
-    model,
-    sourceFile,
-  }: {
-    inputTypes: string[];
-    model?: string;
-    sourceFile: SourceFile;
-  }): void {
-    inputTypes.sort(comparePrimitiveValues).forEach((inputType) => {
-      let moduleSpecifier = "";
-      const currentModel = this._baseParser.getModelName(inputType);
-
-      if (model && model === currentModel) {
-        moduleSpecifier = `.`;
-      }
-
-      if (model && currentModel && model !== currentModel) {
-        moduleSpecifier = `../../${currentModel}/${this._config.paths.inputTypes}`;
-      }
-
-      if (!model && !currentModel) {
-        moduleSpecifier = `.`;
-      }
-
-      if (model && !currentModel) {
-        moduleSpecifier = `../../${this._config.paths.shared}/${this._config.paths.inputTypes}`;
-      }
-
-      sourceFile.addImportDeclaration({
-        moduleSpecifier: `${moduleSpecifier}/${inputType}`,
-        namedImports: [inputType],
-      });
     });
   }
 
@@ -141,6 +105,34 @@ export class BaseFileGenerator {
     }
 
     nestJSImportDeclaration.addNamedImports(Array.from(new Set(imports)).sort(comparePrimitiveValues));
+  }
+
+  addTypeImports({ sourceFile, types, model }: { model?: string; sourceFile: SourceFile; types: string[] }): void {
+    types.sort(comparePrimitiveValues).forEach((type) => {
+      let moduleSpecifier = "";
+      const currentModel = this._baseParser.getModelName(type);
+
+      if (model && model === currentModel) {
+        moduleSpecifier = `.`;
+      }
+
+      if (model && currentModel && model !== currentModel) {
+        moduleSpecifier = `../../${currentModel}/${this._config.paths.inputTypes}`;
+      }
+
+      if (!model && !currentModel) {
+        moduleSpecifier = `.`;
+      }
+
+      if (model && !currentModel) {
+        moduleSpecifier = `../../${this._config.paths.shared}/${this._config.paths.inputTypes}`;
+      }
+
+      sourceFile.addImportDeclaration({
+        moduleSpecifier: `${moduleSpecifier}/${type}`,
+        namedImports: [type],
+      });
+    });
   }
 
   createSourceFile(name: string): SourceFile {

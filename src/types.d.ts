@@ -58,6 +58,15 @@ const enum ObjectTypes {
   "ObjectType" = "ObjectType",
 }
 
+const enum OperationType {
+  "Mutation" = "Mutation",
+  "Query" = "Query",
+}
+
+interface OutputType extends InputType {
+  outputTypeImports?: string[];
+}
+
 const enum TypeEnum {
   "InputType" = "InputType",
   "ModelType" = "ModelType",
@@ -75,8 +84,8 @@ export {
   NestJSTypes,
   ObjectTypes,
   TypeEnum,
-  // OperationTypeEnum as OperationType,
-  // OutputType,
+  OperationType,
+  OutputType,
   // ParserConstructorInput,
   // Resolver,
   // ResolverInputType,

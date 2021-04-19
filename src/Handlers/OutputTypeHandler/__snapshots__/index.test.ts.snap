@@ -1,0 +1,324 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OutputTypeHandler should parse output types and create correct shared files from datamodel 1`] = `
+"import { Field, Int, ObjectType } from \\"@nestjs/graphql\\";
+
+@ObjectType({
+  isAbstract: true,
+})
+export class AffectedRowsOutput {
+  @Field(() => Int, {
+    nullable: false
+  })
+  count!: number;
+}
+"
+`;
+
+exports[`OutputTypeHandler should parse output types and create correct shared files from datamodel 2`] = `
+Array [
+  "AffectedRowsOutput.ts",
+]
+`;
+
+exports[`OutputTypeHandler should parse output types and create correct user output files from datamodel 1`] = `
+"import { Field, ObjectType } from \\"@nestjs/graphql\\";
+import { UserAvgAggregateOutputType } from \\"./UserAvgAggregateOutputType\\";
+import { UserCountAggregateOutputType } from \\"./UserCountAggregateOutputType\\";
+import { UserMaxAggregateOutputType } from \\"./UserMaxAggregateOutputType\\";
+import { UserMinAggregateOutputType } from \\"./UserMinAggregateOutputType\\";
+import { UserSumAggregateOutputType } from \\"./UserSumAggregateOutputType\\";
+
+@ObjectType({
+  isAbstract: true,
+})
+export class AggregateUser {
+  @Field(() => UserCountAggregateOutputType, {
+    nullable: true
+  })
+  count?: UserCountAggregateOutputType | null;
+
+  @Field(() => UserAvgAggregateOutputType, {
+    nullable: true
+  })
+  avg?: UserAvgAggregateOutputType | null;
+
+  @Field(() => UserSumAggregateOutputType, {
+    nullable: true
+  })
+  sum?: UserSumAggregateOutputType | null;
+
+  @Field(() => UserMinAggregateOutputType, {
+    nullable: true
+  })
+  min?: UserMinAggregateOutputType | null;
+
+  @Field(() => UserMaxAggregateOutputType, {
+    nullable: true
+  })
+  max?: UserMaxAggregateOutputType | null;
+}
+"
+`;
+
+exports[`OutputTypeHandler should parse output types and create correct user output files from datamodel 2`] = `
+"import { Field, Float, ObjectType } from \\"@nestjs/graphql\\";
+
+@ObjectType({
+  isAbstract: true,
+})
+export class UserAvgAggregateOutputType {
+  @Field(() => Float, {
+    nullable: true
+  })
+  id?: number | null;
+
+  @Field(() => Float, {
+    nullable: true
+  })
+  balance?: number | null;
+}
+"
+`;
+
+exports[`OutputTypeHandler should parse output types and create correct user output files from datamodel 3`] = `
+"import { Field, Int, ObjectType } from \\"@nestjs/graphql\\";
+
+@ObjectType({
+  isAbstract: true,
+})
+export class UserCountAggregateOutputType {
+  @Field(() => Int, {
+    nullable: false
+  })
+  id!: number;
+
+  @Field(() => Int, {
+    nullable: false
+  })
+  email!: number;
+
+  @Field(() => Int, {
+    nullable: false
+  })
+  name!: number;
+
+  @Field(() => Int, {
+    nullable: false
+  })
+  type!: number;
+
+  @Field(() => Int, {
+    nullable: false
+  })
+  active!: number;
+
+  @Field(() => Int, {
+    nullable: false
+  })
+  balance!: number;
+
+  @Field(() => Int, {
+    nullable: false
+  })
+  rawData!: number;
+
+  @Field(() => Int, {
+    nullable: false
+  })
+  _all!: number;
+}
+"
+`;
+
+exports[`OutputTypeHandler should parse output types and create correct user output files from datamodel 4`] = `
+"import { Field, Float, Int, ObjectType } from \\"@nestjs/graphql\\";
+import { Prisma } from \\"@prisma/client\\";
+import { GraphQLJSON } from \\"graphql-type-json\\";
+import { UserTypeEnum } from \\"../../enums\\";
+import { UserAvgAggregateOutputType } from \\"./UserAvgAggregateOutputType\\";
+import { UserCountAggregateOutputType } from \\"./UserCountAggregateOutputType\\";
+import { UserMaxAggregateOutputType } from \\"./UserMaxAggregateOutputType\\";
+import { UserMinAggregateOutputType } from \\"./UserMinAggregateOutputType\\";
+import { UserSumAggregateOutputType } from \\"./UserSumAggregateOutputType\\";
+
+@ObjectType({
+  isAbstract: true,
+})
+export class UserGroupByOutputType {
+  @Field(() => Int, {
+    nullable: false
+  })
+  id!: number;
+
+  @Field(() => String, {
+    nullable: false
+  })
+  email!: string;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  name?: string | null;
+
+  @Field(() => UserTypeEnum, {
+    nullable: false
+  })
+  type!: \\"USER\\" | \\"ADMIN\\";
+
+  @Field(() => Boolean, {
+    nullable: false
+  })
+  active!: boolean;
+
+  @Field(() => Float, {
+    nullable: false
+  })
+  balance!: number;
+
+  @Field(() => GraphQLJSON, {
+    nullable: false
+  })
+  rawData!: Prisma.JsonValue;
+
+  @Field(() => UserCountAggregateOutputType, {
+    nullable: true
+  })
+  count?: UserCountAggregateOutputType | null;
+
+  @Field(() => UserAvgAggregateOutputType, {
+    nullable: true
+  })
+  avg?: UserAvgAggregateOutputType | null;
+
+  @Field(() => UserSumAggregateOutputType, {
+    nullable: true
+  })
+  sum?: UserSumAggregateOutputType | null;
+
+  @Field(() => UserMinAggregateOutputType, {
+    nullable: true
+  })
+  min?: UserMinAggregateOutputType | null;
+
+  @Field(() => UserMaxAggregateOutputType, {
+    nullable: true
+  })
+  max?: UserMaxAggregateOutputType | null;
+}
+"
+`;
+
+exports[`OutputTypeHandler should parse output types and create correct user output files from datamodel 5`] = `
+"import { Field, Float, Int, ObjectType } from \\"@nestjs/graphql\\";
+import { UserTypeEnum } from \\"../../enums\\";
+
+@ObjectType({
+  isAbstract: true,
+})
+export class UserMaxAggregateOutputType {
+  @Field(() => Int, {
+    nullable: true
+  })
+  id?: number | null;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  email?: string | null;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  name?: string | null;
+
+  @Field(() => UserTypeEnum, {
+    nullable: true
+  })
+  type?: \\"USER\\" | \\"ADMIN\\" | null;
+
+  @Field(() => Boolean, {
+    nullable: true
+  })
+  active?: boolean | null;
+
+  @Field(() => Float, {
+    nullable: true
+  })
+  balance?: number | null;
+}
+"
+`;
+
+exports[`OutputTypeHandler should parse output types and create correct user output files from datamodel 6`] = `
+"import { Field, Float, Int, ObjectType } from \\"@nestjs/graphql\\";
+import { UserTypeEnum } from \\"../../enums\\";
+
+@ObjectType({
+  isAbstract: true,
+})
+export class UserMinAggregateOutputType {
+  @Field(() => Int, {
+    nullable: true
+  })
+  id?: number | null;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  email?: string | null;
+
+  @Field(() => String, {
+    nullable: true
+  })
+  name?: string | null;
+
+  @Field(() => UserTypeEnum, {
+    nullable: true
+  })
+  type?: \\"USER\\" | \\"ADMIN\\" | null;
+
+  @Field(() => Boolean, {
+    nullable: true
+  })
+  active?: boolean | null;
+
+  @Field(() => Float, {
+    nullable: true
+  })
+  balance?: number | null;
+}
+"
+`;
+
+exports[`OutputTypeHandler should parse output types and create correct user output files from datamodel 7`] = `
+"import { Field, Float, Int, ObjectType } from \\"@nestjs/graphql\\";
+
+@ObjectType({
+  isAbstract: true,
+})
+export class UserSumAggregateOutputType {
+  @Field(() => Int, {
+    nullable: true
+  })
+  id?: number | null;
+
+  @Field(() => Float, {
+    nullable: true
+  })
+  balance?: number | null;
+}
+"
+`;
+
+exports[`OutputTypeHandler should parse output types and create correct user output files from datamodel 8`] = `
+Array [
+  "AggregateUser.ts",
+  "UserAvgAggregateOutputType.ts",
+  "UserCountAggregateOutputType.ts",
+  "UserGroupByOutputType.ts",
+  "UserMaxAggregateOutputType.ts",
+  "UserMinAggregateOutputType.ts",
+  "UserSumAggregateOutputType.ts",
+]
+`;

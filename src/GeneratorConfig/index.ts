@@ -4,6 +4,7 @@ interface Paths {
   enums: string;
   inputTypes: string;
   model: string;
+  outputTypes: string;
   shared: string;
 }
 
@@ -35,6 +36,7 @@ export class GeneratorConfig {
       enums: "enums",
       inputTypes: "inputTypes",
       model: "model",
+      outputTypes: "outputTypes",
       shared: "shared",
     };
     this.prismaClientImportPath = prismaClientPath.output.value;

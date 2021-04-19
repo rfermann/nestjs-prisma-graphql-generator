@@ -5,13 +5,13 @@ import type { GeneratorConfig } from "../../GeneratorConfig";
 import { importDmmf } from "../../helpers";
 import { EnumHandler } from "../EnumHandler";
 
-import { InputTypeHandler } from ".";
+import { OutputTypeHandler } from ".";
 
-describe("InputTypeHandler", () => {
+describe("OutputTypeHandler", () => {
   // eslint-disable-next-line jest/no-hooks
   beforeAll(async () => {
-    if (existsSync(`${process.cwd()}/fixtures/inputTypeHandler/fixtures/`)) {
-      rmdirSync(`${process.cwd()}/fixtures/inputTypeHandler/fixtures/`, { recursive: true });
+    if (existsSync(`${process.cwd()}/fixtures/outputTypeHandler/fixtures/`)) {
+      rmdirSync(`${process.cwd()}/fixtures/outputTypeHandler/fixtures/`, { recursive: true });
     }
   });
   it("should parse DMMF properly", async () => {
@@ -20,11 +20,11 @@ describe("InputTypeHandler", () => {
     expect(true).toBe(true);
   });
 
-  it("should parse input types and create correct shared files from datamodel", async () => {
-    expect.assertions(55);
+  it("should parse output types and create correct shared files from datamodel", async () => {
+    expect.assertions(2);
 
     const config: GeneratorConfig = {
-      basePath: `${process.cwd()}/fixtures/inputTypeHandler/fixtures/output1`,
+      basePath: `${process.cwd()}/fixtures/outputTypeHandler/fixtures/output1`,
       paths: {
         enums: "enums",
         inputTypes: "inputTypes",
@@ -40,36 +40,36 @@ describe("InputTypeHandler", () => {
       dmmf: importDmmf(config.prismaClientImportPath),
     });
 
-    const inputTypeHandler = new InputTypeHandler({
+    const outputTypeHandler = new OutputTypeHandler({
       config,
       dmmf: importDmmf(config.prismaClientImportPath),
     });
 
     enumHandler.parse();
 
-    inputTypeHandler.parse(enumHandler.getEnums());
-    await inputTypeHandler.createFiles();
+    outputTypeHandler.parse(enumHandler.getEnums());
+    await outputTypeHandler.createFiles();
 
-    const sharedInputFiles = readdirSync(`${config.basePath}/${config.paths.shared}/${config.paths.inputTypes}`);
+    const sharedOutputFiles = readdirSync(`${config.basePath}/${config.paths.shared}/${config.paths.outputTypes}`);
 
-    sharedInputFiles.forEach((inputType) => {
-      const sharedInputFile = readFileSync(
-        `${config.basePath}/${config.paths.shared}/${config.paths.inputTypes}/${inputType}`,
+    sharedOutputFiles.forEach((outputType) => {
+      const sharedOutputFile = readFileSync(
+        `${config.basePath}/${config.paths.shared}/${config.paths.outputTypes}/${outputType}`,
         "utf-8"
       );
 
       // eslint-disable-next-line jest/prefer-inline-snapshots
-      expect(sharedInputFile).toMatchSnapshot();
+      expect(sharedOutputFile).toMatchSnapshot();
     });
     // eslint-disable-next-line jest/prefer-inline-snapshots
-    expect(sharedInputFiles).toMatchSnapshot();
+    expect(sharedOutputFiles).toMatchSnapshot();
   });
 
-  it("should parse input types and create correct user input files from datamodel", async () => {
-    expect.assertions(16);
+  it("should parse output types and create correct user output files from datamodel", async () => {
+    expect.assertions(8);
 
     const config: GeneratorConfig = {
-      basePath: `${process.cwd()}/fixtures/inputTypeHandler/fixtures/output2`,
+      basePath: `${process.cwd()}/fixtures/outputTypeHandler/fixtures/output2`,
       paths: {
         enums: "enums",
         inputTypes: "inputTypes",
@@ -85,25 +85,25 @@ describe("InputTypeHandler", () => {
       dmmf: importDmmf(config.prismaClientImportPath),
     });
 
-    const inputTypeHandler = new InputTypeHandler({
+    const outputTypeHandler = new OutputTypeHandler({
       config,
       dmmf: importDmmf(config.prismaClientImportPath),
     });
 
     enumHandler.parse();
 
-    inputTypeHandler.parse(enumHandler.getEnums());
-    await inputTypeHandler.createFiles();
+    outputTypeHandler.parse(enumHandler.getEnums());
+    await outputTypeHandler.createFiles();
 
-    const userInputFiles = readdirSync(`${config.basePath}/User/${config.paths.inputTypes}`);
+    const userOutputFiles = readdirSync(`${config.basePath}/User/${config.paths.outputTypes}`);
 
-    userInputFiles.forEach((inputType) => {
-      const userInputFile = readFileSync(`${config.basePath}/User/${config.paths.inputTypes}/${inputType}`, "utf-8");
+    userOutputFiles.forEach((outputType) => {
+      const userOutputFile = readFileSync(`${config.basePath}/User/${config.paths.outputTypes}/${outputType}`, "utf-8");
 
       // eslint-disable-next-line jest/prefer-inline-snapshots
-      expect(userInputFile).toMatchSnapshot();
+      expect(userOutputFile).toMatchSnapshot();
     });
     // eslint-disable-next-line jest/prefer-inline-snapshots
-    expect(userInputFiles).toMatchSnapshot();
+    expect(userOutputFiles).toMatchSnapshot();
   });
 });

@@ -2594,6 +2594,330 @@ Array [
 `;
 
 exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 1`] = `
+"import { Field, InputType, Int } from \\"@nestjs/graphql\\";
+import { UserOrderByInput } from \\"./UserOrderByInput\\";
+import { UserWhereInput } from \\"./UserWhereInput\\";
+import { UserWhereUniqueInput } from \\"./UserWhereUniqueInput\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class AggregateUserInput {
+  @Field(() => UserWhereInput, {
+    nullable: true
+  })
+  where?: UserWhereInput | undefined;
+
+  @Field(() => [UserOrderByInput], {
+    nullable: true
+  })
+  orderBy?: UserOrderByInput[] | undefined;
+
+  @Field(() => UserWhereUniqueInput, {
+    nullable: true
+  })
+  cursor?: UserWhereUniqueInput | undefined;
+
+  @Field(() => Int, {
+    nullable: true
+  })
+  take?: number | undefined;
+
+  @Field(() => Int, {
+    nullable: true
+  })
+  skip?: number | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 2`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { UserCreateManyInput } from \\"./UserCreateManyInput\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class CreateManyUserInput {
+  @Field(() => [UserCreateManyInput], {
+    nullable: false
+  })
+  data!: UserCreateManyInput[];
+
+  @Field(() => Boolean, {
+    nullable: true
+  })
+  skipDuplicates?: boolean | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 3`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { UserCreateInput } from \\"./UserCreateInput\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class CreateOneUserInput {
+  @Field(() => UserCreateInput, {
+    nullable: false
+  })
+  data!: UserCreateInput;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 4`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { UserWhereInput } from \\"./UserWhereInput\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class DeleteManyUserInput {
+  @Field(() => UserWhereInput, {
+    nullable: true
+  })
+  where?: UserWhereInput | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 5`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { UserWhereUniqueInput } from \\"./UserWhereUniqueInput\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class DeleteOneUserInput {
+  @Field(() => UserWhereUniqueInput, {
+    nullable: false
+  })
+  where!: UserWhereUniqueInput;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 6`] = `
+"import { Field, InputType, Int } from \\"@nestjs/graphql\\";
+import { UserOrderByInput } from \\"./UserOrderByInput\\";
+import { UserWhereInput } from \\"./UserWhereInput\\";
+import { UserWhereUniqueInput } from \\"./UserWhereUniqueInput\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class FindFirstUserInput {
+  @Field(() => UserWhereInput, {
+    nullable: true
+  })
+  where?: UserWhereInput | undefined;
+
+  @Field(() => [UserOrderByInput], {
+    nullable: true
+  })
+  orderBy?: UserOrderByInput[] | undefined;
+
+  @Field(() => UserWhereUniqueInput, {
+    nullable: true
+  })
+  cursor?: UserWhereUniqueInput | undefined;
+
+  @Field(() => Int, {
+    nullable: true
+  })
+  take?: number | undefined;
+
+  @Field(() => Int, {
+    nullable: true
+  })
+  skip?: number | undefined;
+
+  @Field(() => [UserScalarFieldEnum], {
+    nullable: true
+  })
+  distinct?: Array<\\"id\\" | \\"email\\" | \\"name\\" | \\"type\\" | \\"active\\" | \\"balance\\" | \\"rawData\\"> | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 7`] = `
+"import { Field, InputType, Int } from \\"@nestjs/graphql\\";
+import { UserOrderByInput } from \\"./UserOrderByInput\\";
+import { UserWhereInput } from \\"./UserWhereInput\\";
+import { UserWhereUniqueInput } from \\"./UserWhereUniqueInput\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class FindManyUserInput {
+  @Field(() => UserWhereInput, {
+    nullable: true
+  })
+  where?: UserWhereInput | undefined;
+
+  @Field(() => [UserOrderByInput], {
+    nullable: true
+  })
+  orderBy?: UserOrderByInput[] | undefined;
+
+  @Field(() => UserWhereUniqueInput, {
+    nullable: true
+  })
+  cursor?: UserWhereUniqueInput | undefined;
+
+  @Field(() => Int, {
+    nullable: true
+  })
+  take?: number | undefined;
+
+  @Field(() => Int, {
+    nullable: true
+  })
+  skip?: number | undefined;
+
+  @Field(() => [UserScalarFieldEnum], {
+    nullable: true
+  })
+  distinct?: Array<\\"id\\" | \\"email\\" | \\"name\\" | \\"type\\" | \\"active\\" | \\"balance\\" | \\"rawData\\"> | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 8`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { UserWhereUniqueInput } from \\"./UserWhereUniqueInput\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class FindUniqueUserInput {
+  @Field(() => UserWhereUniqueInput, {
+    nullable: false
+  })
+  where!: UserWhereUniqueInput;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 9`] = `
+"import { Field, InputType, Int } from \\"@nestjs/graphql\\";
+import { UserOrderByInput } from \\"./UserOrderByInput\\";
+import { UserScalarWhereWithAggregatesInput } from \\"./UserScalarWhereWithAggregatesInput\\";
+import { UserWhereInput } from \\"./UserWhereInput\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class GroupByUserInput {
+  @Field(() => UserWhereInput, {
+    nullable: true
+  })
+  where?: UserWhereInput | undefined;
+
+  @Field(() => [UserOrderByInput], {
+    nullable: true
+  })
+  orderBy?: UserOrderByInput[] | undefined;
+
+  @Field(() => [UserScalarFieldEnum], {
+    nullable: false
+  })
+  by!: Array<\\"id\\" | \\"email\\" | \\"name\\" | \\"type\\" | \\"active\\" | \\"balance\\" | \\"rawData\\">;
+
+  @Field(() => UserScalarWhereWithAggregatesInput, {
+    nullable: true
+  })
+  having?: UserScalarWhereWithAggregatesInput | undefined;
+
+  @Field(() => Int, {
+    nullable: true
+  })
+  take?: number | undefined;
+
+  @Field(() => Int, {
+    nullable: true
+  })
+  skip?: number | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 10`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { UserUpdateManyMutationInput } from \\"./UserUpdateManyMutationInput\\";
+import { UserWhereInput } from \\"./UserWhereInput\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class UpdateManyUserInput {
+  @Field(() => UserUpdateManyMutationInput, {
+    nullable: false
+  })
+  data!: UserUpdateManyMutationInput;
+
+  @Field(() => UserWhereInput, {
+    nullable: true
+  })
+  where?: UserWhereInput | undefined;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 11`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { UserUpdateInput } from \\"./UserUpdateInput\\";
+import { UserWhereUniqueInput } from \\"./UserWhereUniqueInput\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class UpdateOneUserInput {
+  @Field(() => UserUpdateInput, {
+    nullable: false
+  })
+  data!: UserUpdateInput;
+
+  @Field(() => UserWhereUniqueInput, {
+    nullable: false
+  })
+  where!: UserWhereUniqueInput;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 12`] = `
+"import { Field, InputType } from \\"@nestjs/graphql\\";
+import { UserCreateInput } from \\"./UserCreateInput\\";
+import { UserUpdateInput } from \\"./UserUpdateInput\\";
+import { UserWhereUniqueInput } from \\"./UserWhereUniqueInput\\";
+
+@InputType({
+  isAbstract: true,
+})
+export class UpsertOneUserInput {
+  @Field(() => UserWhereUniqueInput, {
+    nullable: false
+  })
+  where!: UserWhereUniqueInput;
+
+  @Field(() => UserCreateInput, {
+    nullable: false
+  })
+  create!: UserCreateInput;
+
+  @Field(() => UserUpdateInput, {
+    nullable: false
+  })
+  update!: UserUpdateInput;
+}
+"
+`;
+
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 13`] = `
 "import { Field, Float, InputType } from \\"@nestjs/graphql\\";
 import { Prisma } from \\"@prisma/client\\";
 import { GraphQLJSON } from \\"graphql-type-json\\";
@@ -2642,7 +2966,7 @@ export class UserCreateInput {
 "
 `;
 
-exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 2`] = `
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 14`] = `
 "import { Field, Float, InputType, Int } from \\"@nestjs/graphql\\";
 import { Prisma } from \\"@prisma/client\\";
 import { GraphQLJSON } from \\"graphql-type-json\\";
@@ -2690,100 +3014,7 @@ export class UserCreateManyInput {
 "
 `;
 
-exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 3`] = `
-"import { Field, InputType } from \\"@nestjs/graphql\\";
-import { UserCreateOrConnectWithoutSessionInput } from \\"./UserCreateOrConnectWithoutSessionInput\\";
-import { UserCreateWithoutSessionInput } from \\"./UserCreateWithoutSessionInput\\";
-import { UserWhereUniqueInput } from \\"./UserWhereUniqueInput\\";
-
-@InputType({
-  isAbstract: true,
-})
-export class UserCreateNestedOneWithoutSessionInput {
-  @Field(() => UserCreateWithoutSessionInput, {
-    nullable: true
-  })
-  create?: UserCreateWithoutSessionInput | undefined;
-
-  @Field(() => UserCreateOrConnectWithoutSessionInput, {
-    nullable: true
-  })
-  connectOrCreate?: UserCreateOrConnectWithoutSessionInput | undefined;
-
-  @Field(() => UserWhereUniqueInput, {
-    nullable: true
-  })
-  connect?: UserWhereUniqueInput | undefined;
-}
-"
-`;
-
-exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 4`] = `
-"import { Field, InputType } from \\"@nestjs/graphql\\";
-import { UserCreateWithoutSessionInput } from \\"./UserCreateWithoutSessionInput\\";
-import { UserWhereUniqueInput } from \\"./UserWhereUniqueInput\\";
-
-@InputType({
-  isAbstract: true,
-})
-export class UserCreateOrConnectWithoutSessionInput {
-  @Field(() => UserWhereUniqueInput, {
-    nullable: false
-  })
-  where!: UserWhereUniqueInput;
-
-  @Field(() => UserCreateWithoutSessionInput, {
-    nullable: false
-  })
-  create!: UserCreateWithoutSessionInput;
-}
-"
-`;
-
-exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 5`] = `
-"import { Field, Float, InputType } from \\"@nestjs/graphql\\";
-import { Prisma } from \\"@prisma/client\\";
-import { GraphQLJSON } from \\"graphql-type-json\\";
-import { UserTypeEnum } from \\"../../enums\\";
-
-@InputType({
-  isAbstract: true,
-})
-export class UserCreateWithoutSessionInput {
-  @Field(() => String, {
-    nullable: false
-  })
-  email!: string;
-
-  @Field(() => String, {
-    nullable: true
-  })
-  name?: string | undefined;
-
-  @Field(() => UserTypeEnum, {
-    nullable: false
-  })
-  type!: \\"USER\\" | \\"ADMIN\\";
-
-  @Field(() => Boolean, {
-    nullable: false
-  })
-  active!: boolean;
-
-  @Field(() => Float, {
-    nullable: false
-  })
-  balance!: number;
-
-  @Field(() => GraphQLJSON, {
-    nullable: false
-  })
-  rawData!: Prisma.JsonValue;
-}
-"
-`;
-
-exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 6`] = `
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 15`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
 import { SortOrderEnum } from \\"../../enums\\";
 
@@ -2829,7 +3060,7 @@ export class UserOrderByInput {
 "
 `;
 
-exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 7`] = `
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 16`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
 import { UserWhereInput } from \\"./UserWhereInput\\";
 
@@ -2850,7 +3081,7 @@ export class UserRelationFilter {
 "
 `;
 
-exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 8`] = `
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 17`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
 import { BoolWithAggregatesFilter } from \\"../../shared/inputTypes/BoolWithAggregatesFilter\\";
 import { EnumUserTypeWithAggregatesFilter } from \\"../../shared/inputTypes/EnumUserTypeWithAggregatesFilter\\";
@@ -2902,7 +3133,7 @@ export class UserScalarWhereWithAggregatesInput {
 "
 `;
 
-exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 9`] = `
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 18`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
 import { Prisma } from \\"@prisma/client\\";
 import { GraphQLJSON } from \\"graphql-type-json\\";
@@ -2955,7 +3186,7 @@ export class UserUpdateInput {
 "
 `;
 
-exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 10`] = `
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 19`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
 import { Prisma } from \\"@prisma/client\\";
 import { GraphQLJSON } from \\"graphql-type-json\\";
@@ -3002,116 +3233,7 @@ export class UserUpdateManyMutationInput {
 "
 `;
 
-exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 11`] = `
-"import { Field, InputType } from \\"@nestjs/graphql\\";
-import { UserCreateOrConnectWithoutSessionInput } from \\"./UserCreateOrConnectWithoutSessionInput\\";
-import { UserCreateWithoutSessionInput } from \\"./UserCreateWithoutSessionInput\\";
-import { UserUpdateWithoutSessionInput } from \\"./UserUpdateWithoutSessionInput\\";
-import { UserUpsertWithoutSessionInput } from \\"./UserUpsertWithoutSessionInput\\";
-import { UserWhereUniqueInput } from \\"./UserWhereUniqueInput\\";
-
-@InputType({
-  isAbstract: true,
-})
-export class UserUpdateOneRequiredWithoutSessionInput {
-  @Field(() => UserCreateWithoutSessionInput, {
-    nullable: true
-  })
-  create?: UserCreateWithoutSessionInput | undefined;
-
-  @Field(() => UserCreateOrConnectWithoutSessionInput, {
-    nullable: true
-  })
-  connectOrCreate?: UserCreateOrConnectWithoutSessionInput | undefined;
-
-  @Field(() => UserUpsertWithoutSessionInput, {
-    nullable: true
-  })
-  upsert?: UserUpsertWithoutSessionInput | undefined;
-
-  @Field(() => UserWhereUniqueInput, {
-    nullable: true
-  })
-  connect?: UserWhereUniqueInput | undefined;
-
-  @Field(() => UserUpdateWithoutSessionInput, {
-    nullable: true
-  })
-  update?: UserUpdateWithoutSessionInput | undefined;
-}
-"
-`;
-
-exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 12`] = `
-"import { Field, InputType } from \\"@nestjs/graphql\\";
-import { Prisma } from \\"@prisma/client\\";
-import { GraphQLJSON } from \\"graphql-type-json\\";
-import { BoolFieldUpdateOperationsInput } from \\"../../shared/inputTypes/BoolFieldUpdateOperationsInput\\";
-import { EnumUserTypeFieldUpdateOperationsInput } from \\"../../shared/inputTypes/EnumUserTypeFieldUpdateOperationsInput\\";
-import { FloatFieldUpdateOperationsInput } from \\"../../shared/inputTypes/FloatFieldUpdateOperationsInput\\";
-import { NullableStringFieldUpdateOperationsInput } from \\"../../shared/inputTypes/NullableStringFieldUpdateOperationsInput\\";
-import { StringFieldUpdateOperationsInput } from \\"../../shared/inputTypes/StringFieldUpdateOperationsInput\\";
-
-@InputType({
-  isAbstract: true,
-})
-export class UserUpdateWithoutSessionInput {
-  @Field(() => StringFieldUpdateOperationsInput, {
-    nullable: true
-  })
-  email?: StringFieldUpdateOperationsInput | undefined;
-
-  @Field(() => NullableStringFieldUpdateOperationsInput, {
-    nullable: true
-  })
-  name?: NullableStringFieldUpdateOperationsInput | undefined;
-
-  @Field(() => EnumUserTypeFieldUpdateOperationsInput, {
-    nullable: true
-  })
-  type?: EnumUserTypeFieldUpdateOperationsInput | undefined;
-
-  @Field(() => BoolFieldUpdateOperationsInput, {
-    nullable: true
-  })
-  active?: BoolFieldUpdateOperationsInput | undefined;
-
-  @Field(() => FloatFieldUpdateOperationsInput, {
-    nullable: true
-  })
-  balance?: FloatFieldUpdateOperationsInput | undefined;
-
-  @Field(() => GraphQLJSON, {
-    nullable: true
-  })
-  rawData?: Prisma.JsonValue | undefined;
-}
-"
-`;
-
-exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 13`] = `
-"import { Field, InputType } from \\"@nestjs/graphql\\";
-import { UserCreateWithoutSessionInput } from \\"./UserCreateWithoutSessionInput\\";
-import { UserUpdateWithoutSessionInput } from \\"./UserUpdateWithoutSessionInput\\";
-
-@InputType({
-  isAbstract: true,
-})
-export class UserUpsertWithoutSessionInput {
-  @Field(() => UserUpdateWithoutSessionInput, {
-    nullable: false
-  })
-  update!: UserUpdateWithoutSessionInput;
-
-  @Field(() => UserCreateWithoutSessionInput, {
-    nullable: false
-  })
-  create!: UserCreateWithoutSessionInput;
-}
-"
-`;
-
-exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 14`] = `
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 20`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
 import { BoolFilter } from \\"../../shared/inputTypes/BoolFilter\\";
 import { EnumUserTypeFilter } from \\"../../shared/inputTypes/EnumUserTypeFilter\\";
@@ -3169,7 +3291,7 @@ export class UserWhereInput {
 "
 `;
 
-exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 15`] = `
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 21`] = `
 "import { Field, InputType, Int } from \\"@nestjs/graphql\\";
 
 @InputType({
@@ -3189,21 +3311,27 @@ export class UserWhereUniqueInput {
 "
 `;
 
-exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 16`] = `
+exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 22`] = `
 Array [
+  "AggregateUserInput.ts",
+  "CreateManyUserInput.ts",
+  "CreateOneUserInput.ts",
+  "DeleteManyUserInput.ts",
+  "DeleteOneUserInput.ts",
+  "FindFirstUserInput.ts",
+  "FindManyUserInput.ts",
+  "FindUniqueUserInput.ts",
+  "GroupByUserInput.ts",
+  "UpdateManyUserInput.ts",
+  "UpdateOneUserInput.ts",
+  "UpsertOneUserInput.ts",
   "UserCreateInput.ts",
   "UserCreateManyInput.ts",
-  "UserCreateNestedOneWithoutSessionInput.ts",
-  "UserCreateOrConnectWithoutSessionInput.ts",
-  "UserCreateWithoutSessionInput.ts",
   "UserOrderByInput.ts",
   "UserRelationFilter.ts",
   "UserScalarWhereWithAggregatesInput.ts",
   "UserUpdateInput.ts",
   "UserUpdateManyMutationInput.ts",
-  "UserUpdateOneRequiredWithoutSessionInput.ts",
-  "UserUpdateWithoutSessionInput.ts",
-  "UserUpsertWithoutSessionInput.ts",
   "UserWhereInput.ts",
   "UserWhereUniqueInput.ts",
 ]

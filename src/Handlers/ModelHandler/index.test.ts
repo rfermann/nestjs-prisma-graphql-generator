@@ -25,6 +25,7 @@ describe("ModelHandler", () => {
 
     const config: GeneratorConfig = {
       basePath: `${process.cwd()}/fixtures/modelHandler/fixtures/output3`,
+      inputArgumentsName: "",
       paths: {
         enums: "enums",
         inputTypes: "",

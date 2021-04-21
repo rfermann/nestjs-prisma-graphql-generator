@@ -1,5 +1,7 @@
+import type { DMMF } from "@prisma/generator-helper";
+
 import type { Enum, Field, InputType } from "../../types";
-import { NestJSTypes, ObjectTypes, TypeEnum } from "../../types";
+import { NestJSTypes, ObjectTypes, OperationType, TypeEnum } from "../../types";
 import { BaseHandler } from "../BaseHandler";
 
 export class InputTypeHandler extends BaseHandler {
@@ -59,12 +61,35 @@ export class InputTypeHandler extends BaseHandler {
 
   // eslint-disable-next-line max-lines-per-function
   parse(enums: Enum[]): void {
-    const inputObjectTypes = this.baseParser.dmmf.schema.inputObjectTypes.prisma.filter(
-      (inputType) => !inputType.name.toLowerCase().includes("unchecked")
-    );
+    const inputTypes: { fields: DMMF.SchemaArg[]; name: string }[] = [];
+
+    this.baseParser.dmmf.schema.inputObjectTypes.prisma
+      .filter((inputType) => !inputType.name.toLowerCase().includes("unchecked"))
+      .forEach(({ fields, name }) => {
+        inputTypes.push({ fields, name });
+      });
+
+    this.baseParser.dmmf.schema.outputObjectTypes.prisma
+      .filter(({ name }) => name === OperationType.Mutation || name === OperationType.Query)
+      .forEach(({ fields }) => {
+        fields
+          .filter(({ name }) => {
+            if (
+              this.baseParser.dmmf.mappings.otherOperations.read.includes(name) ||
+              this.baseParser.dmmf.mappings.otherOperations.write.includes(name)
+            ) {
+              return false;
+            }
+
+            return true;
+          })
+          .forEach(({ args, name }) => {
+            inputTypes.push({ fields: args, name: this.baseParser.getInputTypeName(name) });
+          });
+      });
 
     // eslint-disable-next-line max-lines-per-function
-    inputObjectTypes.forEach(({ name, fields: modelFields }) => {
+    inputTypes.forEach(({ name, fields: modelFields }) => {
       const fields: Field[] = [];
       let enumImports: Set<string> = new Set();
       let graphqlScalarImports: Set<string> = new Set();
@@ -73,11 +98,11 @@ export class InputTypeHandler extends BaseHandler {
       const nestJSImports: Set<string> = new Set();
 
       modelFields.forEach((field) => {
-        const inputTypes = field.inputTypes.filter(
+        const fieldInputTypes = field.inputTypes.filter(
           (inputType) => !inputType.type.toString().toLowerCase().includes("unchecked")
         );
 
-        const currentInputType = this.baseParser.getInputType(inputTypes);
+        const currentInputType = this.baseParser.getInputType(fieldInputTypes);
 
         const parsedField = this.baseParser.parseField({
           enums,
@@ -89,7 +114,7 @@ export class InputTypeHandler extends BaseHandler {
           type: parsedField.graphQLType,
         });
 
-        inputTypes.forEach(({ location, type }) => {
+        fieldInputTypes.forEach(({ location, type }) => {
           if (this.baseParser.getEnumName(type) === parsedField.graphQLType) {
             enumImports = this.baseParser.getEnumImports({ enumImports, field: { location, type } });
           }

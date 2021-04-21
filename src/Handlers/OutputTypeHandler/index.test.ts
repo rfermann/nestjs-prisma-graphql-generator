@@ -25,6 +25,7 @@ describe("OutputTypeHandler", () => {
 
     const config: GeneratorConfig = {
       basePath: `${process.cwd()}/fixtures/outputTypeHandler/fixtures/output1`,
+      inputArgumentsName: "",
       paths: {
         enums: "enums",
         inputTypes: "inputTypes",
@@ -70,6 +71,7 @@ describe("OutputTypeHandler", () => {
 
     const config: GeneratorConfig = {
       basePath: `${process.cwd()}/fixtures/outputTypeHandler/fixtures/output2`,
+      inputArgumentsName: "",
       paths: {
         enums: "enums",
         inputTypes: "inputTypes",

@@ -25,6 +25,7 @@ describe("InputTypeHandler", () => {
 
     const config: GeneratorConfig = {
       basePath: `${process.cwd()}/fixtures/inputTypeHandler/fixtures/output1`,
+      inputArgumentsName: "",
       paths: {
         enums: "enums",
         inputTypes: "inputTypes",
@@ -66,10 +67,11 @@ describe("InputTypeHandler", () => {
   });
 
   it("should parse input types and create correct user input files from datamodel", async () => {
-    expect.assertions(16);
+    expect.assertions(22);
 
     const config: GeneratorConfig = {
       basePath: `${process.cwd()}/fixtures/inputTypeHandler/fixtures/output2`,
+      inputArgumentsName: "input",
       paths: {
         enums: "enums",
         inputTypes: "inputTypes",

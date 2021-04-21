@@ -1,5 +1,6 @@
 import type { DMMF } from "@prisma/generator-helper";
 
+import type { GeneratorConfig } from "../../../GeneratorConfig";
 import type { Enum, Field } from "../../../types";
 import { NestJSTypes } from "../../../types";
 
@@ -26,6 +27,8 @@ interface TSFieldOptions {
 }
 
 export class BaseParser {
+  readonly config: GeneratorConfig;
+
   readonly dmmf: DMMF.Document;
 
   readonly graphqlScalarImports = new Set(["ByteResolver"]);
@@ -48,7 +51,8 @@ export class BaseParser {
 
   readonly prismaImport = "Prisma";
 
-  constructor(dmmf: DMMF.Document) {
+  constructor(config: GeneratorConfig, dmmf: DMMF.Document) {
+    this.config = config;
     this.dmmf = dmmf;
 
     this.dmmf.schema.inputObjectTypes.prisma.forEach(({ name }) => {
@@ -133,6 +137,10 @@ export class BaseParser {
     };
   }
 
+  getInputTypeName(name: string): string {
+    return `${this.pascalCase(name)}${this.pascalCase(this.config.inputArgumentsName)}`;
+  }
+
   getJsonImports({
     field: { location, type },
     jsonImports,
@@ -167,9 +175,10 @@ export class BaseParser {
   getModelName(input: string): string | undefined {
     // eslint-disable-next-line @typescript-eslint/init-declarations
     let modelName: ReturnType<BaseParser["getModelName"]>;
+    const cleansedInput = input.replace(this.pascalCase(this.config.inputArgumentsName), "");
 
     this.modelsList.forEach((model) => {
-      if (input.startsWith(model) || input.endsWith(model)) {
+      if (cleansedInput.startsWith(model) || cleansedInput.endsWith(model)) {
         modelName = model;
       }
     });
@@ -226,6 +235,11 @@ export class BaseParser {
     }
 
     return inputType;
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  pascalCase(word: string): string {
+    return `${word.charAt(0).toLocaleUpperCase()}${word.slice(1)}`;
   }
 
   // eslint-disable-next-line class-methods-use-this

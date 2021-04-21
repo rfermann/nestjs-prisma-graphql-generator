@@ -24,6 +24,7 @@ describe("EnumHandler", () => {
 
     const config: GeneratorConfig = {
       basePath: `${process.cwd()}/fixtures/enumHandler/fixtures/output1`,
+      inputArgumentsName: "",
       paths: {
         enums: "./enum",
         inputTypes: "",
@@ -60,6 +61,7 @@ describe("EnumHandler", () => {
 
     const config: GeneratorConfig = {
       basePath: `${process.cwd()}/fixtures/enumHandler/fixtures/output2`,
+      inputArgumentsName: "",
       paths: {
         enums: "./enum",
         inputTypes: "",
@@ -92,6 +94,7 @@ describe("EnumHandler", () => {
 
     const config: GeneratorConfig = {
       basePath: `${process.cwd()}/fixtures/enumHandler/fixtures/output3`,
+      inputArgumentsName: "",
       paths: {
         enums: "./enum",
         inputTypes: "",
@@ -153,6 +156,7 @@ describe("EnumHandler", () => {
 
     const config: GeneratorConfig = {
       basePath: `${process.cwd()}/fixtures/enumHandler/fixtures/output4`,
+      inputArgumentsName: "",
       paths: {
         enums: "./enum",
         inputTypes: "",

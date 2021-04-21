@@ -16,11 +16,13 @@ interface GeneratorOptions {
 export class GeneratorConfig {
   readonly basePath: string;
 
+  readonly inputArgumentsName: string;
+
   readonly paths: Paths;
 
   readonly prismaClientImportPath: string;
 
-  constructor({ generator: { output }, otherGenerators }: GeneratorOptions) {
+  constructor({ generator: { config, output }, otherGenerators }: GeneratorOptions) {
     if (output === null) {
       throw new Error("Please define an output directory");
     }
@@ -40,5 +42,6 @@ export class GeneratorConfig {
       shared: "shared",
     };
     this.prismaClientImportPath = prismaClientPath.output.value;
+    this.inputArgumentsName = config.inputArgumentsName || "input";
   }
 }

@@ -41,7 +41,7 @@ export class OutputTypeHandler extends BaseHandler {
         }
 
         if (outputTypeImports && outputTypeImports.length > 0) {
-          this.baseFileGenerator.addTypeImports({
+          this.baseFileGenerator.addOutputTypeImports({
             model,
             sourceFile,
             types: outputTypeImports,

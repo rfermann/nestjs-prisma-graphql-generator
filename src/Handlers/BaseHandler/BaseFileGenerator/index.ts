@@ -59,6 +59,34 @@ export class BaseFileGenerator {
     });
   }
 
+  addInputTypeImports({ sourceFile, types, model }: { model?: string; sourceFile: SourceFile; types: string[] }): void {
+    types.sort(comparePrimitiveValues).forEach((type) => {
+      let moduleSpecifier = "";
+      const currentModel = this._baseParser.getModelName(type);
+
+      if (model && model === currentModel) {
+        moduleSpecifier = `.`;
+      }
+
+      if (model && currentModel && model !== currentModel) {
+        moduleSpecifier = `../../${currentModel}/${this._config.paths.inputTypes}`;
+      }
+
+      if (!model && !currentModel) {
+        moduleSpecifier = `.`;
+      }
+
+      if (model && !currentModel) {
+        moduleSpecifier = `../../${this._config.paths.shared}/${this._config.paths.inputTypes}`;
+      }
+
+      sourceFile.addImportDeclaration({
+        moduleSpecifier: `${moduleSpecifier}/${type}`,
+        namedImports: [type],
+      });
+    });
+  }
+
   // eslint-disable-next-line class-methods-use-this
   addJsonImports({ sourceFile }: { sourceFile: SourceFile }): void {
     sourceFile.addImportDeclaration({
@@ -107,7 +135,15 @@ export class BaseFileGenerator {
     nestJSImportDeclaration.addNamedImports(Array.from(new Set(imports)).sort(comparePrimitiveValues));
   }
 
-  addTypeImports({ sourceFile, types, model }: { model?: string; sourceFile: SourceFile; types: string[] }): void {
+  addOutputTypeImports({
+    sourceFile,
+    types,
+    model,
+  }: {
+    model?: string;
+    sourceFile: SourceFile;
+    types: string[];
+  }): void {
     types.sort(comparePrimitiveValues).forEach((type) => {
       let moduleSpecifier = "";
       const currentModel = this._baseParser.getModelName(type);
@@ -116,17 +152,17 @@ export class BaseFileGenerator {
         moduleSpecifier = `.`;
       }
 
-      if (model && currentModel && model !== currentModel) {
-        moduleSpecifier = `../../${currentModel}/${this._config.paths.inputTypes}`;
-      }
+      // if (model && currentModel && model !== currentModel) {
+      //   moduleSpecifier = `../../${currentModel}/${this._config.paths.inputTypes}`;
+      // }
 
-      if (!model && !currentModel) {
-        moduleSpecifier = `.`;
-      }
+      // if (!model && !currentModel) {
+      //   moduleSpecifier = `.`;
+      // }
 
-      if (model && !currentModel) {
-        moduleSpecifier = `../../${this._config.paths.shared}/${this._config.paths.inputTypes}`;
-      }
+      // if (model && !currentModel) {
+      //   moduleSpecifier = `../../${this._config.paths.shared}/${this._config.paths.inputTypes}`;
+      // }
 
       sourceFile.addImportDeclaration({
         moduleSpecifier: `${moduleSpecifier}/${type}`,

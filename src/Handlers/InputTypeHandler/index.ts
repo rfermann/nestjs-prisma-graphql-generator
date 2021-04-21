@@ -42,7 +42,7 @@ export class InputTypeHandler extends BaseHandler {
         }
 
         if (inputTypeImports && inputTypeImports.length > 0) {
-          this.baseFileGenerator.addTypeImports({
+          this.baseFileGenerator.addInputTypeImports({
             model,
             sourceFile,
             types: inputTypeImports,

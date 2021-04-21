@@ -2702,6 +2702,7 @@ export class DeleteOneUserInput {
 
 exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 6`] = `
 "import { Field, InputType, Int } from \\"@nestjs/graphql\\";
+import { UserScalarFieldEnum } from \\"../../enums\\";
 import { UserOrderByInput } from \\"./UserOrderByInput\\";
 import { UserWhereInput } from \\"./UserWhereInput\\";
 import { UserWhereUniqueInput } from \\"./UserWhereUniqueInput\\";
@@ -2745,6 +2746,7 @@ export class FindFirstUserInput {
 
 exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 7`] = `
 "import { Field, InputType, Int } from \\"@nestjs/graphql\\";
+import { UserScalarFieldEnum } from \\"../../enums\\";
 import { UserOrderByInput } from \\"./UserOrderByInput\\";
 import { UserWhereInput } from \\"./UserWhereInput\\";
 import { UserWhereUniqueInput } from \\"./UserWhereUniqueInput\\";
@@ -2804,6 +2806,7 @@ export class FindUniqueUserInput {
 
 exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 9`] = `
 "import { Field, InputType, Int } from \\"@nestjs/graphql\\";
+import { UserScalarFieldEnum } from \\"../../enums\\";
 import { UserOrderByInput } from \\"./UserOrderByInput\\";
 import { UserScalarWhereWithAggregatesInput } from \\"./UserScalarWhereWithAggregatesInput\\";
 import { UserWhereInput } from \\"./UserWhereInput\\";

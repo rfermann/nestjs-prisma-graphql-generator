@@ -114,8 +114,10 @@ export class InputTypeHandler extends BaseHandler {
           type: parsedField.graphQLType,
         });
 
+        const baseGraphqlType = parsedField.graphQLType.replace("[", "").replace("]", "");
+
         fieldInputTypes.forEach(({ location, type }) => {
-          if (this.baseParser.getEnumName(type) === parsedField.graphQLType) {
+          if (this.baseParser.getEnumName(type) === baseGraphqlType) {
             enumImports = this.baseParser.getEnumImports({ enumImports, field: { location, type } });
           }
 
@@ -125,8 +127,6 @@ export class InputTypeHandler extends BaseHandler {
             tsType: parsedField.tsType,
           });
         });
-
-        const baseGraphqlType = parsedField.graphQLType.replace("[", "").replace("]", "");
 
         // prevent a type from importing itself
         if (name === baseGraphqlType) {
@@ -139,11 +139,11 @@ export class InputTypeHandler extends BaseHandler {
 
         graphqlScalarImports = this.baseParser.getGraphqlScalarImports({
           graphqlScalarImports,
-          type: parsedField.graphQLType,
+          type: baseGraphqlType,
         });
 
-        if (this.baseParser.nestJSImports.has(parsedField.graphQLType)) {
-          nestJSImports.add(parsedField.graphQLType);
+        if (this.baseParser.nestJSImports.has(baseGraphqlType)) {
+          nestJSImports.add(baseGraphqlType);
         }
 
         fields.push(parsedField);

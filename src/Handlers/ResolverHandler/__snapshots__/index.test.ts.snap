@@ -1,0 +1,308 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ResolverHandler should parse resolvers and create correct resolver files from datamodel 1`] = `
+"import { Args, Query, Resolver } from \\"@nestjs/graphql\\";
+import { } from \\"\\";
+import { User } from \\"../../User/model\\";
+import { AggregateUser } from \\"../inputTypes/AggregateUser\\";
+import { AggregateUser } from \\"./AggregateUser\\";
+import { Prisma } from \\"@prisma/client\\";
+
+@Resolver(() => User, {
+  isAbstract: false,
+})
+export class AggregateUserResolver {
+  private readonly _prismaService;
+
+  constructor(prismaService) {
+    this._prismaService = prismaService;
+  }
+
+  @Query(() => AggregateUser, {
+    nullable: false
+  })
+  async aggregateUser(@Args(\\"\\", { nullable: true }) : AggregateUser): Promise<Prisma.GetUserAggregateType<AggregateUser>> {
+    return this._prismaService.user.aggregate({ ... })
+  }
+}
+"
+`;
+
+exports[`ResolverHandler should parse resolvers and create correct resolver files from datamodel 2`] = `
+"import { Args, Mutation, Resolver } from \\"@nestjs/graphql\\";
+import { } from \\"\\";
+import { User } from \\"../../User/model\\";
+import { CreateManyUser } from \\"../inputTypes/CreateManyUser\\";
+import { AffectedRowsOutput } from \\"../../shared/outputTypes/AffectedRowsOutput\\";
+
+@Resolver(() => User, {
+  isAbstract: false,
+})
+export class CreateManyUserResolver {
+  private readonly _prismaService;
+
+  constructor(prismaService) {
+    this._prismaService = prismaService;
+  }
+
+  @Mutation(() => AffectedRowsOutput, {
+    nullable: false
+  })
+  async createManyUser(@Args(\\"\\", { nullable: true }) : CreateManyUser): Promise<AffectedRowsOutput | null> {
+    return this._prismaService.user.createMany({ ... })
+  }
+}
+"
+`;
+
+exports[`ResolverHandler should parse resolvers and create correct resolver files from datamodel 3`] = `
+"import { Args, Mutation, Resolver } from \\"@nestjs/graphql\\";
+import { } from \\"\\";
+import { User } from \\"../../User/model\\";
+import { CreateOneUser } from \\"../inputTypes/CreateOneUser\\";
+
+@Resolver(() => User, {
+  isAbstract: false,
+})
+export class CreateOneUserResolver {
+  private readonly _prismaService;
+
+  constructor(prismaService) {
+    this._prismaService = prismaService;
+  }
+
+  @Mutation(() => User, {
+    nullable: false
+  })
+  async createOneUser(@Args(\\"\\", { nullable: true }) : CreateOneUser): Promise<User | null> {
+    return this._prismaService.user.create({ ... })
+  }
+}
+"
+`;
+
+exports[`ResolverHandler should parse resolvers and create correct resolver files from datamodel 4`] = `
+"import { Args, Mutation, Resolver } from \\"@nestjs/graphql\\";
+import { } from \\"\\";
+import { User } from \\"../../User/model\\";
+import { DeleteManyUser } from \\"../inputTypes/DeleteManyUser\\";
+import { AffectedRowsOutput } from \\"../../shared/outputTypes/AffectedRowsOutput\\";
+
+@Resolver(() => User, {
+  isAbstract: false,
+})
+export class DeleteManyUserResolver {
+  private readonly _prismaService;
+
+  constructor(prismaService) {
+    this._prismaService = prismaService;
+  }
+
+  @Mutation(() => AffectedRowsOutput, {
+    nullable: false
+  })
+  async deleteManyUser(@Args(\\"\\", { nullable: true }) : DeleteManyUser): Promise<AffectedRowsOutput | null> {
+    return this._prismaService.user.deleteMany({ ... })
+  }
+}
+"
+`;
+
+exports[`ResolverHandler should parse resolvers and create correct resolver files from datamodel 5`] = `
+"import { Args, Mutation, Resolver } from \\"@nestjs/graphql\\";
+import { } from \\"\\";
+import { User } from \\"../../User/model\\";
+import { DeleteOneUser } from \\"../inputTypes/DeleteOneUser\\";
+
+@Resolver(() => User, {
+  isAbstract: false,
+})
+export class DeleteOneUserResolver {
+  private readonly _prismaService;
+
+  constructor(prismaService) {
+    this._prismaService = prismaService;
+  }
+
+  @Mutation(() => User, {
+    nullable: true
+  })
+  async deleteOneUser(@Args(\\"\\", { nullable: true }) : DeleteOneUser): Promise<User | null> {
+    return this._prismaService.user.delete({ ... })
+  }
+}
+"
+`;
+
+exports[`ResolverHandler should parse resolvers and create correct resolver files from datamodel 6`] = `
+"import { Args, Query, Resolver } from \\"@nestjs/graphql\\";
+import { } from \\"\\";
+import { User } from \\"../../User/model\\";
+import { FindFirstUser } from \\"../inputTypes/FindFirstUser\\";
+
+@Resolver(() => User, {
+  isAbstract: false,
+})
+export class FindFirstUserResolver {
+  private readonly _prismaService;
+
+  constructor(prismaService) {
+    this._prismaService = prismaService;
+  }
+
+  @Query(() => User, {
+    nullable: true
+  })
+  async findFirstUser(@Args(\\"\\", { nullable: true }) : FindFirstUser): Promise<User | null> {
+    return this._prismaService.user.findFirst({ ... })
+  }
+}
+"
+`;
+
+exports[`ResolverHandler should parse resolvers and create correct resolver files from datamodel 7`] = `
+"import { Args, Query, Resolver } from \\"@nestjs/graphql\\";
+import { } from \\"\\";
+import { User } from \\"../../User/model\\";
+import { FindManyUser } from \\"../inputTypes/FindManyUser\\";
+
+@Resolver(() => User, {
+  isAbstract: false,
+})
+export class FindManyUserResolver {
+  private readonly _prismaService;
+
+  constructor(prismaService) {
+    this._prismaService = prismaService;
+  }
+
+  @Query(() => [User], {
+    nullable: false
+  })
+  async findManyUser(@Args(\\"\\", { nullable: true }) : FindManyUser): Promise<User[] | null> {
+    return this._prismaService.user.findMany({ ... })
+  }
+}
+"
+`;
+
+exports[`ResolverHandler should parse resolvers and create correct resolver files from datamodel 8`] = `
+"import { Args, Query, Resolver } from \\"@nestjs/graphql\\";
+import { } from \\"\\";
+import { User } from \\"../../User/model\\";
+import { FindUniqueUser } from \\"../inputTypes/FindUniqueUser\\";
+
+@Resolver(() => User, {
+  isAbstract: false,
+})
+export class FindUniqueUserResolver {
+  private readonly _prismaService;
+
+  constructor(prismaService) {
+    this._prismaService = prismaService;
+  }
+
+  @Query(() => User, {
+    nullable: true
+  })
+  async findUniqueUser(@Args(\\"\\", { nullable: true }) : FindUniqueUser): Promise<User | null> {
+    return this._prismaService.user.findUnique({ ... })
+  }
+}
+"
+`;
+
+exports[`ResolverHandler should parse resolvers and create correct resolver files from datamodel 9`] = `
+"import { Args, Mutation, Resolver } from \\"@nestjs/graphql\\";
+import { } from \\"\\";
+import { User } from \\"../../User/model\\";
+import { UpdateManyUser } from \\"../inputTypes/UpdateManyUser\\";
+import { AffectedRowsOutput } from \\"../../shared/outputTypes/AffectedRowsOutput\\";
+
+@Resolver(() => User, {
+  isAbstract: false,
+})
+export class UpdateManyUserResolver {
+  private readonly _prismaService;
+
+  constructor(prismaService) {
+    this._prismaService = prismaService;
+  }
+
+  @Mutation(() => AffectedRowsOutput, {
+    nullable: false
+  })
+  async updateManyUser(@Args(\\"\\", { nullable: true }) : UpdateManyUser): Promise<AffectedRowsOutput | null> {
+    return this._prismaService.user.updateMany({ ... })
+  }
+}
+"
+`;
+
+exports[`ResolverHandler should parse resolvers and create correct resolver files from datamodel 10`] = `
+"import { Args, Mutation, Resolver } from \\"@nestjs/graphql\\";
+import { } from \\"\\";
+import { User } from \\"../../User/model\\";
+import { UpdateOneUser } from \\"../inputTypes/UpdateOneUser\\";
+
+@Resolver(() => User, {
+  isAbstract: false,
+})
+export class UpdateOneUserResolver {
+  private readonly _prismaService;
+
+  constructor(prismaService) {
+    this._prismaService = prismaService;
+  }
+
+  @Mutation(() => User, {
+    nullable: true
+  })
+  async updateOneUser(@Args(\\"\\", { nullable: true }) : UpdateOneUser): Promise<User | null> {
+    return this._prismaService.user.update({ ... })
+  }
+}
+"
+`;
+
+exports[`ResolverHandler should parse resolvers and create correct resolver files from datamodel 11`] = `
+"import { Args, Mutation, Resolver } from \\"@nestjs/graphql\\";
+import { } from \\"\\";
+import { User } from \\"../../User/model\\";
+import { UpsertOneUser } from \\"../inputTypes/UpsertOneUser\\";
+
+@Resolver(() => User, {
+  isAbstract: false,
+})
+export class UpsertOneUserResolver {
+  private readonly _prismaService;
+
+  constructor(prismaService) {
+    this._prismaService = prismaService;
+  }
+
+  @Mutation(() => User, {
+    nullable: false
+  })
+  async upsertOneUser(@Args(\\"\\", { nullable: true }) : UpsertOneUser): Promise<User | null> {
+    return this._prismaService.user.upsert({ ... })
+  }
+}
+"
+`;
+
+exports[`ResolverHandler should parse resolvers and create correct resolver files from datamodel 12`] = `
+Array [
+  "AggregateUserResolver.ts",
+  "CreateManyUserResolver.ts",
+  "CreateOneUserResolver.ts",
+  "DeleteManyUserResolver.ts",
+  "DeleteOneUserResolver.ts",
+  "FindFirstUserResolver.ts",
+  "FindManyUserResolver.ts",
+  "FindUniqueUserResolver.ts",
+  "UpdateManyUserResolver.ts",
+  "UpdateOneUserResolver.ts",
+  "UpsertOneUserResolver.ts",
+]
+`;

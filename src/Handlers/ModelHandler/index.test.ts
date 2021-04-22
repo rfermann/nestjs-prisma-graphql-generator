@@ -25,15 +25,19 @@ describe("ModelHandler", () => {
 
     const config: GeneratorConfig = {
       basePath: `${process.cwd()}/fixtures/modelHandler/fixtures/output3`,
+      includePrismaSelect: false,
       inputArgumentsName: "",
       paths: {
         enums: "enums",
         inputTypes: "",
         model: "model",
         outputTypes: "",
+        resolvers: "",
         shared: "",
       },
       prismaClientImportPath: `${process.cwd()}/node_modules/@prisma/client`,
+      prismaServiceImport: "",
+      prismaServiceImportPath: "",
     };
 
     const enumHandler = new EnumHandler({

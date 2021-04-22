@@ -59,7 +59,17 @@ export class BaseFileGenerator {
     });
   }
 
-  addInputTypeImports({ sourceFile, types, model }: { model?: string; sourceFile: SourceFile; types: string[] }): void {
+  addInputTypeImports({
+    isResolver = false,
+    model,
+    sourceFile,
+    types,
+  }: {
+    isResolver?: boolean;
+    model?: string;
+    sourceFile: SourceFile;
+    types: string[];
+  }): void {
     types.sort(comparePrimitiveValues).forEach((type) => {
       let moduleSpecifier = "";
       const currentModel = this._baseParser.getModelName(type);
@@ -78,6 +88,10 @@ export class BaseFileGenerator {
 
       if (model && !currentModel) {
         moduleSpecifier = `../../${this._config.paths.shared}/${this._config.paths.inputTypes}`;
+      }
+
+      if (isResolver) {
+        moduleSpecifier = `../${this._config.paths.inputTypes}`;
       }
 
       sourceFile.addImportDeclaration({
@@ -108,6 +122,10 @@ export class BaseFileGenerator {
         moduleSpecifier = `../${model}/model`;
       }
 
+      if (type === TypeEnum.Resolver) {
+        moduleSpecifier = `../../${model}/model`;
+      }
+
       sourceFile.addImportDeclaration({
         moduleSpecifier,
         namedImports: [model],
@@ -136,33 +154,35 @@ export class BaseFileGenerator {
   }
 
   addOutputTypeImports({
+    isResolver = false,
     sourceFile,
     types,
     model,
   }: {
+    isResolver?: boolean;
     model?: string;
     sourceFile: SourceFile;
     types: string[];
   }): void {
     types.sort(comparePrimitiveValues).forEach((type) => {
+      if (type === model) {
+        return;
+      }
+
       let moduleSpecifier = "";
       const currentModel = this._baseParser.getModelName(type);
 
       if (model && model === currentModel) {
-        moduleSpecifier = `.`;
+        if (isResolver) {
+          moduleSpecifier = `../${this._config.paths.outputTypes}`;
+        } else {
+          moduleSpecifier = `.`;
+        }
       }
 
-      // if (model && currentModel && model !== currentModel) {
-      //   moduleSpecifier = `../../${currentModel}/${this._config.paths.inputTypes}`;
-      // }
-
-      // if (!model && !currentModel) {
-      //   moduleSpecifier = `.`;
-      // }
-
-      // if (model && !currentModel) {
-      //   moduleSpecifier = `../../${this._config.paths.shared}/${this._config.paths.inputTypes}`;
-      // }
+      if (model && !currentModel) {
+        moduleSpecifier = `../../${this._config.paths.shared}/${this._config.paths.outputTypes}`;
+      }
 
       sourceFile.addImportDeclaration({
         moduleSpecifier: `${moduleSpecifier}/${type}`,
@@ -181,17 +201,22 @@ export class BaseFileGenerator {
   getClassDecorator({
     decoratorType,
     documentation,
+    isAbstract = true,
+    returnType,
   }: {
     decoratorType: ObjectTypes;
     documentation?: string;
+    isAbstract?: boolean;
+    returnType?: string;
   }): OptionalKind<DecoratorStructure>[] {
     return [
       {
         arguments: [
           (writer) =>
             writer
-              .write("{")
-              .writeLine("isAbstract: true,")
+              .conditionalWriteLine(typeof returnType !== "string", "{")
+              .conditionalWriteLine(typeof returnType === "string", `() => ${returnType}, {`)
+              .writeLine(`isAbstract: ${isAbstract},`)
               .conditionalWriteLine(typeof documentation === "string", `description: "${documentation}"`)
               .write("}"),
         ],

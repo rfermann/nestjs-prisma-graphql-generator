@@ -4,7 +4,9 @@ import { GeneratorConfig } from ".";
 
 const generatorConfig: PrismaGeneratorConfig = {
   binaryTargets: [],
-  config: {},
+  config: {
+    prismaServiceImportPath: "nestjs-prisma",
+  },
   name: "client",
   output: {
     fromEnvVar: null,
@@ -16,7 +18,9 @@ const generatorConfig: PrismaGeneratorConfig = {
 
 const prismaGenerator: PrismaGeneratorConfig = {
   binaryTargets: [],
-  config: {},
+  config: {
+    prismaServiceImportPath: "nestjs-prisma",
+  },
   name: "client",
   output: {
     fromEnvVar: null,

@@ -24,15 +24,19 @@ describe("EnumHandler", () => {
 
     const config: GeneratorConfig = {
       basePath: `${process.cwd()}/fixtures/enumHandler/fixtures/output1`,
+      includePrismaSelect: false,
       inputArgumentsName: "",
       paths: {
         enums: "./enum",
         inputTypes: "",
         model: "model",
         outputTypes: "",
+        resolvers: "",
         shared: "",
       },
       prismaClientImportPath: `${process.cwd()}/node_modules/@prisma/client`,
+      prismaServiceImport: "",
+      prismaServiceImportPath: "",
     };
 
     const enumHandler = new EnumHandler({
@@ -61,15 +65,19 @@ describe("EnumHandler", () => {
 
     const config: GeneratorConfig = {
       basePath: `${process.cwd()}/fixtures/enumHandler/fixtures/output2`,
+      includePrismaSelect: false,
       inputArgumentsName: "",
       paths: {
         enums: "./enum",
         inputTypes: "",
         model: "model",
         outputTypes: "",
+        resolvers: "",
         shared: "",
       },
       prismaClientImportPath: "",
+      prismaServiceImport: "",
+      prismaServiceImportPath: "",
     };
 
     const enumHandler = new EnumHandler({
@@ -94,15 +102,19 @@ describe("EnumHandler", () => {
 
     const config: GeneratorConfig = {
       basePath: `${process.cwd()}/fixtures/enumHandler/fixtures/output3`,
+      includePrismaSelect: false,
       inputArgumentsName: "",
       paths: {
         enums: "./enum",
         inputTypes: "",
         model: "model",
         outputTypes: "",
+        resolvers: "",
         shared: "",
       },
       prismaClientImportPath: `${process.cwd()}/node_modules/@prisma/client`,
+      prismaServiceImport: "",
+      prismaServiceImportPath: "",
     };
 
     const enumHandler = new EnumHandler({
@@ -156,15 +168,19 @@ describe("EnumHandler", () => {
 
     const config: GeneratorConfig = {
       basePath: `${process.cwd()}/fixtures/enumHandler/fixtures/output4`,
+      includePrismaSelect: false,
       inputArgumentsName: "",
       paths: {
         enums: "./enum",
         inputTypes: "",
         model: "model",
         outputTypes: "",
+        resolvers: "",
         shared: "",
       },
       prismaClientImportPath: `${process.cwd()}/node_modules/@prisma/client`,
+      prismaServiceImport: "",
+      prismaServiceImportPath: "",
     };
 
     const enumHandler = new EnumHandler({

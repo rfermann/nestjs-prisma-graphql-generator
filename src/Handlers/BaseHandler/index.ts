@@ -10,7 +10,7 @@ interface HandlerOptions {
   dmmf: DMMF.Document;
 }
 
-export abstract class BaseHandler {
+abstract class BaseHandler {
   protected readonly baseFileGenerator: BaseFileGenerator;
 
   protected readonly baseParser: BaseParser;
@@ -23,3 +23,5 @@ export abstract class BaseHandler {
     this.baseFileGenerator = new BaseFileGenerator(this.baseParser, config);
   }
 }
+
+export { BaseHandler, HandlerOptions };

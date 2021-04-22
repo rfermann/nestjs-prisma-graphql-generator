@@ -25,15 +25,19 @@ describe("InputTypeHandler", () => {
 
     const config: GeneratorConfig = {
       basePath: `${process.cwd()}/fixtures/inputTypeHandler/fixtures/output1`,
+      includePrismaSelect: false,
       inputArgumentsName: "",
       paths: {
         enums: "enums",
         inputTypes: "inputTypes",
         model: "model",
         outputTypes: "outputTypes",
+        resolvers: "resolvers",
         shared: "shared",
       },
       prismaClientImportPath: `${process.cwd()}/node_modules/@prisma/client`,
+      prismaServiceImport: "",
+      prismaServiceImportPath: "",
     };
 
     const enumHandler = new EnumHandler({
@@ -71,15 +75,19 @@ describe("InputTypeHandler", () => {
 
     const config: GeneratorConfig = {
       basePath: `${process.cwd()}/fixtures/inputTypeHandler/fixtures/output2`,
+      includePrismaSelect: false,
       inputArgumentsName: "input",
       paths: {
         enums: "enums",
         inputTypes: "inputTypes",
         model: "model",
         outputTypes: "outputTypes",
+        resolvers: "resolvers",
         shared: "shared",
       },
       prismaClientImportPath: `${process.cwd()}/node_modules/@prisma/client`,
+      prismaServiceImport: "",
+      prismaServiceImportPath: "",
     };
 
     const enumHandler = new EnumHandler({

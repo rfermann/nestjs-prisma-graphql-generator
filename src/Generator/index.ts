@@ -9,6 +9,7 @@ import { EnumHandler } from "../Handlers/EnumHandler";
 import { InputTypeHandler } from "../Handlers/InputTypeHandler";
 import { ModelHandler } from "../Handlers/ModelHandler";
 import { OutputTypeHandler } from "../Handlers/OutputTypeHandler";
+import { ResolverHandler } from "../Handlers/ResolverHandler";
 import { importDmmf } from "../helpers";
 
 export class Generator {
@@ -35,6 +36,11 @@ export class Generator {
       parse: "Parsing Output Types",
       title: "Parsing and generating Output Types",
     },
+    resolvers: {
+      generate: "Generating Resolvers",
+      parse: "Parsing Resolvers",
+      title: "Parsing and generating Resolvers",
+    },
     title: "Generating NestJS integration",
   };
 
@@ -49,6 +55,8 @@ export class Generator {
   private _modelHandler!: ModelHandler;
 
   private _outputTypeHandler!: OutputTypeHandler;
+
+  private _resolverHandler!: ResolverHandler;
 
   constructor({ generator, otherGenerators }: GeneratorOptions) {
     this._config = new GeneratorConfig({ generator, otherGenerators });
@@ -137,6 +145,22 @@ export class Generator {
                             ]),
                           title: Generator.messages.outputTypes.title,
                         },
+                        {
+                          task: async () =>
+                            new Listr([
+                              {
+                                task: () => this._resolverHandler.parse(this._enumHandler.getEnums()),
+                                title: Generator.messages.resolvers.parse,
+                              },
+                              {
+                                task: async () => {
+                                  await this._resolverHandler.createFiles();
+                                },
+                                title: Generator.messages.resolvers.generate,
+                              },
+                            ]),
+                          title: Generator.messages.resolvers.title,
+                        },
                       ],
                       { concurrent: true }
                     ),
@@ -165,6 +189,7 @@ export class Generator {
     this._modelHandler = new ModelHandler({ config: this._config, dmmf: this._dmmf });
     this._inputTypeHandler = new InputTypeHandler({ config: this._config, dmmf: this._dmmf });
     this._outputTypeHandler = new OutputTypeHandler({ config: this._config, dmmf: this._dmmf });
+    this._resolverHandler = new ResolverHandler({ config: this._config, dmmf: this._dmmf });
 
     await this._initOutputFolder();
   }

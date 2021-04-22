@@ -43,12 +43,14 @@ interface Model extends InputType {
 }
 
 const enum NestJSTypes {
+  "Args" = "Args",
   "Field" = "Field",
   "Float" = "Float",
   "GraphQLISODateTime" = "GraphQLISODateTime",
   "GraphQLTimestamp" = "GraphQLTimestamp",
   "ID" = "ID",
   "ImportPath" = "@nestjs/graphql",
+  "Info" = "Info",
   "Int" = "Int",
   "RegisterEnumType" = "registerEnumType",
 }
@@ -56,6 +58,7 @@ const enum NestJSTypes {
 const enum ObjectTypes {
   "InputType" = "InputType",
   "ObjectType" = "ObjectType",
+  "Resolver" = "Resolver",
 }
 
 const enum OperationType {
@@ -67,10 +70,24 @@ interface OutputType extends InputType {
   outputTypeImports?: string[];
 }
 
+interface Resolver {
+  graphQLType: string;
+  inputType: string;
+  inputTypeImports?: string[];
+  isNullable: boolean;
+  model: string;
+  name: string;
+  operation: string;
+  operationType: OperationType;
+  resolverName: string;
+  returnType: string;
+}
+
 const enum TypeEnum {
   "InputType" = "InputType",
   "ModelType" = "ModelType",
   "OutputType" = "OutputType",
+  "Resolver" = "Resolver",
   "ResolverInputType" = "ResolverInputType",
 }
 
@@ -87,6 +104,6 @@ export {
   OperationType,
   OutputType,
   // ParserConstructorInput,
-  // Resolver,
+  Resolver,
   // ResolverInputType,
 };

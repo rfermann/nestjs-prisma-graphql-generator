@@ -59,6 +59,13 @@ export class BaseParser {
       this.inputTypeList.add(name);
     });
     this.modelsList = this.dmmf.datamodel.models.map(({ name }) => name);
+    this.dmmf.schema.outputObjectTypes.prisma.forEach((outputObjectType) => {
+      outputObjectType.fields.forEach(({ name }) => {
+        if (this.getModelName(name)) {
+          this.inputTypeList.add(this.getInputTypeName(name));
+        }
+      });
+    });
     this.dmmf.schema.outputObjectTypes.prisma.forEach(({ name }) => {
       this.outputTypeList.add(name);
     });
@@ -206,7 +213,7 @@ export class BaseParser {
       isNullable,
       isRequired,
       name,
-      tsType: this._parseTSFieldType({
+      tsType: this.parseTSFieldType({
         enums,
         field: { isList, location, type },
         fieldOptions: {
@@ -235,6 +242,61 @@ export class BaseParser {
     }
 
     return inputType;
+  }
+
+  parseTSFieldType({
+    enums,
+    field: { isList, location, type },
+    fieldOptions: { isInputType, isRequired },
+  }: {
+    enums: Enum[];
+    field: TSField;
+    fieldOptions: TSFieldOptions;
+  }): string {
+    let fieldType = "";
+
+    if (typeof type !== "string") {
+      throw new Error(`Unsupported field type : ${JSON.stringify(type)}`);
+    }
+
+    if (location === "enumTypes") {
+      if (enums.length < 1) {
+        throw new Error("Cannot read enums. Please make sure to pass a valid enum array to this function");
+      }
+
+      fieldType = enums
+        .find((e) => this.getEnumName(e.name) === this.getEnumName(type))
+        ?.values.map((value) => `"${value.name}"`)
+        .join(" | ") as string;
+    } else if (location === "inputObjectTypes" || location === "outputObjectTypes") {
+      fieldType = type;
+    } else if (location === "scalar") {
+      fieldType = this._mapScalarToTSType({ scalar: type });
+    } else {
+      throw new Error(`Unsupported field location: ${location}`);
+    }
+
+    if (this.jsonImports.has(fieldType)) {
+      fieldType = `${this.prismaImport}.${fieldType}`;
+    }
+
+    if (isList) {
+      if (fieldType.includes(" ")) {
+        fieldType = `Array<${fieldType}>`;
+      } else {
+        fieldType = `${fieldType}[]`;
+      }
+    }
+
+    if (!isRequired) {
+      if (isInputType) {
+        fieldType = `${fieldType} | undefined`;
+      } else {
+        fieldType = `${fieldType} | null`;
+      }
+    }
+
+    return fieldType;
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -292,60 +354,5 @@ export class BaseParser {
       default:
         throw new Error(`Unknown scalar type ${scalar}`);
     }
-  }
-
-  private _parseTSFieldType({
-    enums,
-    field: { isList, location, type },
-    fieldOptions: { isInputType, isRequired },
-  }: {
-    enums: Enum[];
-    field: TSField;
-    fieldOptions: TSFieldOptions;
-  }): string {
-    let fieldType = "";
-
-    if (typeof type !== "string") {
-      throw new Error(`Unsupported field type : ${JSON.stringify(type)}`);
-    }
-
-    if (location === "enumTypes") {
-      if (enums.length < 1) {
-        throw new Error("Cannot read enums. Please make sure to pass a valid enum array to this function");
-      }
-
-      fieldType = enums
-        .find((e) => this.getEnumName(e.name) === this.getEnumName(type))
-        ?.values.map((value) => `"${value.name}"`)
-        .join(" | ") as string;
-    } else if (location === "inputObjectTypes" || location === "outputObjectTypes") {
-      fieldType = type;
-    } else if (location === "scalar") {
-      fieldType = this._mapScalarToTSType({ scalar: type });
-    } else {
-      throw new Error(`Unsupported field location: ${location}`);
-    }
-
-    if (this.jsonImports.has(fieldType)) {
-      fieldType = `${this.prismaImport}.${fieldType}`;
-    }
-
-    if (isList) {
-      if (fieldType.includes(" ")) {
-        fieldType = `Array<${fieldType}>`;
-      } else {
-        fieldType = `${fieldType}[]`;
-      }
-    }
-
-    if (!isRequired) {
-      if (isInputType) {
-        fieldType = `${fieldType} | undefined`;
-      } else {
-        fieldType = `${fieldType} | null`;
-      }
-    }
-
-    return fieldType;
   }
 }

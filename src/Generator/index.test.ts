@@ -18,7 +18,9 @@ const findCompletedMessage = (values: string[], message: string) =>
 
 const generatorConfig: GeneratorConfig = {
   binaryTargets: [],
-  config: {},
+  config: {
+    prismaServiceImportPath: "nestjs-prisma",
+  },
   name: "client",
   output: {
     fromEnvVar: null,
@@ -81,7 +83,7 @@ describe("Generator", () => {
     expect([...folderList]).toStrictEqual(["enums", "Session", "shared", "User"]);
   });
   it("should log the correct actions", async () => {
-    expect.assertions(29);
+    expect.assertions(36);
 
     const generator = new Generator({
       datamodel: "",
@@ -107,6 +109,8 @@ describe("Generator", () => {
     const values = consoleLog.mock.calls.flat();
 
     consoleLog.mockRestore();
+
+    expect(values).toHaveLength(36);
 
     // expect starting and closing messages to appear in the correct order
     expect(values[0]).toMatch(getStartedMessage(Generator.messages.init));
@@ -144,5 +148,12 @@ describe("Generator", () => {
     expect(findCompletedMessage(values, Generator.messages.outputTypes.parse)).toHaveLength(1);
     expect(findStartedMessage(values, Generator.messages.outputTypes.generate)).toHaveLength(1);
     expect(findCompletedMessage(values, Generator.messages.outputTypes.generate)).toHaveLength(1);
+
+    expect(findStartedMessage(values, Generator.messages.resolvers.title)).toHaveLength(1);
+    expect(findCompletedMessage(values, Generator.messages.resolvers.title)).toHaveLength(1);
+    expect(findStartedMessage(values, Generator.messages.resolvers.parse)).toHaveLength(1);
+    expect(findCompletedMessage(values, Generator.messages.resolvers.parse)).toHaveLength(1);
+    expect(findStartedMessage(values, Generator.messages.resolvers.generate)).toHaveLength(1);
+    expect(findCompletedMessage(values, Generator.messages.resolvers.generate)).toHaveLength(1);
   });
 });

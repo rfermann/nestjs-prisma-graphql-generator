@@ -35,11 +35,28 @@ To use NestJS-Prisma-GraphQL-Generator, follow these steps:
 
 ## Configuration
 
-Create a new generator in your prisma schema:
+Create a new generator in your prisma schema and provide the import path of your prisma service:
 
 ```
 generator nestjs {
-  provider = "nestjs-prisma-graphql"
+  provider                = "nestjs-prisma-graphql"
+  prismaServiceImportPath = "@your/prisma-service"
+}
+```
+
+The following additional settings can be configured within the generator block of your prisma schema:
+
+- the input arguments name; default setting:  
+  `inputArgumentsName = input`
+- the named prisma service import; default setting:  
+  `prismaServiceImport = PrismaService`
+
+To enable the [Prisma Select](https://paljs.com/plugins/select/) integration, set `includePrismaSelect` to `true`:
+
+```
+generator nestjs {
+  provider            = "nestjs-prisma-graphql"
+  includePrismaSelect = true
 }
 ```
 
@@ -49,15 +66,18 @@ generator nestjs {
 - Models
 - Input Types
 - Output Types
+- Resolvers
 
 ## Usage
 
 All supported objects can be used as the regular NestJS GraphQL object equivalents.
 
+Resolvers can be imported on an individual base and used within the `providers` array of your modules
+
 ## Upcoming features
 
-- Resolvers
-- [Prisma Select](https://paljs.com/plugins/select/) integration
+- barrel files for easier imports
+- support for adding custom decorators to the generated objects
 
 ## Contributing to NestJS-Prisma-GraphQL-Generator
 

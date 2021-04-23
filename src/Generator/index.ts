@@ -5,12 +5,14 @@ import type { DMMF, GeneratorOptions } from "@prisma/generator-helper";
 import Listr from "listr";
 
 import { GeneratorConfig } from "../GeneratorConfig";
-import { BarrelFileHandler } from "../Handlers/BarrelFileHandler";
-import { EnumHandler } from "../Handlers/EnumHandler";
-import { InputTypeHandler } from "../Handlers/InputTypeHandler";
-import { ModelHandler } from "../Handlers/ModelHandler";
-import { OutputTypeHandler } from "../Handlers/OutputTypeHandler";
-import { ResolverHandler } from "../Handlers/ResolverHandler";
+import {
+  BarrelFileHandler,
+  EnumHandler,
+  InputTypeHandler,
+  ModelHandler,
+  OutputTypeHandler,
+  ResolverHandler,
+} from "../Handlers";
 import { importDmmf } from "../helpers";
 
 export class Generator {

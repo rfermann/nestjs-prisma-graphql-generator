@@ -111,6 +111,7 @@ export class ResolverHandler extends BaseHandler {
 
         if (this._getResolverName(outputType) !== name) {
           this.baseFileGenerator.addOutputTypeImports({
+            isResolver: true,
             model,
             sourceFile,
             types: [outputType],
@@ -222,7 +223,9 @@ export class ResolverHandler extends BaseHandler {
                 } })`
               )
               .conditionalWriteLine(
-                (!this.config.includePrismaSelect && !isAggregation) || isAggregation || isBatchOperation,
+                (!this.config.includePrismaSelect && !isAggregation) ||
+                  (!this.config.includePrismaSelect && isAggregation) ||
+                  isBatchOperation,
                 `return this._prismaService.${this._camelCase(model)}.${operation}({ ...${
                   this.config.inputArgumentsName
                 } })`

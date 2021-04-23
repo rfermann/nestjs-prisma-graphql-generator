@@ -5,7 +5,7 @@ exports[`ResolverHandler should parse resolvers and create correct resolver file
 import { } from \\"\\";
 import { User } from \\"../../User/model\\";
 import { AggregateUser } from \\"../inputTypes/AggregateUser\\";
-import { AggregateUser } from \\"./AggregateUser\\";
+import { AggregateUser } from \\"../outputTypes/AggregateUser\\";
 import { Prisma } from \\"@prisma/client\\";
 
 @Resolver(() => User, {

@@ -80,7 +80,7 @@ describe("Generator", () => {
       return 0;
     });
 
-    expect([...folderList]).toStrictEqual(["enums", "Session", "shared", "User"]);
+    expect([...folderList]).toStrictEqual(["enums", "index.ts", "Session", "shared", "User"]);
   });
   it("should log the correct actions", async () => {
     expect.assertions(36);

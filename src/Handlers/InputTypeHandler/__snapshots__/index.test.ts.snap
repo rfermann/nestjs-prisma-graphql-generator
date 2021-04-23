@@ -1,5 +1,63 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`InputTypeHandler should create correct barrel files for shared input types 1`] = `
+"export { BigIntFieldUpdateOperationsInput } from \\"./BigIntFieldUpdateOperationsInput\\";
+export { BigIntFilter } from \\"./BigIntFilter\\";
+export { BigIntWithAggregatesFilter } from \\"./BigIntWithAggregatesFilter\\";
+export { BoolFieldUpdateOperationsInput } from \\"./BoolFieldUpdateOperationsInput\\";
+export { BoolFilter } from \\"./BoolFilter\\";
+export { BoolWithAggregatesFilter } from \\"./BoolWithAggregatesFilter\\";
+export { BytesFieldUpdateOperationsInput } from \\"./BytesFieldUpdateOperationsInput\\";
+export { BytesFilter } from \\"./BytesFilter\\";
+export { BytesWithAggregatesFilter } from \\"./BytesWithAggregatesFilter\\";
+export { DateTimeFieldUpdateOperationsInput } from \\"./DateTimeFieldUpdateOperationsInput\\";
+export { DateTimeFilter } from \\"./DateTimeFilter\\";
+export { DateTimeWithAggregatesFilter } from \\"./DateTimeWithAggregatesFilter\\";
+export { DecimalFieldUpdateOperationsInput } from \\"./DecimalFieldUpdateOperationsInput\\";
+export { DecimalFilter } from \\"./DecimalFilter\\";
+export { DecimalWithAggregatesFilter } from \\"./DecimalWithAggregatesFilter\\";
+export { EnumUserTypeFieldUpdateOperationsInput } from \\"./EnumUserTypeFieldUpdateOperationsInput\\";
+export { EnumUserTypeFilter } from \\"./EnumUserTypeFilter\\";
+export { EnumUserTypeWithAggregatesFilter } from \\"./EnumUserTypeWithAggregatesFilter\\";
+export { FloatFieldUpdateOperationsInput } from \\"./FloatFieldUpdateOperationsInput\\";
+export { FloatFilter } from \\"./FloatFilter\\";
+export { FloatWithAggregatesFilter } from \\"./FloatWithAggregatesFilter\\";
+export { IntFieldUpdateOperationsInput } from \\"./IntFieldUpdateOperationsInput\\";
+export { IntFilter } from \\"./IntFilter\\";
+export { IntWithAggregatesFilter } from \\"./IntWithAggregatesFilter\\";
+export { JsonFilter } from \\"./JsonFilter\\";
+export { JsonWithAggregatesFilter } from \\"./JsonWithAggregatesFilter\\";
+export { NestedBigIntFilter } from \\"./NestedBigIntFilter\\";
+export { NestedBigIntWithAggregatesFilter } from \\"./NestedBigIntWithAggregatesFilter\\";
+export { NestedBoolFilter } from \\"./NestedBoolFilter\\";
+export { NestedBoolWithAggregatesFilter } from \\"./NestedBoolWithAggregatesFilter\\";
+export { NestedBytesFilter } from \\"./NestedBytesFilter\\";
+export { NestedBytesWithAggregatesFilter } from \\"./NestedBytesWithAggregatesFilter\\";
+export { NestedDateTimeFilter } from \\"./NestedDateTimeFilter\\";
+export { NestedDateTimeWithAggregatesFilter } from \\"./NestedDateTimeWithAggregatesFilter\\";
+export { NestedDecimalFilter } from \\"./NestedDecimalFilter\\";
+export { NestedDecimalWithAggregatesFilter } from \\"./NestedDecimalWithAggregatesFilter\\";
+export { NestedEnumUserTypeFilter } from \\"./NestedEnumUserTypeFilter\\";
+export { NestedEnumUserTypeWithAggregatesFilter } from \\"./NestedEnumUserTypeWithAggregatesFilter\\";
+export { NestedFloatFilter } from \\"./NestedFloatFilter\\";
+export { NestedFloatWithAggregatesFilter } from \\"./NestedFloatWithAggregatesFilter\\";
+export { NestedIntFilter } from \\"./NestedIntFilter\\";
+export { NestedIntNullableFilter } from \\"./NestedIntNullableFilter\\";
+export { NestedIntWithAggregatesFilter } from \\"./NestedIntWithAggregatesFilter\\";
+export { NestedJsonFilter } from \\"./NestedJsonFilter\\";
+export { NestedStringFilter } from \\"./NestedStringFilter\\";
+export { NestedStringNullableFilter } from \\"./NestedStringNullableFilter\\";
+export { NestedStringNullableWithAggregatesFilter } from \\"./NestedStringNullableWithAggregatesFilter\\";
+export { NestedStringWithAggregatesFilter } from \\"./NestedStringWithAggregatesFilter\\";
+export { NullableStringFieldUpdateOperationsInput } from \\"./NullableStringFieldUpdateOperationsInput\\";
+export { StringFieldUpdateOperationsInput } from \\"./StringFieldUpdateOperationsInput\\";
+export { StringFilter } from \\"./StringFilter\\";
+export { StringNullableFilter } from \\"./StringNullableFilter\\";
+export { StringNullableWithAggregatesFilter } from \\"./StringNullableWithAggregatesFilter\\";
+export { StringWithAggregatesFilter } from \\"./StringWithAggregatesFilter\\";
+"
+`;
+
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 1`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
 
@@ -37,7 +95,7 @@ export class BigIntFieldUpdateOperationsInput {
 
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 2`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
-import { NestedBigIntFilter } from \\"./NestedBigIntFilter\\";
+import { NestedBigIntFilter } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -88,10 +146,7 @@ export class BigIntFilter {
 
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 3`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
-import { NestedBigIntFilter } from \\"./NestedBigIntFilter\\";
-import { NestedBigIntWithAggregatesFilter } from \\"./NestedBigIntWithAggregatesFilter\\";
-import { NestedFloatFilter } from \\"./NestedFloatFilter\\";
-import { NestedIntFilter } from \\"./NestedIntFilter\\";
+import { NestedBigIntFilter, NestedBigIntWithAggregatesFilter, NestedFloatFilter, NestedIntFilter } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -182,7 +237,7 @@ export class BoolFieldUpdateOperationsInput {
 
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 5`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
-import { NestedBoolFilter } from \\"./NestedBoolFilter\\";
+import { NestedBoolFilter } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -203,9 +258,7 @@ export class BoolFilter {
 
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 6`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
-import { NestedBoolFilter } from \\"./NestedBoolFilter\\";
-import { NestedBoolWithAggregatesFilter } from \\"./NestedBoolWithAggregatesFilter\\";
-import { NestedIntFilter } from \\"./NestedIntFilter\\";
+import { NestedBoolFilter, NestedBoolWithAggregatesFilter, NestedIntFilter } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -258,7 +311,7 @@ export class BytesFieldUpdateOperationsInput {
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 8`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
 import { ByteResolver } from \\"graphql-scalars\\";
-import { NestedBytesFilter } from \\"./NestedBytesFilter\\";
+import { NestedBytesFilter } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -280,9 +333,7 @@ export class BytesFilter {
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 9`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
 import { ByteResolver } from \\"graphql-scalars\\";
-import { NestedBytesFilter } from \\"./NestedBytesFilter\\";
-import { NestedBytesWithAggregatesFilter } from \\"./NestedBytesWithAggregatesFilter\\";
-import { NestedIntFilter } from \\"./NestedIntFilter\\";
+import { NestedBytesFilter, NestedBytesWithAggregatesFilter, NestedIntFilter } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -333,7 +384,7 @@ export class DateTimeFieldUpdateOperationsInput {
 
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 11`] = `
 "import { Field, GraphQLISODateTime, InputType } from \\"@nestjs/graphql\\";
-import { NestedDateTimeFilter } from \\"./NestedDateTimeFilter\\";
+import { NestedDateTimeFilter } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -384,9 +435,7 @@ export class DateTimeFilter {
 
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 12`] = `
 "import { Field, GraphQLISODateTime, InputType } from \\"@nestjs/graphql\\";
-import { NestedDateTimeFilter } from \\"./NestedDateTimeFilter\\";
-import { NestedDateTimeWithAggregatesFilter } from \\"./NestedDateTimeWithAggregatesFilter\\";
-import { NestedIntFilter } from \\"./NestedIntFilter\\";
+import { NestedDateTimeFilter, NestedDateTimeWithAggregatesFilter, NestedIntFilter } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -487,7 +536,7 @@ export class DecimalFieldUpdateOperationsInput {
 
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 14`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
-import { NestedDecimalFilter } from \\"./NestedDecimalFilter\\";
+import { NestedDecimalFilter } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -538,9 +587,7 @@ export class DecimalFilter {
 
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 15`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
-import { NestedDecimalFilter } from \\"./NestedDecimalFilter\\";
-import { NestedDecimalWithAggregatesFilter } from \\"./NestedDecimalWithAggregatesFilter\\";
-import { NestedIntFilter } from \\"./NestedIntFilter\\";
+import { NestedDecimalFilter, NestedDecimalWithAggregatesFilter, NestedIntFilter } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -633,7 +680,7 @@ export class EnumUserTypeFieldUpdateOperationsInput {
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 17`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
 import { UserTypeEnum } from \\"../../enums\\";
-import { NestedEnumUserTypeFilter } from \\"./NestedEnumUserTypeFilter\\";
+import { NestedEnumUserTypeFilter } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -665,9 +712,7 @@ export class EnumUserTypeFilter {
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 18`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
 import { UserTypeEnum } from \\"../../enums\\";
-import { NestedEnumUserTypeFilter } from \\"./NestedEnumUserTypeFilter\\";
-import { NestedEnumUserTypeWithAggregatesFilter } from \\"./NestedEnumUserTypeWithAggregatesFilter\\";
-import { NestedIntFilter } from \\"./NestedIntFilter\\";
+import { NestedEnumUserTypeFilter, NestedEnumUserTypeWithAggregatesFilter, NestedIntFilter } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -748,7 +793,7 @@ export class FloatFieldUpdateOperationsInput {
 
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 20`] = `
 "import { Field, Float, InputType } from \\"@nestjs/graphql\\";
-import { NestedFloatFilter } from \\"./NestedFloatFilter\\";
+import { NestedFloatFilter } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -799,9 +844,7 @@ export class FloatFilter {
 
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 21`] = `
 "import { Field, Float, InputType } from \\"@nestjs/graphql\\";
-import { NestedFloatFilter } from \\"./NestedFloatFilter\\";
-import { NestedFloatWithAggregatesFilter } from \\"./NestedFloatWithAggregatesFilter\\";
-import { NestedIntFilter } from \\"./NestedIntFilter\\";
+import { NestedFloatFilter, NestedFloatWithAggregatesFilter, NestedIntFilter } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -912,7 +955,7 @@ export class IntFieldUpdateOperationsInput {
 
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 23`] = `
 "import { Field, InputType, Int } from \\"@nestjs/graphql\\";
-import { NestedIntFilter } from \\"./NestedIntFilter\\";
+import { NestedIntFilter } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -963,9 +1006,7 @@ export class IntFilter {
 
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 24`] = `
 "import { Field, InputType, Int } from \\"@nestjs/graphql\\";
-import { NestedFloatFilter } from \\"./NestedFloatFilter\\";
-import { NestedIntFilter } from \\"./NestedIntFilter\\";
-import { NestedIntWithAggregatesFilter } from \\"./NestedIntWithAggregatesFilter\\";
+import { NestedFloatFilter, NestedIntFilter, NestedIntWithAggregatesFilter } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -1065,8 +1106,7 @@ exports[`InputTypeHandler should parse input types and create correct shared fil
 "import { Field, InputType } from \\"@nestjs/graphql\\";
 import { Prisma } from \\"@prisma/client\\";
 import { GraphQLJSON } from \\"graphql-type-json\\";
-import { NestedIntFilter } from \\"./NestedIntFilter\\";
-import { NestedJsonFilter } from \\"./NestedJsonFilter\\";
+import { NestedIntFilter, NestedJsonFilter } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -1147,9 +1187,7 @@ export class NestedBigIntFilter {
 
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 28`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
-import { NestedBigIntFilter } from \\"./NestedBigIntFilter\\";
-import { NestedFloatFilter } from \\"./NestedFloatFilter\\";
-import { NestedIntFilter } from \\"./NestedIntFilter\\";
+import { NestedBigIntFilter, NestedFloatFilter, NestedIntFilter } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -1235,8 +1273,7 @@ export class NestedBoolFilter {
 
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 30`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
-import { NestedBoolFilter } from \\"./NestedBoolFilter\\";
-import { NestedIntFilter } from \\"./NestedIntFilter\\";
+import { NestedBoolFilter, NestedIntFilter } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -1284,8 +1321,7 @@ export class NestedBytesFilter {
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 32`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
 import { ByteResolver } from \\"graphql-scalars\\";
-import { NestedBytesFilter } from \\"./NestedBytesFilter\\";
-import { NestedIntFilter } from \\"./NestedIntFilter\\";
+import { NestedBytesFilter, NestedIntFilter } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -1361,8 +1397,7 @@ export class NestedDateTimeFilter {
 
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 34`] = `
 "import { Field, GraphQLISODateTime, InputType } from \\"@nestjs/graphql\\";
-import { NestedDateTimeFilter } from \\"./NestedDateTimeFilter\\";
-import { NestedIntFilter } from \\"./NestedIntFilter\\";
+import { NestedDateTimeFilter, NestedIntFilter } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -1468,8 +1503,7 @@ export class NestedDecimalFilter {
 
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 36`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
-import { NestedDecimalFilter } from \\"./NestedDecimalFilter\\";
-import { NestedIntFilter } from \\"./NestedIntFilter\\";
+import { NestedDecimalFilter, NestedIntFilter } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -1567,8 +1601,7 @@ export class NestedEnumUserTypeFilter {
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 38`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
 import { UserTypeEnum } from \\"../../enums\\";
-import { NestedEnumUserTypeFilter } from \\"./NestedEnumUserTypeFilter\\";
-import { NestedIntFilter } from \\"./NestedIntFilter\\";
+import { NestedEnumUserTypeFilter, NestedIntFilter } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -1654,8 +1687,7 @@ export class NestedFloatFilter {
 
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 40`] = `
 "import { Field, Float, InputType } from \\"@nestjs/graphql\\";
-import { NestedFloatFilter } from \\"./NestedFloatFilter\\";
-import { NestedIntFilter } from \\"./NestedIntFilter\\";
+import { NestedFloatFilter, NestedIntFilter } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -1816,8 +1848,7 @@ export class NestedIntNullableFilter {
 
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 43`] = `
 "import { Field, InputType, Int } from \\"@nestjs/graphql\\";
-import { NestedFloatFilter } from \\"./NestedFloatFilter\\";
-import { NestedIntFilter } from \\"./NestedIntFilter\\";
+import { NestedFloatFilter, NestedIntFilter } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -2030,8 +2061,7 @@ export class NestedStringNullableFilter {
 
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 47`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
-import { NestedIntNullableFilter } from \\"./NestedIntNullableFilter\\";
-import { NestedStringNullableFilter } from \\"./NestedStringNullableFilter\\";
+import { NestedIntNullableFilter, NestedStringNullableFilter } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -2107,8 +2137,7 @@ export class NestedStringNullableWithAggregatesFilter {
 
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 48`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
-import { NestedIntFilter } from \\"./NestedIntFilter\\";
-import { NestedStringFilter } from \\"./NestedStringFilter\\";
+import { NestedIntFilter, NestedStringFilter } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -2215,7 +2244,7 @@ export class StringFieldUpdateOperationsInput {
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 51`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
 import { QueryModeEnum } from \\"../../enums\\";
-import { NestedStringFilter } from \\"./NestedStringFilter\\";
+import { NestedStringFilter } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -2287,7 +2316,7 @@ export class StringFilter {
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 52`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
 import { QueryModeEnum } from \\"../../enums\\";
-import { NestedStringNullableFilter } from \\"./NestedStringNullableFilter\\";
+import { NestedStringNullableFilter } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -2359,9 +2388,7 @@ export class StringNullableFilter {
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 53`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
 import { QueryModeEnum } from \\"../../enums\\";
-import { NestedIntNullableFilter } from \\"./NestedIntNullableFilter\\";
-import { NestedStringNullableFilter } from \\"./NestedStringNullableFilter\\";
-import { NestedStringNullableWithAggregatesFilter } from \\"./NestedStringNullableWithAggregatesFilter\\";
+import { NestedIntNullableFilter, NestedStringNullableFilter, NestedStringNullableWithAggregatesFilter } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -2448,9 +2475,7 @@ export class StringNullableWithAggregatesFilter {
 exports[`InputTypeHandler should parse input types and create correct shared files from datamodel 54`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
 import { QueryModeEnum } from \\"../../enums\\";
-import { NestedIntFilter } from \\"./NestedIntFilter\\";
-import { NestedStringFilter } from \\"./NestedStringFilter\\";
-import { NestedStringWithAggregatesFilter } from \\"./NestedStringWithAggregatesFilter\\";
+import { NestedIntFilter, NestedStringFilter, NestedStringWithAggregatesFilter } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -2595,9 +2620,7 @@ Array [
 
 exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 1`] = `
 "import { Field, InputType, Int } from \\"@nestjs/graphql\\";
-import { UserOrderByInput } from \\"./UserOrderByInput\\";
-import { UserWhereInput } from \\"./UserWhereInput\\";
-import { UserWhereUniqueInput } from \\"./UserWhereUniqueInput\\";
+import { UserOrderByInput, UserWhereInput, UserWhereUniqueInput } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -2633,7 +2656,7 @@ export class AggregateUserInput {
 
 exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 2`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
-import { UserCreateManyInput } from \\"./UserCreateManyInput\\";
+import { UserCreateManyInput } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -2654,7 +2677,7 @@ export class CreateManyUserInput {
 
 exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 3`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
-import { UserCreateInput } from \\"./UserCreateInput\\";
+import { UserCreateInput } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -2670,7 +2693,7 @@ export class CreateOneUserInput {
 
 exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 4`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
-import { UserWhereInput } from \\"./UserWhereInput\\";
+import { UserWhereInput } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -2686,7 +2709,7 @@ export class DeleteManyUserInput {
 
 exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 5`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
-import { UserWhereUniqueInput } from \\"./UserWhereUniqueInput\\";
+import { UserWhereUniqueInput } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -2703,9 +2726,7 @@ export class DeleteOneUserInput {
 exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 6`] = `
 "import { Field, InputType, Int } from \\"@nestjs/graphql\\";
 import { UserScalarFieldEnum } from \\"../../enums\\";
-import { UserOrderByInput } from \\"./UserOrderByInput\\";
-import { UserWhereInput } from \\"./UserWhereInput\\";
-import { UserWhereUniqueInput } from \\"./UserWhereUniqueInput\\";
+import { UserOrderByInput, UserWhereInput, UserWhereUniqueInput } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -2747,9 +2768,7 @@ export class FindFirstUserInput {
 exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 7`] = `
 "import { Field, InputType, Int } from \\"@nestjs/graphql\\";
 import { UserScalarFieldEnum } from \\"../../enums\\";
-import { UserOrderByInput } from \\"./UserOrderByInput\\";
-import { UserWhereInput } from \\"./UserWhereInput\\";
-import { UserWhereUniqueInput } from \\"./UserWhereUniqueInput\\";
+import { UserOrderByInput, UserWhereInput, UserWhereUniqueInput } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -2790,7 +2809,7 @@ export class FindManyUserInput {
 
 exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 8`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
-import { UserWhereUniqueInput } from \\"./UserWhereUniqueInput\\";
+import { UserWhereUniqueInput } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -2807,9 +2826,7 @@ export class FindUniqueUserInput {
 exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 9`] = `
 "import { Field, InputType, Int } from \\"@nestjs/graphql\\";
 import { UserScalarFieldEnum } from \\"../../enums\\";
-import { UserOrderByInput } from \\"./UserOrderByInput\\";
-import { UserScalarWhereWithAggregatesInput } from \\"./UserScalarWhereWithAggregatesInput\\";
-import { UserWhereInput } from \\"./UserWhereInput\\";
+import { UserOrderByInput, UserScalarWhereWithAggregatesInput, UserWhereInput } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -2850,8 +2867,7 @@ export class GroupByUserInput {
 
 exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 10`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
-import { UserUpdateManyMutationInput } from \\"./UserUpdateManyMutationInput\\";
-import { UserWhereInput } from \\"./UserWhereInput\\";
+import { UserUpdateManyMutationInput, UserWhereInput } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -2872,8 +2888,7 @@ export class UpdateManyUserInput {
 
 exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 11`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
-import { UserUpdateInput } from \\"./UserUpdateInput\\";
-import { UserWhereUniqueInput } from \\"./UserWhereUniqueInput\\";
+import { UserUpdateInput, UserWhereUniqueInput } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -2894,9 +2909,7 @@ export class UpdateOneUserInput {
 
 exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 12`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
-import { UserCreateInput } from \\"./UserCreateInput\\";
-import { UserUpdateInput } from \\"./UserUpdateInput\\";
-import { UserWhereUniqueInput } from \\"./UserWhereUniqueInput\\";
+import { UserCreateInput, UserUpdateInput, UserWhereUniqueInput } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -2925,7 +2938,7 @@ exports[`InputTypeHandler should parse input types and create correct user input
 import { Prisma } from \\"@prisma/client\\";
 import { GraphQLJSON } from \\"graphql-type-json\\";
 import { UserTypeEnum } from \\"../../enums\\";
-import { SessionCreateNestedManyWithoutUserInput } from \\"../../Session/inputTypes/SessionCreateNestedManyWithoutUserInput\\";
+import { SessionCreateNestedManyWithoutUserInput } from \\"../../Session/inputTypes\\";
 
 @InputType({
   isAbstract: true,
@@ -3065,7 +3078,7 @@ export class UserOrderByInput {
 
 exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 16`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
-import { UserWhereInput } from \\"./UserWhereInput\\";
+import { UserWhereInput } from \\".\\";
 
 @InputType({
   isAbstract: true,
@@ -3086,13 +3099,7 @@ export class UserRelationFilter {
 
 exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 17`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
-import { BoolWithAggregatesFilter } from \\"../../shared/inputTypes/BoolWithAggregatesFilter\\";
-import { EnumUserTypeWithAggregatesFilter } from \\"../../shared/inputTypes/EnumUserTypeWithAggregatesFilter\\";
-import { FloatWithAggregatesFilter } from \\"../../shared/inputTypes/FloatWithAggregatesFilter\\";
-import { IntWithAggregatesFilter } from \\"../../shared/inputTypes/IntWithAggregatesFilter\\";
-import { JsonWithAggregatesFilter } from \\"../../shared/inputTypes/JsonWithAggregatesFilter\\";
-import { StringNullableWithAggregatesFilter } from \\"../../shared/inputTypes/StringNullableWithAggregatesFilter\\";
-import { StringWithAggregatesFilter } from \\"../../shared/inputTypes/StringWithAggregatesFilter\\";
+import { BoolWithAggregatesFilter, EnumUserTypeWithAggregatesFilter, FloatWithAggregatesFilter, IntWithAggregatesFilter, JsonWithAggregatesFilter, StringNullableWithAggregatesFilter, StringWithAggregatesFilter } from \\"../../shared/inputTypes\\";
 
 @InputType({
   isAbstract: true,
@@ -3140,12 +3147,8 @@ exports[`InputTypeHandler should parse input types and create correct user input
 "import { Field, InputType } from \\"@nestjs/graphql\\";
 import { Prisma } from \\"@prisma/client\\";
 import { GraphQLJSON } from \\"graphql-type-json\\";
-import { BoolFieldUpdateOperationsInput } from \\"../../shared/inputTypes/BoolFieldUpdateOperationsInput\\";
-import { EnumUserTypeFieldUpdateOperationsInput } from \\"../../shared/inputTypes/EnumUserTypeFieldUpdateOperationsInput\\";
-import { FloatFieldUpdateOperationsInput } from \\"../../shared/inputTypes/FloatFieldUpdateOperationsInput\\";
-import { NullableStringFieldUpdateOperationsInput } from \\"../../shared/inputTypes/NullableStringFieldUpdateOperationsInput\\";
-import { SessionUpdateManyWithoutUserInput } from \\"../../Session/inputTypes/SessionUpdateManyWithoutUserInput\\";
-import { StringFieldUpdateOperationsInput } from \\"../../shared/inputTypes/StringFieldUpdateOperationsInput\\";
+import { BoolFieldUpdateOperationsInput, EnumUserTypeFieldUpdateOperationsInput, FloatFieldUpdateOperationsInput, NullableStringFieldUpdateOperationsInput, StringFieldUpdateOperationsInput } from \\"../../shared/inputTypes\\";
+import { SessionUpdateManyWithoutUserInput } from \\"../../Session/inputTypes\\";
 
 @InputType({
   isAbstract: true,
@@ -3193,11 +3196,7 @@ exports[`InputTypeHandler should parse input types and create correct user input
 "import { Field, InputType } from \\"@nestjs/graphql\\";
 import { Prisma } from \\"@prisma/client\\";
 import { GraphQLJSON } from \\"graphql-type-json\\";
-import { BoolFieldUpdateOperationsInput } from \\"../../shared/inputTypes/BoolFieldUpdateOperationsInput\\";
-import { EnumUserTypeFieldUpdateOperationsInput } from \\"../../shared/inputTypes/EnumUserTypeFieldUpdateOperationsInput\\";
-import { FloatFieldUpdateOperationsInput } from \\"../../shared/inputTypes/FloatFieldUpdateOperationsInput\\";
-import { NullableStringFieldUpdateOperationsInput } from \\"../../shared/inputTypes/NullableStringFieldUpdateOperationsInput\\";
-import { StringFieldUpdateOperationsInput } from \\"../../shared/inputTypes/StringFieldUpdateOperationsInput\\";
+import { BoolFieldUpdateOperationsInput, EnumUserTypeFieldUpdateOperationsInput, FloatFieldUpdateOperationsInput, NullableStringFieldUpdateOperationsInput, StringFieldUpdateOperationsInput } from \\"../../shared/inputTypes\\";
 
 @InputType({
   isAbstract: true,
@@ -3238,14 +3237,8 @@ export class UserUpdateManyMutationInput {
 
 exports[`InputTypeHandler should parse input types and create correct user input files from datamodel 20`] = `
 "import { Field, InputType } from \\"@nestjs/graphql\\";
-import { BoolFilter } from \\"../../shared/inputTypes/BoolFilter\\";
-import { EnumUserTypeFilter } from \\"../../shared/inputTypes/EnumUserTypeFilter\\";
-import { FloatFilter } from \\"../../shared/inputTypes/FloatFilter\\";
-import { IntFilter } from \\"../../shared/inputTypes/IntFilter\\";
-import { JsonFilter } from \\"../../shared/inputTypes/JsonFilter\\";
-import { SessionListRelationFilter } from \\"../../Session/inputTypes/SessionListRelationFilter\\";
-import { StringFilter } from \\"../../shared/inputTypes/StringFilter\\";
-import { StringNullableFilter } from \\"../../shared/inputTypes/StringNullableFilter\\";
+import { BoolFilter, EnumUserTypeFilter, FloatFilter, IntFilter, JsonFilter, StringFilter, StringNullableFilter } from \\"../../shared/inputTypes\\";
+import { SessionListRelationFilter } from \\"../../Session/inputTypes\\";
 
 @InputType({
   isAbstract: true,

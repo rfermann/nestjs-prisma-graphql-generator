@@ -5,7 +5,7 @@ exports[`ModelHandler should parse models and create correct files from datamode
 import { Prisma } from \\"@prisma/client\\";
 import { GraphQLJSON } from \\"graphql-type-json\\";
 import { UserTypeEnum } from \\"../enums\\";
-import { Session } from \\"../Session/model\\";
+import { Session } from \\"../Session\\";
 
 /** user model comment */
 @ObjectType({

@@ -23,11 +23,7 @@ Array [
 
 exports[`OutputTypeHandler should parse output types and create correct user output files from datamodel 1`] = `
 "import { Field, ObjectType } from \\"@nestjs/graphql\\";
-import { UserAvgAggregateOutputType } from \\"./UserAvgAggregateOutputType\\";
-import { UserCountAggregateOutputType } from \\"./UserCountAggregateOutputType\\";
-import { UserMaxAggregateOutputType } from \\"./UserMaxAggregateOutputType\\";
-import { UserMinAggregateOutputType } from \\"./UserMinAggregateOutputType\\";
-import { UserSumAggregateOutputType } from \\"./UserSumAggregateOutputType\\";
+import { UserAvgAggregateOutputType, UserCountAggregateOutputType, UserMaxAggregateOutputType, UserMinAggregateOutputType, UserSumAggregateOutputType } from \\".\\";
 
 @ObjectType({
   isAbstract: true,
@@ -136,11 +132,7 @@ exports[`OutputTypeHandler should parse output types and create correct user out
 import { Prisma } from \\"@prisma/client\\";
 import { GraphQLJSON } from \\"graphql-type-json\\";
 import { UserTypeEnum } from \\"../../enums\\";
-import { UserAvgAggregateOutputType } from \\"./UserAvgAggregateOutputType\\";
-import { UserCountAggregateOutputType } from \\"./UserCountAggregateOutputType\\";
-import { UserMaxAggregateOutputType } from \\"./UserMaxAggregateOutputType\\";
-import { UserMinAggregateOutputType } from \\"./UserMinAggregateOutputType\\";
-import { UserSumAggregateOutputType } from \\"./UserSumAggregateOutputType\\";
+import { UserAvgAggregateOutputType, UserCountAggregateOutputType, UserMaxAggregateOutputType, UserMinAggregateOutputType, UserSumAggregateOutputType } from \\".\\";
 
 @ObjectType({
   isAbstract: true,

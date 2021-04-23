@@ -5,6 +5,7 @@ import type { DMMF, GeneratorOptions } from "@prisma/generator-helper";
 import Listr from "listr";
 
 import { GeneratorConfig } from "../GeneratorConfig";
+import { BarrelFileHandler } from "../Handlers/BarrelFileHandler";
 import { EnumHandler } from "../Handlers/EnumHandler";
 import { InputTypeHandler } from "../Handlers/InputTypeHandler";
 import { ModelHandler } from "../Handlers/ModelHandler";
@@ -43,6 +44,8 @@ export class Generator {
     },
     title: "Generating NestJS integration",
   };
+
+  private _barrelFileHandler!: BarrelFileHandler;
 
   private readonly _config: GeneratorConfig;
 
@@ -84,8 +87,8 @@ export class Generator {
                       },
                       {
                         task: async () => {
-                          await this._enumHandler.createBarrelFile();
                           await this._enumHandler.createFiles();
+                          await this._enumHandler.createBarrelFile();
                         },
                         title: Generator.messages.enums.generate,
                       },
@@ -123,6 +126,7 @@ export class Generator {
                               {
                                 task: async () => {
                                   await this._inputTypeHandler.createFiles();
+                                  await this._inputTypeHandler.createBarrelFiles();
                                 },
                                 title: Generator.messages.inputTypes.generate,
                               },
@@ -139,6 +143,7 @@ export class Generator {
                               {
                                 task: async () => {
                                   await this._outputTypeHandler.createFiles();
+                                  await this._outputTypeHandler.createBarrelFiles();
                                 },
                                 title: Generator.messages.outputTypes.generate,
                               },
@@ -155,6 +160,7 @@ export class Generator {
                               {
                                 task: async () => {
                                   await this._resolverHandler.createFiles();
+                                  await this._resolverHandler.createBarrelFiles();
                                 },
                                 title: Generator.messages.resolvers.generate,
                               },
@@ -162,7 +168,7 @@ export class Generator {
                           title: Generator.messages.resolvers.title,
                         },
                       ],
-                      { concurrent: true }
+                      { concurrent: true, exitOnError: true }
                     ),
                   title: Generator.messages.objects,
                 },
@@ -185,6 +191,7 @@ export class Generator {
     // dmmf needs to be imported from prisma client. content differs from the dmmf passed in the generator options
     this._dmmf = importDmmf(this._config.prismaClientImportPath);
 
+    this._barrelFileHandler = new BarrelFileHandler({ config: this._config, dmmf: this._dmmf });
     this._enumHandler = new EnumHandler({ config: this._config, dmmf: this._dmmf });
     this._modelHandler = new ModelHandler({ config: this._config, dmmf: this._dmmf });
     this._inputTypeHandler = new InputTypeHandler({ config: this._config, dmmf: this._dmmf });
@@ -192,6 +199,7 @@ export class Generator {
     this._resolverHandler = new ResolverHandler({ config: this._config, dmmf: this._dmmf });
 
     await this._initOutputFolder();
+    await this._barrelFileHandler.createBarrelFiles();
   }
 
   private async _initOutputFolder(): Promise<void> {

@@ -32,6 +32,7 @@ To use NestJS-Prisma-GraphQL-Generator, follow these steps:
 2. add NestJS-Prisma-GraphQL-Generator as a subsequent generator to your prisma.schema
 3. optionally configure NestJS-Prisma-GraphQL-Generator as described in the [Configuration](#configuration) section
 4. run prisma generate
+5. import generated types, enums and resolvers from `path/to/prisma/schema/@generated/nestjs`
 
 ## Configuration
 
@@ -76,7 +77,6 @@ Resolvers can be imported on an individual base and used within the `providers` 
 
 ## Upcoming features
 
-- barrel files for easier imports
 - support for adding custom decorators to the generated objects
 
 ## Contributing to NestJS-Prisma-GraphQL-Generator

@@ -64,7 +64,7 @@ describe("ModelHandler", () => {
     expect(sessionModelFile).toMatchInlineSnapshot(`
       "import { Field, GraphQLISODateTime, Int, ObjectType } from \\"@nestjs/graphql\\";
       import { ByteResolver } from \\"graphql-scalars\\";
-      import { User } from \\"../User/model\\";
+      import { User } from \\"../User\\";
 
       @ObjectType({
         isAbstract: true,

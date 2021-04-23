@@ -3,9 +3,9 @@
 exports[`ResolverHandler should parse resolvers and create correct resolver files from datamodel 1`] = `
 "import { Args, Query, Resolver } from \\"@nestjs/graphql\\";
 import { } from \\"\\";
-import { User } from \\"../../User/model\\";
-import { AggregateUser } from \\"../inputTypes/AggregateUser\\";
-import { AggregateUser } from \\"../outputTypes/AggregateUser\\";
+import { User } from \\"../../User\\";
+import { AggregateUser } from \\"../inputTypes\\";
+import { AggregateUser } from \\"../outputTypes\\";
 import { Prisma } from \\"@prisma/client\\";
 
 @Resolver(() => User, {
@@ -31,9 +31,9 @@ export class AggregateUserResolver {
 exports[`ResolverHandler should parse resolvers and create correct resolver files from datamodel 2`] = `
 "import { Args, Mutation, Resolver } from \\"@nestjs/graphql\\";
 import { } from \\"\\";
-import { User } from \\"../../User/model\\";
-import { CreateManyUser } from \\"../inputTypes/CreateManyUser\\";
-import { AffectedRowsOutput } from \\"../../shared/outputTypes/AffectedRowsOutput\\";
+import { User } from \\"../../User\\";
+import { CreateManyUser } from \\"../inputTypes\\";
+import { AffectedRowsOutput } from \\"../../shared/outputTypes\\";
 
 @Resolver(() => User, {
   isAbstract: false,
@@ -58,8 +58,8 @@ export class CreateManyUserResolver {
 exports[`ResolverHandler should parse resolvers and create correct resolver files from datamodel 3`] = `
 "import { Args, Mutation, Resolver } from \\"@nestjs/graphql\\";
 import { } from \\"\\";
-import { User } from \\"../../User/model\\";
-import { CreateOneUser } from \\"../inputTypes/CreateOneUser\\";
+import { User } from \\"../../User\\";
+import { CreateOneUser } from \\"../inputTypes\\";
 
 @Resolver(() => User, {
   isAbstract: false,
@@ -84,9 +84,9 @@ export class CreateOneUserResolver {
 exports[`ResolverHandler should parse resolvers and create correct resolver files from datamodel 4`] = `
 "import { Args, Mutation, Resolver } from \\"@nestjs/graphql\\";
 import { } from \\"\\";
-import { User } from \\"../../User/model\\";
-import { DeleteManyUser } from \\"../inputTypes/DeleteManyUser\\";
-import { AffectedRowsOutput } from \\"../../shared/outputTypes/AffectedRowsOutput\\";
+import { User } from \\"../../User\\";
+import { DeleteManyUser } from \\"../inputTypes\\";
+import { AffectedRowsOutput } from \\"../../shared/outputTypes\\";
 
 @Resolver(() => User, {
   isAbstract: false,
@@ -111,8 +111,8 @@ export class DeleteManyUserResolver {
 exports[`ResolverHandler should parse resolvers and create correct resolver files from datamodel 5`] = `
 "import { Args, Mutation, Resolver } from \\"@nestjs/graphql\\";
 import { } from \\"\\";
-import { User } from \\"../../User/model\\";
-import { DeleteOneUser } from \\"../inputTypes/DeleteOneUser\\";
+import { User } from \\"../../User\\";
+import { DeleteOneUser } from \\"../inputTypes\\";
 
 @Resolver(() => User, {
   isAbstract: false,
@@ -137,8 +137,8 @@ export class DeleteOneUserResolver {
 exports[`ResolverHandler should parse resolvers and create correct resolver files from datamodel 6`] = `
 "import { Args, Query, Resolver } from \\"@nestjs/graphql\\";
 import { } from \\"\\";
-import { User } from \\"../../User/model\\";
-import { FindFirstUser } from \\"../inputTypes/FindFirstUser\\";
+import { User } from \\"../../User\\";
+import { FindFirstUser } from \\"../inputTypes\\";
 
 @Resolver(() => User, {
   isAbstract: false,
@@ -163,8 +163,8 @@ export class FindFirstUserResolver {
 exports[`ResolverHandler should parse resolvers and create correct resolver files from datamodel 7`] = `
 "import { Args, Query, Resolver } from \\"@nestjs/graphql\\";
 import { } from \\"\\";
-import { User } from \\"../../User/model\\";
-import { FindManyUser } from \\"../inputTypes/FindManyUser\\";
+import { User } from \\"../../User\\";
+import { FindManyUser } from \\"../inputTypes\\";
 
 @Resolver(() => User, {
   isAbstract: false,
@@ -189,8 +189,8 @@ export class FindManyUserResolver {
 exports[`ResolverHandler should parse resolvers and create correct resolver files from datamodel 8`] = `
 "import { Args, Query, Resolver } from \\"@nestjs/graphql\\";
 import { } from \\"\\";
-import { User } from \\"../../User/model\\";
-import { FindUniqueUser } from \\"../inputTypes/FindUniqueUser\\";
+import { User } from \\"../../User\\";
+import { FindUniqueUser } from \\"../inputTypes\\";
 
 @Resolver(() => User, {
   isAbstract: false,
@@ -215,9 +215,9 @@ export class FindUniqueUserResolver {
 exports[`ResolverHandler should parse resolvers and create correct resolver files from datamodel 9`] = `
 "import { Args, Mutation, Resolver } from \\"@nestjs/graphql\\";
 import { } from \\"\\";
-import { User } from \\"../../User/model\\";
-import { UpdateManyUser } from \\"../inputTypes/UpdateManyUser\\";
-import { AffectedRowsOutput } from \\"../../shared/outputTypes/AffectedRowsOutput\\";
+import { User } from \\"../../User\\";
+import { UpdateManyUser } from \\"../inputTypes\\";
+import { AffectedRowsOutput } from \\"../../shared/outputTypes\\";
 
 @Resolver(() => User, {
   isAbstract: false,
@@ -242,8 +242,8 @@ export class UpdateManyUserResolver {
 exports[`ResolverHandler should parse resolvers and create correct resolver files from datamodel 10`] = `
 "import { Args, Mutation, Resolver } from \\"@nestjs/graphql\\";
 import { } from \\"\\";
-import { User } from \\"../../User/model\\";
-import { UpdateOneUser } from \\"../inputTypes/UpdateOneUser\\";
+import { User } from \\"../../User\\";
+import { UpdateOneUser } from \\"../inputTypes\\";
 
 @Resolver(() => User, {
   isAbstract: false,
@@ -268,8 +268,8 @@ export class UpdateOneUserResolver {
 exports[`ResolverHandler should parse resolvers and create correct resolver files from datamodel 11`] = `
 "import { Args, Mutation, Resolver } from \\"@nestjs/graphql\\";
 import { } from \\"\\";
-import { User } from \\"../../User/model\\";
-import { UpsertOneUser } from \\"../inputTypes/UpsertOneUser\\";
+import { User } from \\"../../User\\";
+import { UpsertOneUser } from \\"../inputTypes\\";
 
 @Resolver(() => User, {
   isAbstract: false,

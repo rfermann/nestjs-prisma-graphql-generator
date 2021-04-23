@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import type { DMMF } from "@prisma/client/runtime";
 import type { DecoratorStructure, OptionalKind, ParameterDeclarationStructure } from "ts-morph";
 import { Scope, StructureKind } from "ts-morph";
@@ -6,6 +7,7 @@ import type { Enum, Resolver } from "../../types";
 import { NestJSTypes, ObjectTypes, OperationType, TypeEnum } from "../../types";
 import type { HandlerOptions } from "../BaseHandler";
 import { BaseHandler } from "../BaseHandler";
+import { comparePrimitiveValues } from "../BaseHandler/compareFunctions";
 
 const getOperationKey = <T, TK extends keyof T>(obj: T, key: TK): T[TK] => obj[key];
 
@@ -29,6 +31,38 @@ export class ResolverHandler extends BaseHandler {
         }
       });
     });
+  }
+
+  async createBarrelFiles(): Promise<void> {
+    const barrelFiles: Record<string, string[]> = {};
+
+    // eslint-disable-next-line no-restricted-syntax
+    for (const { model, resolverName } of this._resolvers) {
+      if (!barrelFiles[model]) {
+        barrelFiles[model] = [];
+      }
+
+      barrelFiles[model].push(resolverName);
+    }
+
+    const resolverModels = Object.keys(barrelFiles);
+
+    // eslint-disable-next-line no-restricted-syntax
+    for (const resolverModel of resolverModels) {
+      const barrelFile = this.baseFileGenerator.createSourceFile(
+        `${resolverModel}/${this.config.paths.resolvers}/index`
+      );
+
+      barrelFiles[resolverModel].sort(comparePrimitiveValues).forEach((resolver) => {
+        barrelFile.addExportDeclaration({
+          moduleSpecifier: `./${resolver}`,
+          namedExports: [resolver],
+        });
+      });
+
+      // eslint-disable-next-line no-await-in-loop
+      await barrelFile.save();
+    }
   }
 
   // eslint-disable-next-line max-lines-per-function

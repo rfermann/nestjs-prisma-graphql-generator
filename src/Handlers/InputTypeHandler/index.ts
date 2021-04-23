@@ -3,9 +3,46 @@ import type { DMMF } from "@prisma/generator-helper";
 import type { Enum, Field, InputType } from "../../types";
 import { NestJSTypes, ObjectTypes, OperationType, TypeEnum } from "../../types";
 import { BaseHandler } from "../BaseHandler";
+import { comparePrimitiveValues } from "../BaseHandler/compareFunctions";
 
 export class InputTypeHandler extends BaseHandler {
   private readonly _inputTypes: InputType[] = [];
+
+  async createBarrelFiles(): Promise<void> {
+    const barrelFiles: Record<string, string[]> = {};
+
+    // eslint-disable-next-line no-restricted-syntax
+    for (const { name } of this._inputTypes) {
+      let model = this.baseParser.getModelName(name);
+
+      if (!model) {
+        model = "shared";
+      }
+
+      if (!barrelFiles[model]) {
+        barrelFiles[model] = [];
+      }
+
+      barrelFiles[model].push(name);
+    }
+
+    const models = Object.keys(barrelFiles);
+
+    // eslint-disable-next-line no-restricted-syntax
+    for (const model of models) {
+      const barrelFile = this.baseFileGenerator.createSourceFile(`${model}/${this.config.paths.inputTypes}/index`);
+
+      barrelFiles[model].sort(comparePrimitiveValues).forEach((resolver) => {
+        barrelFile.addExportDeclaration({
+          moduleSpecifier: `./${resolver}`,
+          namedExports: [resolver],
+        });
+      });
+
+      // eslint-disable-next-line no-await-in-loop
+      await barrelFile.save();
+    }
+  }
 
   async createFiles(): Promise<void> {
     this._inputTypes.forEach(

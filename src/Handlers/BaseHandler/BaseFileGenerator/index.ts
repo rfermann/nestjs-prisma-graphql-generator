@@ -70,9 +70,29 @@ export class BaseFileGenerator {
     sourceFile: SourceFile;
     types: string[];
   }): void {
+    const inputTypeImports: Record<string, string[]> = {};
+
     types.sort(comparePrimitiveValues).forEach((type) => {
+      let currentModel = this._baseParser.getModelName(type);
+
+      if (!currentModel) {
+        currentModel = "shared";
+      }
+
+      if (!inputTypeImports[currentModel]) {
+        inputTypeImports[currentModel] = [];
+      }
+
+      if (type !== model) {
+        inputTypeImports[currentModel].push(type);
+      }
+    });
+
+    const models = Object.keys(inputTypeImports);
+
+    // eslint-disable-next-line no-restricted-syntax
+    for (const currentModel of models) {
       let moduleSpecifier = "";
-      const currentModel = this._baseParser.getModelName(type);
 
       if (model && model === currentModel) {
         moduleSpecifier = `.`;
@@ -82,7 +102,7 @@ export class BaseFileGenerator {
         moduleSpecifier = `../../${currentModel}/${this._config.paths.inputTypes}`;
       }
 
-      if (!model && !currentModel) {
+      if (!model && currentModel === "shared") {
         moduleSpecifier = `.`;
       }
 
@@ -94,11 +114,13 @@ export class BaseFileGenerator {
         moduleSpecifier = `../${this._config.paths.inputTypes}`;
       }
 
-      sourceFile.addImportDeclaration({
-        moduleSpecifier: `${moduleSpecifier}/${type}`,
-        namedImports: [type],
-      });
-    });
+      if (inputTypeImports[currentModel].length) {
+        sourceFile.addImportDeclaration({
+          moduleSpecifier: `${moduleSpecifier}`,
+          namedImports: inputTypeImports[currentModel],
+        });
+      }
+    }
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -119,11 +141,11 @@ export class BaseFileGenerator {
       let moduleSpecifier = "";
 
       if (type === TypeEnum.InputType || type === TypeEnum.ModelType) {
-        moduleSpecifier = `../${model}/model`;
+        moduleSpecifier = `../${model}`;
       }
 
       if (type === TypeEnum.Resolver) {
-        moduleSpecifier = `../../${model}/model`;
+        moduleSpecifier = `../../${model}`;
       }
 
       sourceFile.addImportDeclaration({
@@ -164,31 +186,49 @@ export class BaseFileGenerator {
     sourceFile: SourceFile;
     types: string[];
   }): void {
+    const outputTypeImports: Record<string, string[]> = {};
+
     types.sort(comparePrimitiveValues).forEach((type) => {
-      if (type === model) {
-        return;
+      let currentModel = this._baseParser.getModelName(type);
+
+      if (!currentModel) {
+        currentModel = "shared";
       }
 
+      if (!outputTypeImports[currentModel]) {
+        outputTypeImports[currentModel] = [];
+      }
+
+      if (type !== model) {
+        outputTypeImports[currentModel].push(type);
+      }
+    });
+
+    const models = Object.keys(outputTypeImports);
+
+    // eslint-disable-next-line no-restricted-syntax
+    for (const currentModel of models) {
       let moduleSpecifier = "";
-      const currentModel = this._baseParser.getModelName(type);
 
       if (model && model === currentModel) {
-        if (isResolver) {
-          moduleSpecifier = `../${this._config.paths.outputTypes}`;
+        moduleSpecifier = `.`;
+      }
+
+      if (isResolver) {
+        if (currentModel === "shared") {
+          moduleSpecifier = `../../${this._config.paths.shared}/${this._config.paths.outputTypes}`;
         } else {
-          moduleSpecifier = `.`;
+          moduleSpecifier = `../${this._config.paths.outputTypes}`;
         }
       }
 
-      if (model && !currentModel) {
-        moduleSpecifier = `../../${this._config.paths.shared}/${this._config.paths.outputTypes}`;
+      if (outputTypeImports[currentModel].length) {
+        sourceFile.addImportDeclaration({
+          moduleSpecifier: `${moduleSpecifier}`,
+          namedImports: outputTypeImports[currentModel],
+        });
       }
-
-      sourceFile.addImportDeclaration({
-        moduleSpecifier: `${moduleSpecifier}/${type}`,
-        namedImports: [type],
-      });
-    });
+    }
   }
 
   createSourceFile(name: string): SourceFile {

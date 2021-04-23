@@ -2,7 +2,7 @@
 
 exports[`ResolverHandler should parse resolvers and create correct resolver files from datamodel 1`] = `
 "import { Args, Query, Resolver } from \\"@nestjs/graphql\\";
-import { } from \\"\\";
+import { PrismaService } from \\"@PrismaService\\";
 import { User } from \\"../../User\\";
 import { AggregateUser } from \\"../inputTypes\\";
 import { AggregateUser } from \\"../outputTypes\\";
@@ -12,9 +12,9 @@ import { Prisma } from \\"@prisma/client\\";
   isAbstract: false,
 })
 export class AggregateUserResolver {
-  private readonly _prismaService;
+  private readonly _prismaService: PrismaService;
 
-  constructor(prismaService) {
+  constructor(prismaService: PrismaService) {
     this._prismaService = prismaService;
   }
 
@@ -30,7 +30,7 @@ export class AggregateUserResolver {
 
 exports[`ResolverHandler should parse resolvers and create correct resolver files from datamodel 2`] = `
 "import { Args, Mutation, Resolver } from \\"@nestjs/graphql\\";
-import { } from \\"\\";
+import { PrismaService } from \\"@PrismaService\\";
 import { User } from \\"../../User\\";
 import { CreateManyUser } from \\"../inputTypes\\";
 import { AffectedRowsOutput } from \\"../../shared/outputTypes\\";
@@ -39,9 +39,9 @@ import { AffectedRowsOutput } from \\"../../shared/outputTypes\\";
   isAbstract: false,
 })
 export class CreateManyUserResolver {
-  private readonly _prismaService;
+  private readonly _prismaService: PrismaService;
 
-  constructor(prismaService) {
+  constructor(prismaService: PrismaService) {
     this._prismaService = prismaService;
   }
 
@@ -57,7 +57,7 @@ export class CreateManyUserResolver {
 
 exports[`ResolverHandler should parse resolvers and create correct resolver files from datamodel 3`] = `
 "import { Args, Mutation, Resolver } from \\"@nestjs/graphql\\";
-import { } from \\"\\";
+import { PrismaService } from \\"@PrismaService\\";
 import { User } from \\"../../User\\";
 import { CreateOneUser } from \\"../inputTypes\\";
 
@@ -65,9 +65,9 @@ import { CreateOneUser } from \\"../inputTypes\\";
   isAbstract: false,
 })
 export class CreateOneUserResolver {
-  private readonly _prismaService;
+  private readonly _prismaService: PrismaService;
 
-  constructor(prismaService) {
+  constructor(prismaService: PrismaService) {
     this._prismaService = prismaService;
   }
 
@@ -83,7 +83,7 @@ export class CreateOneUserResolver {
 
 exports[`ResolverHandler should parse resolvers and create correct resolver files from datamodel 4`] = `
 "import { Args, Mutation, Resolver } from \\"@nestjs/graphql\\";
-import { } from \\"\\";
+import { PrismaService } from \\"@PrismaService\\";
 import { User } from \\"../../User\\";
 import { DeleteManyUser } from \\"../inputTypes\\";
 import { AffectedRowsOutput } from \\"../../shared/outputTypes\\";
@@ -92,9 +92,9 @@ import { AffectedRowsOutput } from \\"../../shared/outputTypes\\";
   isAbstract: false,
 })
 export class DeleteManyUserResolver {
-  private readonly _prismaService;
+  private readonly _prismaService: PrismaService;
 
-  constructor(prismaService) {
+  constructor(prismaService: PrismaService) {
     this._prismaService = prismaService;
   }
 
@@ -110,7 +110,7 @@ export class DeleteManyUserResolver {
 
 exports[`ResolverHandler should parse resolvers and create correct resolver files from datamodel 5`] = `
 "import { Args, Mutation, Resolver } from \\"@nestjs/graphql\\";
-import { } from \\"\\";
+import { PrismaService } from \\"@PrismaService\\";
 import { User } from \\"../../User\\";
 import { DeleteOneUser } from \\"../inputTypes\\";
 
@@ -118,9 +118,9 @@ import { DeleteOneUser } from \\"../inputTypes\\";
   isAbstract: false,
 })
 export class DeleteOneUserResolver {
-  private readonly _prismaService;
+  private readonly _prismaService: PrismaService;
 
-  constructor(prismaService) {
+  constructor(prismaService: PrismaService) {
     this._prismaService = prismaService;
   }
 
@@ -136,7 +136,7 @@ export class DeleteOneUserResolver {
 
 exports[`ResolverHandler should parse resolvers and create correct resolver files from datamodel 6`] = `
 "import { Args, Query, Resolver } from \\"@nestjs/graphql\\";
-import { } from \\"\\";
+import { PrismaService } from \\"@PrismaService\\";
 import { User } from \\"../../User\\";
 import { FindFirstUser } from \\"../inputTypes\\";
 
@@ -144,9 +144,9 @@ import { FindFirstUser } from \\"../inputTypes\\";
   isAbstract: false,
 })
 export class FindFirstUserResolver {
-  private readonly _prismaService;
+  private readonly _prismaService: PrismaService;
 
-  constructor(prismaService) {
+  constructor(prismaService: PrismaService) {
     this._prismaService = prismaService;
   }
 
@@ -162,7 +162,7 @@ export class FindFirstUserResolver {
 
 exports[`ResolverHandler should parse resolvers and create correct resolver files from datamodel 7`] = `
 "import { Args, Query, Resolver } from \\"@nestjs/graphql\\";
-import { } from \\"\\";
+import { PrismaService } from \\"@PrismaService\\";
 import { User } from \\"../../User\\";
 import { FindManyUser } from \\"../inputTypes\\";
 
@@ -170,9 +170,9 @@ import { FindManyUser } from \\"../inputTypes\\";
   isAbstract: false,
 })
 export class FindManyUserResolver {
-  private readonly _prismaService;
+  private readonly _prismaService: PrismaService;
 
-  constructor(prismaService) {
+  constructor(prismaService: PrismaService) {
     this._prismaService = prismaService;
   }
 
@@ -188,7 +188,7 @@ export class FindManyUserResolver {
 
 exports[`ResolverHandler should parse resolvers and create correct resolver files from datamodel 8`] = `
 "import { Args, Query, Resolver } from \\"@nestjs/graphql\\";
-import { } from \\"\\";
+import { PrismaService } from \\"@PrismaService\\";
 import { User } from \\"../../User\\";
 import { FindUniqueUser } from \\"../inputTypes\\";
 
@@ -196,9 +196,9 @@ import { FindUniqueUser } from \\"../inputTypes\\";
   isAbstract: false,
 })
 export class FindUniqueUserResolver {
-  private readonly _prismaService;
+  private readonly _prismaService: PrismaService;
 
-  constructor(prismaService) {
+  constructor(prismaService: PrismaService) {
     this._prismaService = prismaService;
   }
 
@@ -214,7 +214,7 @@ export class FindUniqueUserResolver {
 
 exports[`ResolverHandler should parse resolvers and create correct resolver files from datamodel 9`] = `
 "import { Args, Mutation, Resolver } from \\"@nestjs/graphql\\";
-import { } from \\"\\";
+import { PrismaService } from \\"@PrismaService\\";
 import { User } from \\"../../User\\";
 import { UpdateManyUser } from \\"../inputTypes\\";
 import { AffectedRowsOutput } from \\"../../shared/outputTypes\\";
@@ -223,9 +223,9 @@ import { AffectedRowsOutput } from \\"../../shared/outputTypes\\";
   isAbstract: false,
 })
 export class UpdateManyUserResolver {
-  private readonly _prismaService;
+  private readonly _prismaService: PrismaService;
 
-  constructor(prismaService) {
+  constructor(prismaService: PrismaService) {
     this._prismaService = prismaService;
   }
 
@@ -241,7 +241,7 @@ export class UpdateManyUserResolver {
 
 exports[`ResolverHandler should parse resolvers and create correct resolver files from datamodel 10`] = `
 "import { Args, Mutation, Resolver } from \\"@nestjs/graphql\\";
-import { } from \\"\\";
+import { PrismaService } from \\"@PrismaService\\";
 import { User } from \\"../../User\\";
 import { UpdateOneUser } from \\"../inputTypes\\";
 
@@ -249,9 +249,9 @@ import { UpdateOneUser } from \\"../inputTypes\\";
   isAbstract: false,
 })
 export class UpdateOneUserResolver {
-  private readonly _prismaService;
+  private readonly _prismaService: PrismaService;
 
-  constructor(prismaService) {
+  constructor(prismaService: PrismaService) {
     this._prismaService = prismaService;
   }
 
@@ -267,7 +267,7 @@ export class UpdateOneUserResolver {
 
 exports[`ResolverHandler should parse resolvers and create correct resolver files from datamodel 11`] = `
 "import { Args, Mutation, Resolver } from \\"@nestjs/graphql\\";
-import { } from \\"\\";
+import { PrismaService } from \\"@PrismaService\\";
 import { User } from \\"../../User\\";
 import { UpsertOneUser } from \\"../inputTypes\\";
 
@@ -275,9 +275,9 @@ import { UpsertOneUser } from \\"../inputTypes\\";
   isAbstract: false,
 })
 export class UpsertOneUserResolver {
-  private readonly _prismaService;
+  private readonly _prismaService: PrismaService;
 
-  constructor(prismaService) {
+  constructor(prismaService: PrismaService) {
     this._prismaService = prismaService;
   }
 

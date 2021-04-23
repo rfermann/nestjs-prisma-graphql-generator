@@ -31,8 +31,8 @@ describe("ResolverHandler", () => {
         shared: "shared",
       },
       prismaClientImportPath: `${process.cwd()}/node_modules/@prisma/client`,
-      prismaServiceImport: "",
-      prismaServiceImportPath: "",
+      prismaServiceImport: "PrismaService",
+      prismaServiceImportPath: "@PrismaService",
     };
 
     const enumHandler = new EnumHandler({
@@ -78,8 +78,8 @@ describe("ResolverHandler", () => {
         shared: "shared",
       },
       prismaClientImportPath: `${process.cwd()}/node_modules/@prisma/client`,
-      prismaServiceImport: "",
-      prismaServiceImportPath: "",
+      prismaServiceImport: "PrismaService",
+      prismaServiceImportPath: "@PrismaService",
     };
 
     const resolverTypeHandler = new ResolverHandler({

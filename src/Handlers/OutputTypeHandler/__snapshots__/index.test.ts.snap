@@ -32,7 +32,17 @@ export class AggregateUser {
   @Field(() => UserCountAggregateOutputType, {
     nullable: true
   })
+  _count?: UserCountAggregateOutputType | null;
+
+  @Field(() => UserCountAggregateOutputType, {
+    nullable: true
+  })
   count?: UserCountAggregateOutputType | null;
+
+  @Field(() => UserAvgAggregateOutputType, {
+    nullable: true
+  })
+  _avg?: UserAvgAggregateOutputType | null;
 
   @Field(() => UserAvgAggregateOutputType, {
     nullable: true
@@ -42,12 +52,27 @@ export class AggregateUser {
   @Field(() => UserSumAggregateOutputType, {
     nullable: true
   })
+  _sum?: UserSumAggregateOutputType | null;
+
+  @Field(() => UserSumAggregateOutputType, {
+    nullable: true
+  })
   sum?: UserSumAggregateOutputType | null;
 
   @Field(() => UserMinAggregateOutputType, {
     nullable: true
   })
+  _min?: UserMinAggregateOutputType | null;
+
+  @Field(() => UserMinAggregateOutputType, {
+    nullable: true
+  })
   min?: UserMinAggregateOutputType | null;
+
+  @Field(() => UserMaxAggregateOutputType, {
+    nullable: true
+  })
+  _max?: UserMaxAggregateOutputType | null;
 
   @Field(() => UserMaxAggregateOutputType, {
     nullable: true
@@ -176,27 +201,27 @@ export class UserGroupByOutputType {
   @Field(() => UserCountAggregateOutputType, {
     nullable: true
   })
-  count?: UserCountAggregateOutputType | null;
+  _count?: UserCountAggregateOutputType | null;
 
   @Field(() => UserAvgAggregateOutputType, {
     nullable: true
   })
-  avg?: UserAvgAggregateOutputType | null;
+  _avg?: UserAvgAggregateOutputType | null;
 
   @Field(() => UserSumAggregateOutputType, {
     nullable: true
   })
-  sum?: UserSumAggregateOutputType | null;
+  _sum?: UserSumAggregateOutputType | null;
 
   @Field(() => UserMinAggregateOutputType, {
     nullable: true
   })
-  min?: UserMinAggregateOutputType | null;
+  _min?: UserMinAggregateOutputType | null;
 
   @Field(() => UserMaxAggregateOutputType, {
     nullable: true
   })
-  max?: UserMaxAggregateOutputType | null;
+  _max?: UserMaxAggregateOutputType | null;
 }
 "
 `;

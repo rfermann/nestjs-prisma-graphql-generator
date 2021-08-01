@@ -195,7 +195,17 @@ export class BigIntWithAggregatesFilter {
   @Field(() => NestedIntFilter, {
     nullable: true
   })
+  _count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
   count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedFloatFilter, {
+    nullable: true
+  })
+  _avg?: NestedFloatFilter | undefined;
 
   @Field(() => NestedFloatFilter, {
     nullable: true
@@ -205,12 +215,27 @@ export class BigIntWithAggregatesFilter {
   @Field(() => NestedBigIntFilter, {
     nullable: true
   })
+  _sum?: NestedBigIntFilter | undefined;
+
+  @Field(() => NestedBigIntFilter, {
+    nullable: true
+  })
   sum?: NestedBigIntFilter | undefined;
 
   @Field(() => NestedBigIntFilter, {
     nullable: true
   })
+  _min?: NestedBigIntFilter | undefined;
+
+  @Field(() => NestedBigIntFilter, {
+    nullable: true
+  })
   min?: NestedBigIntFilter | undefined;
+
+  @Field(() => NestedBigIntFilter, {
+    nullable: true
+  })
+  _max?: NestedBigIntFilter | undefined;
 
   @Field(() => NestedBigIntFilter, {
     nullable: true
@@ -277,12 +302,27 @@ export class BoolWithAggregatesFilter {
   @Field(() => NestedIntFilter, {
     nullable: true
   })
+  _count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
   count?: NestedIntFilter | undefined;
 
   @Field(() => NestedBoolFilter, {
     nullable: true
   })
+  _min?: NestedBoolFilter | undefined;
+
+  @Field(() => NestedBoolFilter, {
+    nullable: true
+  })
   min?: NestedBoolFilter | undefined;
+
+  @Field(() => NestedBoolFilter, {
+    nullable: true
+  })
+  _max?: NestedBoolFilter | undefined;
 
   @Field(() => NestedBoolFilter, {
     nullable: true
@@ -352,12 +392,27 @@ export class BytesWithAggregatesFilter {
   @Field(() => NestedIntFilter, {
     nullable: true
   })
+  _count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
   count?: NestedIntFilter | undefined;
 
   @Field(() => NestedBytesFilter, {
     nullable: true
   })
+  _min?: NestedBytesFilter | undefined;
+
+  @Field(() => NestedBytesFilter, {
+    nullable: true
+  })
   min?: NestedBytesFilter | undefined;
+
+  @Field(() => NestedBytesFilter, {
+    nullable: true
+  })
+  _max?: NestedBytesFilter | undefined;
 
   @Field(() => NestedBytesFilter, {
     nullable: true
@@ -484,12 +539,27 @@ export class DateTimeWithAggregatesFilter {
   @Field(() => NestedIntFilter, {
     nullable: true
   })
+  _count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
   count?: NestedIntFilter | undefined;
 
   @Field(() => NestedDateTimeFilter, {
     nullable: true
   })
+  _min?: NestedDateTimeFilter | undefined;
+
+  @Field(() => NestedDateTimeFilter, {
+    nullable: true
+  })
   min?: NestedDateTimeFilter | undefined;
+
+  @Field(() => NestedDateTimeFilter, {
+    nullable: true
+  })
+  _max?: NestedDateTimeFilter | undefined;
 
   @Field(() => NestedDateTimeFilter, {
     nullable: true
@@ -636,7 +706,17 @@ export class DecimalWithAggregatesFilter {
   @Field(() => NestedIntFilter, {
     nullable: true
   })
+  _count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
   count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedDecimalFilter, {
+    nullable: true
+  })
+  _avg?: NestedDecimalFilter | undefined;
 
   @Field(() => NestedDecimalFilter, {
     nullable: true
@@ -646,12 +726,27 @@ export class DecimalWithAggregatesFilter {
   @Field(() => NestedDecimalFilter, {
     nullable: true
   })
+  _sum?: NestedDecimalFilter | undefined;
+
+  @Field(() => NestedDecimalFilter, {
+    nullable: true
+  })
   sum?: NestedDecimalFilter | undefined;
 
   @Field(() => NestedDecimalFilter, {
     nullable: true
   })
+  _min?: NestedDecimalFilter | undefined;
+
+  @Field(() => NestedDecimalFilter, {
+    nullable: true
+  })
   min?: NestedDecimalFilter | undefined;
+
+  @Field(() => NestedDecimalFilter, {
+    nullable: true
+  })
+  _max?: NestedDecimalFilter | undefined;
 
   @Field(() => NestedDecimalFilter, {
     nullable: true
@@ -741,12 +836,27 @@ export class EnumUserTypeWithAggregatesFilter {
   @Field(() => NestedIntFilter, {
     nullable: true
   })
+  _count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
   count?: NestedIntFilter | undefined;
 
   @Field(() => NestedEnumUserTypeFilter, {
     nullable: true
   })
+  _min?: NestedEnumUserTypeFilter | undefined;
+
+  @Field(() => NestedEnumUserTypeFilter, {
+    nullable: true
+  })
   min?: NestedEnumUserTypeFilter | undefined;
+
+  @Field(() => NestedEnumUserTypeFilter, {
+    nullable: true
+  })
+  _max?: NestedEnumUserTypeFilter | undefined;
 
   @Field(() => NestedEnumUserTypeFilter, {
     nullable: true
@@ -893,7 +1003,17 @@ export class FloatWithAggregatesFilter {
   @Field(() => NestedIntFilter, {
     nullable: true
   })
+  _count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
   count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedFloatFilter, {
+    nullable: true
+  })
+  _avg?: NestedFloatFilter | undefined;
 
   @Field(() => NestedFloatFilter, {
     nullable: true
@@ -903,12 +1023,27 @@ export class FloatWithAggregatesFilter {
   @Field(() => NestedFloatFilter, {
     nullable: true
   })
+  _sum?: NestedFloatFilter | undefined;
+
+  @Field(() => NestedFloatFilter, {
+    nullable: true
+  })
   sum?: NestedFloatFilter | undefined;
 
   @Field(() => NestedFloatFilter, {
     nullable: true
   })
+  _min?: NestedFloatFilter | undefined;
+
+  @Field(() => NestedFloatFilter, {
+    nullable: true
+  })
   min?: NestedFloatFilter | undefined;
+
+  @Field(() => NestedFloatFilter, {
+    nullable: true
+  })
+  _max?: NestedFloatFilter | undefined;
 
   @Field(() => NestedFloatFilter, {
     nullable: true
@@ -1055,7 +1190,17 @@ export class IntWithAggregatesFilter {
   @Field(() => NestedIntFilter, {
     nullable: true
   })
+  _count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
   count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedFloatFilter, {
+    nullable: true
+  })
+  _avg?: NestedFloatFilter | undefined;
 
   @Field(() => NestedFloatFilter, {
     nullable: true
@@ -1065,12 +1210,27 @@ export class IntWithAggregatesFilter {
   @Field(() => NestedIntFilter, {
     nullable: true
   })
+  _sum?: NestedIntFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
   sum?: NestedIntFilter | undefined;
 
   @Field(() => NestedIntFilter, {
     nullable: true
   })
+  _min?: NestedIntFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
   min?: NestedIntFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
+  _max?: NestedIntFilter | undefined;
 
   @Field(() => NestedIntFilter, {
     nullable: true
@@ -1125,12 +1285,27 @@ export class JsonWithAggregatesFilter {
   @Field(() => NestedIntFilter, {
     nullable: true
   })
+  _count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
   count?: NestedIntFilter | undefined;
 
   @Field(() => NestedJsonFilter, {
     nullable: true
   })
+  _min?: NestedJsonFilter | undefined;
+
+  @Field(() => NestedJsonFilter, {
+    nullable: true
+  })
   min?: NestedJsonFilter | undefined;
+
+  @Field(() => NestedJsonFilter, {
+    nullable: true
+  })
+  _max?: NestedJsonFilter | undefined;
 
   @Field(() => NestedJsonFilter, {
     nullable: true
@@ -1231,7 +1406,17 @@ export class NestedBigIntWithAggregatesFilter {
   @Field(() => NestedIntFilter, {
     nullable: true
   })
+  _count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
   count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedFloatFilter, {
+    nullable: true
+  })
+  _avg?: NestedFloatFilter | undefined;
 
   @Field(() => NestedFloatFilter, {
     nullable: true
@@ -1241,12 +1426,27 @@ export class NestedBigIntWithAggregatesFilter {
   @Field(() => NestedBigIntFilter, {
     nullable: true
   })
+  _sum?: NestedBigIntFilter | undefined;
+
+  @Field(() => NestedBigIntFilter, {
+    nullable: true
+  })
   sum?: NestedBigIntFilter | undefined;
 
   @Field(() => NestedBigIntFilter, {
     nullable: true
   })
+  _min?: NestedBigIntFilter | undefined;
+
+  @Field(() => NestedBigIntFilter, {
+    nullable: true
+  })
   min?: NestedBigIntFilter | undefined;
+
+  @Field(() => NestedBigIntFilter, {
+    nullable: true
+  })
+  _max?: NestedBigIntFilter | undefined;
 
   @Field(() => NestedBigIntFilter, {
     nullable: true
@@ -1287,12 +1487,27 @@ export class NestedBoolWithAggregatesFilter {
   @Field(() => NestedIntFilter, {
     nullable: true
   })
+  _count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
   count?: NestedIntFilter | undefined;
 
   @Field(() => NestedBoolFilter, {
     nullable: true
   })
+  _min?: NestedBoolFilter | undefined;
+
+  @Field(() => NestedBoolFilter, {
+    nullable: true
+  })
   min?: NestedBoolFilter | undefined;
+
+  @Field(() => NestedBoolFilter, {
+    nullable: true
+  })
+  _max?: NestedBoolFilter | undefined;
 
   @Field(() => NestedBoolFilter, {
     nullable: true
@@ -1335,12 +1550,27 @@ export class NestedBytesWithAggregatesFilter {
   @Field(() => NestedIntFilter, {
     nullable: true
   })
+  _count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
   count?: NestedIntFilter | undefined;
 
   @Field(() => NestedBytesFilter, {
     nullable: true
   })
+  _min?: NestedBytesFilter | undefined;
+
+  @Field(() => NestedBytesFilter, {
+    nullable: true
+  })
   min?: NestedBytesFilter | undefined;
+
+  @Field(() => NestedBytesFilter, {
+    nullable: true
+  })
+  _max?: NestedBytesFilter | undefined;
 
   @Field(() => NestedBytesFilter, {
     nullable: true
@@ -1441,12 +1671,27 @@ export class NestedDateTimeWithAggregatesFilter {
   @Field(() => NestedIntFilter, {
     nullable: true
   })
+  _count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
   count?: NestedIntFilter | undefined;
 
   @Field(() => NestedDateTimeFilter, {
     nullable: true
   })
+  _min?: NestedDateTimeFilter | undefined;
+
+  @Field(() => NestedDateTimeFilter, {
+    nullable: true
+  })
   min?: NestedDateTimeFilter | undefined;
+
+  @Field(() => NestedDateTimeFilter, {
+    nullable: true
+  })
+  _max?: NestedDateTimeFilter | undefined;
 
   @Field(() => NestedDateTimeFilter, {
     nullable: true
@@ -1547,7 +1792,17 @@ export class NestedDecimalWithAggregatesFilter {
   @Field(() => NestedIntFilter, {
     nullable: true
   })
+  _count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
   count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedDecimalFilter, {
+    nullable: true
+  })
+  _avg?: NestedDecimalFilter | undefined;
 
   @Field(() => NestedDecimalFilter, {
     nullable: true
@@ -1557,12 +1812,27 @@ export class NestedDecimalWithAggregatesFilter {
   @Field(() => NestedDecimalFilter, {
     nullable: true
   })
+  _sum?: NestedDecimalFilter | undefined;
+
+  @Field(() => NestedDecimalFilter, {
+    nullable: true
+  })
   sum?: NestedDecimalFilter | undefined;
 
   @Field(() => NestedDecimalFilter, {
     nullable: true
   })
+  _min?: NestedDecimalFilter | undefined;
+
+  @Field(() => NestedDecimalFilter, {
+    nullable: true
+  })
   min?: NestedDecimalFilter | undefined;
+
+  @Field(() => NestedDecimalFilter, {
+    nullable: true
+  })
+  _max?: NestedDecimalFilter | undefined;
 
   @Field(() => NestedDecimalFilter, {
     nullable: true
@@ -1625,12 +1895,27 @@ export class NestedEnumUserTypeWithAggregatesFilter {
   @Field(() => NestedIntFilter, {
     nullable: true
   })
+  _count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
   count?: NestedIntFilter | undefined;
 
   @Field(() => NestedEnumUserTypeFilter, {
     nullable: true
   })
+  _min?: NestedEnumUserTypeFilter | undefined;
+
+  @Field(() => NestedEnumUserTypeFilter, {
+    nullable: true
+  })
   min?: NestedEnumUserTypeFilter | undefined;
+
+  @Field(() => NestedEnumUserTypeFilter, {
+    nullable: true
+  })
+  _max?: NestedEnumUserTypeFilter | undefined;
 
   @Field(() => NestedEnumUserTypeFilter, {
     nullable: true
@@ -1731,7 +2016,17 @@ export class NestedFloatWithAggregatesFilter {
   @Field(() => NestedIntFilter, {
     nullable: true
   })
+  _count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
   count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedFloatFilter, {
+    nullable: true
+  })
+  _avg?: NestedFloatFilter | undefined;
 
   @Field(() => NestedFloatFilter, {
     nullable: true
@@ -1741,12 +2036,27 @@ export class NestedFloatWithAggregatesFilter {
   @Field(() => NestedFloatFilter, {
     nullable: true
   })
+  _sum?: NestedFloatFilter | undefined;
+
+  @Field(() => NestedFloatFilter, {
+    nullable: true
+  })
   sum?: NestedFloatFilter | undefined;
 
   @Field(() => NestedFloatFilter, {
     nullable: true
   })
+  _min?: NestedFloatFilter | undefined;
+
+  @Field(() => NestedFloatFilter, {
+    nullable: true
+  })
   min?: NestedFloatFilter | undefined;
+
+  @Field(() => NestedFloatFilter, {
+    nullable: true
+  })
+  _max?: NestedFloatFilter | undefined;
 
   @Field(() => NestedFloatFilter, {
     nullable: true
@@ -1892,7 +2202,17 @@ export class NestedIntWithAggregatesFilter {
   @Field(() => NestedIntFilter, {
     nullable: true
   })
+  _count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
   count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedFloatFilter, {
+    nullable: true
+  })
+  _avg?: NestedFloatFilter | undefined;
 
   @Field(() => NestedFloatFilter, {
     nullable: true
@@ -1902,12 +2222,27 @@ export class NestedIntWithAggregatesFilter {
   @Field(() => NestedIntFilter, {
     nullable: true
   })
+  _sum?: NestedIntFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
   sum?: NestedIntFilter | undefined;
 
   @Field(() => NestedIntFilter, {
     nullable: true
   })
+  _min?: NestedIntFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
   min?: NestedIntFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
+  _max?: NestedIntFilter | undefined;
 
   @Field(() => NestedIntFilter, {
     nullable: true
@@ -2120,12 +2455,27 @@ export class NestedStringNullableWithAggregatesFilter {
   @Field(() => NestedIntNullableFilter, {
     nullable: true
   })
+  _count?: NestedIntNullableFilter | undefined;
+
+  @Field(() => NestedIntNullableFilter, {
+    nullable: true
+  })
   count?: NestedIntNullableFilter | undefined;
 
   @Field(() => NestedStringNullableFilter, {
     nullable: true
   })
+  _min?: NestedStringNullableFilter | undefined;
+
+  @Field(() => NestedStringNullableFilter, {
+    nullable: true
+  })
   min?: NestedStringNullableFilter | undefined;
+
+  @Field(() => NestedStringNullableFilter, {
+    nullable: true
+  })
+  _max?: NestedStringNullableFilter | undefined;
 
   @Field(() => NestedStringNullableFilter, {
     nullable: true
@@ -2196,12 +2546,27 @@ export class NestedStringWithAggregatesFilter {
   @Field(() => NestedIntFilter, {
     nullable: true
   })
+  _count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
   count?: NestedIntFilter | undefined;
 
   @Field(() => NestedStringFilter, {
     nullable: true
   })
+  _min?: NestedStringFilter | undefined;
+
+  @Field(() => NestedStringFilter, {
+    nullable: true
+  })
   min?: NestedStringFilter | undefined;
+
+  @Field(() => NestedStringFilter, {
+    nullable: true
+  })
+  _max?: NestedStringFilter | undefined;
 
   @Field(() => NestedStringFilter, {
     nullable: true
@@ -2457,12 +2822,27 @@ export class StringNullableWithAggregatesFilter {
   @Field(() => NestedIntNullableFilter, {
     nullable: true
   })
+  _count?: NestedIntNullableFilter | undefined;
+
+  @Field(() => NestedIntNullableFilter, {
+    nullable: true
+  })
   count?: NestedIntNullableFilter | undefined;
 
   @Field(() => NestedStringNullableFilter, {
     nullable: true
   })
+  _min?: NestedStringNullableFilter | undefined;
+
+  @Field(() => NestedStringNullableFilter, {
+    nullable: true
+  })
   min?: NestedStringNullableFilter | undefined;
+
+  @Field(() => NestedStringNullableFilter, {
+    nullable: true
+  })
+  _max?: NestedStringNullableFilter | undefined;
 
   @Field(() => NestedStringNullableFilter, {
     nullable: true
@@ -2544,12 +2924,27 @@ export class StringWithAggregatesFilter {
   @Field(() => NestedIntFilter, {
     nullable: true
   })
+  _count?: NestedIntFilter | undefined;
+
+  @Field(() => NestedIntFilter, {
+    nullable: true
+  })
   count?: NestedIntFilter | undefined;
 
   @Field(() => NestedStringFilter, {
     nullable: true
   })
+  _min?: NestedStringFilter | undefined;
+
+  @Field(() => NestedStringFilter, {
+    nullable: true
+  })
   min?: NestedStringFilter | undefined;
+
+  @Field(() => NestedStringFilter, {
+    nullable: true
+  })
+  _max?: NestedStringFilter | undefined;
 
   @Field(() => NestedStringFilter, {
     nullable: true

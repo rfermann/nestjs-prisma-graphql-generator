@@ -27,8 +27,10 @@ describe("InputTypeHandler", () => {
       basePath: `${process.cwd()}/fixtures/inputTypeHandler/fixtures/output1`,
       includePrismaSelect: false,
       inputArgumentsName: "",
+      inputTypeDecoratorsPath: "",
       paths: {
         enums: "enums",
+        inputTypeDecorators: "inputTypeDecorators",
         inputTypes: "inputTypes",
         model: "model",
         outputTypes: "outputTypes",
@@ -77,8 +79,10 @@ describe("InputTypeHandler", () => {
       basePath: `${process.cwd()}/fixtures/inputTypeHandler/fixtures/output2`,
       includePrismaSelect: false,
       inputArgumentsName: "input",
+      inputTypeDecoratorsPath: "",
       paths: {
         enums: "enums",
+        inputTypeDecorators: "inputTypeDecorators",
         inputTypes: "inputTypes",
         model: "model",
         outputTypes: "outputTypes",
@@ -124,8 +128,10 @@ describe("InputTypeHandler", () => {
       basePath: `${process.cwd()}/fixtures/inputTypeHandler/fixtures/output3`,
       includePrismaSelect: false,
       inputArgumentsName: "",
+      inputTypeDecoratorsPath: "",
       paths: {
         enums: "enums",
+        inputTypeDecorators: "inputTypeDecorators",
         inputTypes: "inputTypes",
         model: "model",
         outputTypes: "outputTypes",
@@ -200,8 +206,10 @@ describe("InputTypeHandler", () => {
       basePath: `${process.cwd()}/fixtures/inputTypeHandler/fixtures/output4`,
       includePrismaSelect: false,
       inputArgumentsName: "",
+      inputTypeDecoratorsPath: "",
       paths: {
         enums: "enums",
+        inputTypeDecorators: "inputTypeDecorators",
         inputTypes: "inputTypes",
         model: "model",
         outputTypes: "outputTypes",

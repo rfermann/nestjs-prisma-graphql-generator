@@ -19,6 +19,7 @@ interface EnumValue {
 }
 
 interface Field {
+  decorators?: Map<string, string>;
   documentation?: string;
   graphQLType: string;
   isNullable: boolean;

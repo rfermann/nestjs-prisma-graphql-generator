@@ -2,6 +2,7 @@ import type { GeneratorConfig as PrismaGeneratorConfig } from "@prisma/generator
 
 interface Paths {
   enums: string;
+  inputTypeDecorators: string;
   inputTypes: string;
   model: string;
   outputTypes: string;
@@ -20,6 +21,8 @@ export class GeneratorConfig {
   readonly includePrismaSelect: boolean;
 
   readonly inputArgumentsName: string;
+
+  readonly inputTypeDecoratorsPath: string | undefined;
 
   readonly paths: Paths;
 
@@ -47,6 +50,7 @@ export class GeneratorConfig {
     this.basePath = output.value;
     this.paths = {
       enums: "enums",
+      inputTypeDecorators: "inputTypeDecorators",
       inputTypes: "inputTypes",
       model: "model",
       outputTypes: "outputTypes",
@@ -55,6 +59,7 @@ export class GeneratorConfig {
     };
     this.includePrismaSelect = config.includePrismaSelect === "true" || false;
     this.inputArgumentsName = config.inputArgumentsName || "input";
+    this.inputTypeDecoratorsPath = config.inputTypeDecoratorsPath || undefined;
     this.prismaClientImportPath = prismaClientPath.output.value;
     this.prismaServiceImport = config.prismaServiceImport || "PrismaService";
     this.prismaServiceImportPath = config.prismaServiceImportPath;

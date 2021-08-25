@@ -27,8 +27,10 @@ describe("ModelHandler", () => {
       basePath: `${process.cwd()}/fixtures/modelHandler/fixtures/output3`,
       includePrismaSelect: false,
       inputArgumentsName: "",
+      inputTypeDecoratorsPath: "",
       paths: {
         enums: "enums",
+        inputTypeDecorators: "",
         inputTypes: "",
         model: "model",
         outputTypes: "",

@@ -26,8 +26,10 @@ describe("EnumHandler", () => {
       basePath: `${process.cwd()}/fixtures/enumHandler/fixtures/output1`,
       includePrismaSelect: false,
       inputArgumentsName: "",
+      inputTypeDecoratorsPath: "",
       paths: {
         enums: "./enum",
+        inputTypeDecorators: "",
         inputTypes: "",
         model: "model",
         outputTypes: "",
@@ -67,8 +69,10 @@ describe("EnumHandler", () => {
       basePath: `${process.cwd()}/fixtures/enumHandler/fixtures/output2`,
       includePrismaSelect: false,
       inputArgumentsName: "",
+      inputTypeDecoratorsPath: "",
       paths: {
         enums: "./enum",
+        inputTypeDecorators: "",
         inputTypes: "",
         model: "model",
         outputTypes: "",
@@ -104,8 +108,10 @@ describe("EnumHandler", () => {
       basePath: `${process.cwd()}/fixtures/enumHandler/fixtures/output3`,
       includePrismaSelect: false,
       inputArgumentsName: "",
+      inputTypeDecoratorsPath: "",
       paths: {
         enums: "./enum",
+        inputTypeDecorators: "",
         inputTypes: "",
         model: "model",
         outputTypes: "",
@@ -170,8 +176,10 @@ describe("EnumHandler", () => {
       basePath: `${process.cwd()}/fixtures/enumHandler/fixtures/output4`,
       includePrismaSelect: false,
       inputArgumentsName: "",
+      inputTypeDecoratorsPath: "",
       paths: {
         enums: "./enum",
+        inputTypeDecorators: "",
         inputTypes: "",
         model: "model",
         outputTypes: "",

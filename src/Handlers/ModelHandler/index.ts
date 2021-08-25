@@ -59,7 +59,7 @@ export class ModelHandler extends BaseHandler {
           docs: typeof documentation === "string" ? [documentation] : [],
           isExported: true,
           name,
-          properties: this.baseFileGenerator.getProperties(fields),
+          properties: this.baseFileGenerator.getProperties({ decoratorType: TypeEnum.ModelType, fields }),
         });
 
         sourceFile.formatText();

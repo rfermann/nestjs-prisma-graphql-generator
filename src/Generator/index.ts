@@ -8,6 +8,7 @@ import { GeneratorConfig } from "../GeneratorConfig";
 import {
   BarrelFileHandler,
   EnumHandler,
+  InputTypeDecoratorHandler,
   InputTypeHandler,
   ModelHandler,
   OutputTypeHandler,
@@ -23,6 +24,11 @@ export class Generator {
       title: "Parsing and generating Enums",
     },
     init: "Initialize generator",
+    inputTypeDecorators: {
+      generate: "Generating Input Type structure",
+      parse: "Parsing Input Types structure",
+      title: "Parsing and generating Input Type structure",
+    },
     inputTypes: {
       generate: "Generating Input Types",
       parse: "Parsing Input Types",
@@ -54,6 +60,8 @@ export class Generator {
   private _dmmf!: DMMF.Document;
 
   private _enumHandler!: EnumHandler;
+
+  private _inputTypeDecoratorHandler!: InputTypeDecoratorHandler;
 
   private _inputTypeHandler!: InputTypeHandler;
 
@@ -174,6 +182,23 @@ export class Generator {
                     ),
                   title: Generator.messages.objects,
                 },
+                {
+                  enabled: () => typeof this._config.inputTypeDecoratorsPath === "string",
+                  task: async () =>
+                    new Listr([
+                      {
+                        task: () => this._inputTypeDecoratorHandler.parse(this._inputTypeHandler.getInputTypes()),
+                        title: Generator.messages.inputTypeDecorators.parse,
+                      },
+                      {
+                        task: async () => {
+                          await this._inputTypeDecoratorHandler.createFile();
+                        },
+                        title: Generator.messages.inputTypeDecorators.generate,
+                      },
+                    ]),
+                  title: Generator.messages.inputTypeDecorators.title,
+                },
               ],
               { concurrent: false }
             ),
@@ -197,6 +222,7 @@ export class Generator {
     this._enumHandler = new EnumHandler({ config: this._config, dmmf: this._dmmf });
     this._modelHandler = new ModelHandler({ config: this._config, dmmf: this._dmmf });
     this._inputTypeHandler = new InputTypeHandler({ config: this._config, dmmf: this._dmmf });
+    this._inputTypeDecoratorHandler = new InputTypeDecoratorHandler({ config: this._config, dmmf: this._dmmf });
     this._outputTypeHandler = new OutputTypeHandler({ config: this._config, dmmf: this._dmmf });
     this._resolverHandler = new ResolverHandler({ config: this._config, dmmf: this._dmmf });
 

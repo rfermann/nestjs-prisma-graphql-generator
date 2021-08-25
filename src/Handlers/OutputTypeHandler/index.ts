@@ -53,7 +53,7 @@ export class OutputTypeHandler extends BaseHandler {
           decorators: this.baseFileGenerator.getClassDecorator({ decoratorType: ObjectTypes.ObjectType }),
           isExported: true,
           name,
-          properties: this.baseFileGenerator.getProperties(fields),
+          properties: this.baseFileGenerator.getProperties({ decoratorType: TypeEnum.OutputType, fields }),
         });
 
         this.baseFileGenerator.addNestJSImports({
@@ -123,7 +123,7 @@ export class OutputTypeHandler extends BaseHandler {
           tsType: parsedField.tsType,
         });
 
-        const baseGraphqlType = parsedField.graphQLType.replace("[", "").replace("]", "");
+        const baseGraphqlType = this.baseFileGenerator.normalizeTsType(parsedField.graphQLType);
 
         if (this.baseParser.outputTypeList.has(baseGraphqlType)) {
           outputTypeImports.add(baseGraphqlType);

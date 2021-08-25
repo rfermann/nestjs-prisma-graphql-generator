@@ -1,12 +1,79 @@
+// eslint-disable-next-line import/no-nodejs-modules
+import { dirname, join, relative, resolve } from "path";
+
 import type { DMMF } from "@prisma/generator-helper";
+import type { SourceFile } from "ts-morph";
+import { IndentationText, NewLineKind, Project, StructureKind, SyntaxKind, VariableDeclarationKind } from "ts-morph";
 
 import type { Enum, Field, InputType } from "../../types";
 import { NestJSTypes, ObjectTypes, OperationType, TypeEnum } from "../../types";
 import { BaseHandler } from "../BaseHandler";
 import { comparePrimitiveValues } from "../BaseHandler/compareFunctions";
 
+const enum ImportTypeEnum {
+  DefaultImport = "DefaultImport",
+  NamedImports = "NamedImports",
+}
+
 export class InputTypeHandler extends BaseHandler {
+  private readonly _inputTypeDecoratorImports: Map<string, Map<string, Set<string>>> = new Map();
+
+  private readonly _inputTypeDecorators: Map<string, Map<string, Map<string, string>>> = new Map();
+
   private readonly _inputTypes: InputType[] = [];
+
+  addDecoratorImports({ fields, sourceFile }: { fields: Field[]; sourceFile: SourceFile }): void {
+    const decoratorSet = new Set();
+
+    // eslint-disable-next-line no-restricted-syntax
+    for (const { decorators } of fields) {
+      const decoratorKeys = decorators?.keys();
+
+      if (decoratorKeys) {
+        // eslint-disable-next-line no-restricted-syntax
+        for (const key of decoratorKeys) {
+          decoratorSet.add(key);
+        }
+      }
+    }
+
+    if (this._inputTypeDecoratorImports.size < 1) {
+      return;
+    }
+
+    // eslint-disable-next-line no-restricted-syntax
+    for (const moduleSpecifier of this._inputTypeDecoratorImports.keys()) {
+      const imports = this._inputTypeDecoratorImports.get(moduleSpecifier);
+
+      if (imports) {
+        const defaultImport: string[] = [];
+        const namedImportSet: Set<string> = new Set();
+
+        // eslint-disable-next-line no-restricted-syntax
+        for (const value of imports.get(ImportTypeEnum.DefaultImport)?.keys() || []) {
+          if (decoratorSet.has(value)) {
+            defaultImport.push(value);
+          }
+        }
+
+        // eslint-disable-next-line no-restricted-syntax
+        for (const value of imports.get(ImportTypeEnum.NamedImports)?.keys() || []) {
+          if (decoratorSet.has(value)) {
+            namedImportSet.add(value);
+          }
+        }
+
+        if (imports) {
+          this.baseFileGenerator.addDecoratorImports({
+            defaultImport: defaultImport[0],
+            moduleSpecifier,
+            namedImports: Array.from(namedImportSet.size > 0 ? namedImportSet : []),
+            sourceFile,
+          });
+        }
+      }
+    }
+  }
 
   async createBarrelFiles(): Promise<void> {
     const barrelFiles: Record<string, string[]> = {};
@@ -44,7 +111,9 @@ export class InputTypeHandler extends BaseHandler {
     }
   }
 
+  // eslint-disable-next-line max-lines-per-function
   async createFiles(): Promise<void> {
+    this.baseFileGenerator.setInputTypes(this._inputTypes);
     this._inputTypes.forEach(
       ({ enumImports, fields, graphqlScalarImports, inputTypeImports, jsonImports, name, nestJSImports }) => {
         const model = this.baseParser.getModelName(name);
@@ -55,8 +124,7 @@ export class InputTypeHandler extends BaseHandler {
           decorators: this.baseFileGenerator.getClassDecorator({ decoratorType: ObjectTypes.InputType }),
           isExported: true,
           name,
-
-          properties: this.baseFileGenerator.getProperties(fields),
+          properties: this.baseFileGenerator.getProperties({ decoratorType: TypeEnum.InputType, fields }),
         });
 
         this.baseFileGenerator.addNestJSImports({
@@ -75,6 +143,21 @@ export class InputTypeHandler extends BaseHandler {
         if (jsonImports && jsonImports.length > 0) {
           this.baseFileGenerator.addJsonImports({ sourceFile });
         }
+
+        let hasValidationDecorator = false;
+
+        // eslint-disable-next-line no-restricted-syntax
+        for (const { tsType } of fields) {
+          hasValidationDecorator = this.baseFileGenerator.hasNestedValidation(
+            this.baseFileGenerator.normalizeTsType(tsType)
+          );
+          if (hasValidationDecorator) {
+            this.baseFileGenerator.addValidationDecoratorImport(sourceFile);
+            break;
+          }
+        }
+
+        this.addDecoratorImports({ fields, sourceFile });
 
         if (enumImports && enumImports.length > 0) {
           this.baseFileGenerator.addEnumImports({ enums: enumImports, sourceFile, type: TypeEnum.InputType });
@@ -96,9 +179,15 @@ export class InputTypeHandler extends BaseHandler {
     await this.baseFileGenerator.save();
   }
 
+  getInputTypes(): InputType[] {
+    return this._inputTypes;
+  }
+
   // eslint-disable-next-line max-lines-per-function
   parse(enums: Enum[]): void {
     const inputTypes: { fields: DMMF.SchemaArg[]; name: string }[] = [];
+
+    this._parseInputTypeDecorators();
 
     this.baseParser.dmmf.schema.inputObjectTypes.prisma
       .filter((inputType) => !inputType.name.toLowerCase().includes("unchecked"))
@@ -133,6 +222,7 @@ export class InputTypeHandler extends BaseHandler {
       let jsonImports: Set<string> = new Set();
       const inputTypeImports: Set<string> = new Set();
       const nestJSImports: Set<string> = new Set();
+      const decoratedFields = this._inputTypeDecorators.get(name);
 
       modelFields.forEach((field) => {
         const fieldInputTypes = field.inputTypes.filter(
@@ -146,12 +236,18 @@ export class InputTypeHandler extends BaseHandler {
           field: { ...field, ...currentInputType, isInputType: true },
         });
 
+        const decorators = decoratedFields?.get(parsedField.name);
+
+        if (typeof decorators !== "undefined") {
+          parsedField.decorators = decorators;
+        }
+
         graphqlScalarImports = this.baseParser.getGraphqlScalarImports({
           graphqlScalarImports,
           type: parsedField.graphQLType,
         });
 
-        const baseGraphqlType = parsedField.graphQLType.replace("[", "").replace("]", "");
+        const baseGraphqlType = this.baseFileGenerator.normalizeTsType(parsedField.graphQLType);
 
         fieldInputTypes.forEach(({ location, type }) => {
           if (this.baseParser.getEnumName(type) === baseGraphqlType) {
@@ -196,5 +292,108 @@ export class InputTypeHandler extends BaseHandler {
         nestJSImports: Array.from(nestJSImports),
       });
     });
+  }
+
+  // eslint-disable-next-line max-lines-per-function
+  private _parseInputTypeDecorators(): void {
+    if (this.config.inputTypeDecoratorsPath) {
+      const project = new Project({
+        compilerOptions: {
+          emitDecoratorMetadata: true,
+          experimentalDecorators: true,
+        },
+        manipulationSettings: {
+          indentationText: IndentationText.TwoSpaces,
+          newLineKind: NewLineKind.LineFeed,
+        },
+      });
+
+      let inputDecoratorFile = project.addSourceFileAtPathIfExists(
+        join(this.config.basePath, this.config.inputTypeDecoratorsPath)
+      );
+
+      if (!inputDecoratorFile) {
+        inputDecoratorFile = project.createSourceFile(
+          join(this.config.basePath, this.config.inputTypeDecoratorsPath),
+          undefined,
+          { overwrite: true }
+        );
+
+        inputDecoratorFile.addImportDeclaration({
+          kind: StructureKind.ImportDeclaration,
+          moduleSpecifier: `./${relative(
+            dirname(resolve(join(this.config.basePath, this.config.inputTypeDecoratorsPath))),
+            resolve(join(this.config.basePath, this.config.paths.inputTypeDecorators))
+          )}`,
+          namedImports: ["InputTypeDecorators"],
+        });
+
+        inputDecoratorFile.addVariableStatement({
+          declarationKind: VariableDeclarationKind.Const,
+          declarations: [{ initializer: "{}", name: "inputTypeDecorators", type: "InputTypeDecorators" }],
+          isExported: true,
+          kind: StructureKind.VariableStatement,
+        });
+        inputDecoratorFile.save();
+      }
+
+      const importDeclarations = inputDecoratorFile.getImportDeclarations();
+
+      importDeclarations.forEach((imp) => {
+        const imports: Map<ImportTypeEnum, Set<string>> = new Map();
+        const namedImports: Set<string> = new Set();
+
+        imp.getNamedImports().forEach((namedImport) => namedImports.add(namedImport.getText()));
+        imports.set(ImportTypeEnum.NamedImports, namedImports);
+
+        const defaultImport = imp.getDefaultImport()?.getText();
+
+        if (defaultImport) {
+          imports.set(ImportTypeEnum.DefaultImport, new Set([defaultImport]));
+        }
+
+        this._inputTypeDecoratorImports.set(imp.getModuleSpecifierValue(), imports);
+      });
+
+      const inputTypes = inputDecoratorFile
+        .getVariableDeclaration("inputTypeDecorators")
+        ?.getFirstChildByKind(SyntaxKind.ObjectLiteralExpression)
+        ?.getChildrenOfKind(SyntaxKind.PropertyAssignment);
+
+      inputTypes?.forEach((inputType) => {
+        const decorators: Map<string, Map<string, string>> = new Map();
+
+        inputType.getChildrenOfKind(SyntaxKind.ObjectLiteralExpression)?.forEach((objectLiteralExpression) => {
+          objectLiteralExpression.getChildrenOfKind(SyntaxKind.PropertyAssignment).forEach((propertyAssignment) => {
+            const propertyDecorators: Map<string, string> = new Map();
+
+            propertyAssignment.getChildrenOfKind(SyntaxKind.ArrayLiteralExpression).forEach((arrayLiteralExpression) =>
+              arrayLiteralExpression.getElements().forEach((el) => {
+                const elementText = el.getText();
+                const identifier = elementText.split("(")[0];
+                const args = elementText.split("(")[1];
+
+                propertyDecorators.set(identifier, args.slice(0, -1));
+              })
+            );
+            propertyAssignment.getChildrenOfKind(SyntaxKind.CallExpression).forEach((callExpression) => {
+              const elementText = callExpression.getText();
+              const identifier = elementText.split("(")[0];
+              const args = elementText.split("(")[1];
+
+              propertyDecorators.set(identifier, args.slice(0, -1));
+            });
+
+            if (propertyDecorators.size > 0) {
+              decorators.set(propertyAssignment.getName(), propertyDecorators);
+            }
+          });
+        });
+
+        if (decorators.size > 0) {
+          this._inputTypeDecorators.set(inputType.getName(), decorators);
+        }
+      });
+    }
   }
 }

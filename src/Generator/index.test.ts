@@ -83,7 +83,7 @@ describe("Generator", () => {
     expect([...folderList]).toStrictEqual(["enums", "index.ts", "Session", "shared", "User"]);
   });
   it("should log the correct actions", async () => {
-    expect.assertions(36);
+    expect.assertions(42);
 
     const generator = new Generator({
       datamodel: "",
@@ -93,6 +93,10 @@ describe("Generator", () => {
       dmmf: null,
       generator: {
         ...generatorConfig,
+        config: {
+          ...generatorConfig.config,
+          inputTypeDecoratorsPath: `${process.cwd()}/fixtures/Generator/output1/inputTypeDecorators`,
+        },
         output: {
           fromEnvVar: null,
           value: `${process.cwd()}/fixtures/Generator/output1`,
@@ -110,7 +114,7 @@ describe("Generator", () => {
 
     consoleLog.mockRestore();
 
-    expect(values).toHaveLength(36);
+    expect(values).toHaveLength(42);
 
     // expect starting and closing messages to appear in the correct order
     expect(values[0]).toMatch(getStartedMessage(Generator.messages.init));
@@ -155,5 +159,12 @@ describe("Generator", () => {
     expect(findCompletedMessage(values, Generator.messages.resolvers.parse)).toHaveLength(1);
     expect(findStartedMessage(values, Generator.messages.resolvers.generate)).toHaveLength(1);
     expect(findCompletedMessage(values, Generator.messages.resolvers.generate)).toHaveLength(1);
+
+    expect(findStartedMessage(values, Generator.messages.inputTypeDecorators.title)).toHaveLength(1);
+    expect(findCompletedMessage(values, Generator.messages.inputTypeDecorators.title)).toHaveLength(1);
+    expect(findStartedMessage(values, Generator.messages.inputTypeDecorators.parse)).toHaveLength(1);
+    expect(findCompletedMessage(values, Generator.messages.inputTypeDecorators.parse)).toHaveLength(1);
+    expect(findStartedMessage(values, Generator.messages.inputTypeDecorators.generate)).toHaveLength(1);
+    expect(findCompletedMessage(values, Generator.messages.inputTypeDecorators.generate)).toHaveLength(1);
   });
 });

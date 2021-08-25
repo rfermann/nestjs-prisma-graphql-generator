@@ -22,8 +22,10 @@ describe("ResolverHandler", () => {
       basePath: `${process.cwd()}/fixtures/resolverTypeHandler/fixtures/output2`,
       includePrismaSelect: false,
       inputArgumentsName: "",
+      inputTypeDecoratorsPath: "",
       paths: {
         enums: "enums",
+        inputTypeDecorators: "inputTypeDecorators",
         inputTypes: "inputTypes",
         model: "model",
         outputTypes: "outputTypes",
@@ -69,8 +71,10 @@ describe("ResolverHandler", () => {
       basePath: `${process.cwd()}/fixtures/resolverTypeHandler/fixtures/output3`,
       includePrismaSelect: false,
       inputArgumentsName: "",
+      inputTypeDecoratorsPath: "",
       paths: {
         enums: "enums",
+        inputTypeDecorators: "inputTypeDecorators",
         inputTypes: "inputTypes",
         model: "model",
         outputTypes: "outputTypes",
